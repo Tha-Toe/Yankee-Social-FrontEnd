@@ -1,0 +1,248 @@
+@import "../../variables.scss";
+.oprofileContainer {
+  width: 100%;
+  @include flex(center, center, $vertical: true);
+  background-color: $white;
+  box-shadow: 0px 24px 48px 0 rgba(0, 0, 0, 0.16);
+  .oprofileTopContainer {
+    width: 100%;
+    @include flex(space-between, center);
+    margin-top: 15px;
+    .obackProfile {
+      .obackIcon {
+        font-size: 25px;
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 50%;
+      }
+      .obackIcon:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+    }
+    .oprofileNote {
+      .onoteIcon {
+        cursor: pointer;
+        font-size: 25px;
+        padding: 10px;
+        border-radius: 50%;
+      }
+      .onoteIcon:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+
+  .oprofilePhotoContainer {
+    width: 95%;
+    @include flex(center, flex-start, $vertical: true);
+    margin-bottom: -60px;
+    .ocoverPhoto {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    .oDefaultCoverPhoto {
+      width: 100%;
+      height: 170px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      background-color: $black;
+    }
+    .oprofileAndEditContainer {
+      @include flex(space-between, center);
+      width: 100%;
+      position: relative;
+      top: -50px;
+      .oprofileAndActive {
+        margin-left: 50px;
+        @include flex(center, center, $vertical: true);
+        .oprofilePhoto {
+          height: 120px;
+          width: 120px;
+          background-color: $black;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 4px solid $white;
+        }
+        .oactiveIcon {
+          width: 15px;
+          height: 15px;
+          border-radius: 50%;
+          background-color: green;
+          border: 2px solid $white;
+          position: relative;
+          top: -38px;
+          right: -50px;
+        }
+      }
+      .followButtonContainer {
+        margin-top: 20px;
+        .followButton {
+          background-color: $sea_blue;
+          color: $white;
+          font-size: 20px;
+          font-weight: 600;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 20px;
+          cursor: pointer;
+          .followedCheckMark {
+            margin-right: 10px;
+          }
+        }
+        .followButton:hover {
+          background-color: $dark_gray;
+        }
+      }
+    }
+    .oeditButton {
+      border-radius: 20px;
+      padding: 10px 15px;
+      background-color: transparent;
+      background-color: $sea_blue;
+      color: $white;
+      cursor: pointer;
+      margin-right: 20px;
+      margin-top: 20px;
+      font-weight: 600;
+      border: none;
+    }
+  }
+
+  .ouserNameContainer {
+    width: 90%;
+    @include flex(center, flex-start, $vertical: true);
+    margin-bottom: 20px;
+    .ouserName {
+      font-size: 23px;
+      font-weight: 700;
+      color: $black;
+    }
+    .ouserNameKey {
+      font-size: 20px;
+      font-weight: 500;
+      color: $dark_gray;
+    }
+    .ouserCaption {
+      font-size: 18px;
+      font-weight: 500;
+      color: $dark_gray;
+    }
+  }
+  .ofollowerContainer {
+    width: 100%;
+    .ofollowerChild {
+      width: 60%;
+      margin: 0 auto;
+      @include flex(space-between, center);
+      margin-bottom: 20px;
+      .ofollowerTag {
+        @include flex(center, center, $vertical: true);
+        padding: 20px;
+        border-radius: 20px;
+        .ofollowerAmount {
+          font-size: 22px;
+          color: $black;
+          font-weight: 700;
+          margin-right: 5px;
+        }
+        .ofollowerText {
+          font-size: 18px;
+          font-weight: 400;
+          color: $dark_gray;
+        }
+      }
+      .ofollowingTag {
+        @include flex(center, center, $vertical: true);
+        padding: 20px;
+        border-radius: 20px;
+        .ofollowingAmount {
+          font-size: 22px;
+          font-weight: 700;
+          margin-right: 5px;
+          color: $black;
+        }
+        .ofollowingText {
+          font-size: 18px;
+          font-weight: 400;
+          color: $dark_gray;
+        }
+      }
+      .olikeTag {
+        @include flex(center, center, $vertical: true);
+        padding: 20px;
+        border-radius: 20px;
+        .olikeAmount {
+          font-size: 22px;
+          font-weight: 700;
+          margin-right: 5px;
+          color: $black;
+        }
+        .olikeText {
+          font-size: 18px;
+          font-weight: 400;
+          color: $dark_gray;
+        }
+      }
+    }
+  }
+  .opostContainer {
+    @include flex(center, center, $vertical: true);
+    width: 100%;
+    border-top: 1px solid $dark_gray;
+    .opostText {
+      font-size: 25px;
+      font-weight: 700;
+      color: $dark_gray;
+      margin-top: 30px;
+    }
+  }
+  .unFollowPageContainer {
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    @include flex(center, center);
+    .unFollowBoxContainer {
+      background-color: $white;
+      height: 300px;
+      width: 500px;
+      border-radius: 20px;
+      @include flex(space-around, center, $vertical: true);
+      .unFollowAskText {
+        font-size: 18px;
+        font-weight: 500;
+        color: $dark_gray;
+        .unFollowUserName {
+          color: $black;
+          margin-left: 15px;
+          font-size: 20px;
+          font-weight: 700;
+        }
+      }
+      .unFollowButtonContainer {
+        @include flex(space-around, center);
+        width: 100%;
+        .unFollowCancleButton {
+          background-color: $gray_bg;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 15px;
+          cursor: pointer;
+        }
+        .unFollowButton {
+          background-color: $sea_blue;
+          padding: 10px 20px;
+          color: $white;
+          border: none;
+          border-radius: 15px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

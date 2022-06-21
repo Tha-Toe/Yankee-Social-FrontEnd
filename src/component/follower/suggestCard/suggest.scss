@@ -1,0 +1,55 @@
+@import "../../../variables.scss";
+
+.scContainer {
+  @include flex(space-between, center);
+  width: 100%;
+  height: 70px;
+  background-color: $white;
+  border: 1px solid $gray_bg;
+  border-bottom: 4px solid $sea_blue;
+  .scImgAndNameContainer {
+    @include flex(center, center);
+    margin-left: 20px;
+    .scImg {
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    .scName {
+      font-size: 20px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .scName:hover {
+      color: $sea_blue;
+    }
+  }
+  .buttonContainer {
+    @include flex(center, center);
+    .scButton {
+      background-color: $sea_blue;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 15px;
+      margin-right: 10px;
+      color: $white;
+      cursor: pointer;
+    }
+    .scDeleteButton {
+      border: none;
+      border-radius: 10px;
+      padding: 10px 15px;
+      margin-right: 20px;
+      color: $dark_gray;
+      cursor: pointer;
+    }
+    .scDeleteButton:hover {
+      background-color: red;
+      color: $white;
+    }
+  }
+}
+.scContainer:hover {
+  background-color: $gray_bg;
+}

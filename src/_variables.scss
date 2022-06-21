@@ -1,0 +1,20 @@
+$sea_blue: #32A49C;
+$input_color: #EDF4F2;
+$gray_bg: #F1F2F4;
+$light_gray: #f0f0f0;
+$gray: #cfcfcf;
+$dark_gray: #8b8b8b;
+$white: #fff;
+$black: #000;
+$red: red;
+$blue: blue;
+$light_blue: #58B4FF;
+
+@mixin flex($x, $y, $vertical: false) {
+    display: flex;
+    justify-content: $x;
+    align-items: $y;
+    @if ($vertical) {
+      flex-direction: column;
+    }
+  }

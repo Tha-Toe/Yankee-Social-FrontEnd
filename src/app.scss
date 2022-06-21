@@ -1,0 +1,14 @@
+@import"./variables.scss";
+
+body {
+    background-color: $gray_bg;
+}
+.loadingContainer {
+    height: 100vh;
+    width: 100vw;
+    background-color: $sea_blue;
+    @include flex(center,center,$vertical: true);
+    .loadingText {
+        color: $white;
+    }
+}

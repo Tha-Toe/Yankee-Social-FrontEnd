@@ -1,0 +1,143 @@
+@import "../../variables.scss";
+
+.searchBarPageContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: $gray_bg;
+  .searchBarPageChild {
+    max-width: 900px;
+    margin: 0 auto;
+    margin-top: 20px;
+    min-height: 100vh;
+    background-color: $sea_blue;
+    box-shadow: 0px 12px 48px rgba(0, 0, 0, 0.16);
+    @include flex(flex-start, center, $vertical: true);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    .searchBarContainer {
+      @include flex(flex-start, center);
+      width: 100%;
+      border-bottom: 1px solid $dark_gray;
+      height: 60px;
+      background-color: $white;
+      position: sticky;
+      top: 0;
+      .backIcon {
+        margin-left: 20px;
+        font-size: 25px;
+        color: $dark_gray;
+        cursor: pointer;
+      }
+      .backIcon:hover {
+        color: $light_blue;
+      }
+      .searchContainer {
+        margin-left: 50px;
+        width: 80%;
+        @include flex(flex-start, center);
+        .sbpIcon {
+          color: $dark_gray;
+        }
+        .searchForm {
+          .sbpSearchBar {
+            outline: none;
+            border: none;
+            font-size: 18px;
+            padding-left: 10px;
+            width: 70%;
+          }
+        }
+      }
+    }
+    .sbcGray {
+      position: static;
+    }
+    .searchBarPageBodyContainer {
+      width: 100%;
+      height: 100%;
+      .notResultFoundContainer {
+        width: 100%;
+        height: 100vh;
+        @include flex(center, center, $vertical: true);
+        .notResultFoundChild {
+          @include flex(center, center, $vertical: true);
+          .notFoundLensIcon {
+            font-size: 100px;
+            color: $white;
+          }
+          .notFoundText {
+            font-size: 20px;
+            color: $white;
+            font-weight: 600;
+          }
+        }
+      }
+      .searchLoading {
+        width: 100%;
+        height: 100vh;
+        color: $white;
+        font-size: 22px;
+        font-weight: 700;
+        @include flex(center, center, $vertical: true);
+      }
+      .resultContainer {
+        width: 100%;
+        .resultChild {
+          width: 80%;
+          margin: 0 auto;
+          @include flex(space-between, center);
+          margin-top: 10px;
+          cursor: pointer;
+
+          padding: 10px 30px;
+          .nameAndPhotoResult {
+            @include flex(flex-start, center);
+            .profileImg {
+              width: 70px;
+              height: 70px;
+              border-radius: 50%;
+              object-fit: cover;
+              margin-right: 10px;
+            }
+            .nameTag {
+              font-size: 20px;
+              font-weight: 600;
+              color: $white;
+            }
+            .nameTag:hover {
+              color: $light_blue;
+            }
+          }
+          .mbc {
+            font-size: 20px;
+            color: $gray_bg;
+            cursor: pointer;
+          }
+          .mbc:hover {
+            color: $light_blue;
+          }
+        }
+        .resultChild:hover {
+          background-color: rgba(0, 0, 0, 0.16);
+        }
+        .noMoreResult {
+          @include flex(center, center, $vertical: true);
+          margin: 0 auto;
+          margin-top: 100px;
+          .noMoreIcon {
+            font-size: 30px;
+            color: $gray_bg;
+          }
+          .noMoreText {
+            font-size: 20px;
+            font-weight: 600;
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+}

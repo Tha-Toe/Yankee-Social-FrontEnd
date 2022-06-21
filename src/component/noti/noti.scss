@@ -1,0 +1,13 @@
+@import "../../variables.scss";
+
+.notiContainer {
+    max-width: 900px;
+    background-color: $white;
+    box-shadow: 0px 24px 48px 0 rgba(0,0,0,0.16);
+    @include flex(center,center,$vertical: true);
+    .notiChild {
+        color: $dark_gray;
+        font-size: 25px;
+        padding: 100px 0px;
+    }
+}

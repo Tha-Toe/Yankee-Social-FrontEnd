@@ -1,0 +1,128 @@
+@import "../../variables.scss";
+
+.postCardContainer {
+    width: 100%;
+    border-bottom: 10px solid $gray_bg;
+    @include flex(center,center);
+    .postCardChild {
+        @include flex(center,center,$vertical: true);
+        width: 95%;
+        margin-top: 20px;
+        .postHeader {
+            width: 100%;
+            margin-bottom: 15px;
+            @include flex(space-between,center);
+            .nameContainer {
+                @include flex(center,flex-start,$vertical: false);
+                .postProfileImageContainer {
+                    .pfImage {
+                        height: 50px;
+                        width: 50px;
+                        border-radius: 50%;
+                        border: 2px solid $sea_blue;
+                    }
+                }
+                .postProfileName {
+                    @include flex(center,flex-start,$vertical: true);
+                    margin-left: 10px;
+                    .postName {
+                        font-weight: 700;
+                        font-size: 17px;
+                    }
+                    .postHour {
+                        color: $dark_gray;
+                        font-size: 15px;
+                    }
+                }
+            }
+            .postEditContainer {
+                .postEditIcon {
+                    cursor: pointer;
+                    font-size: 22px;
+                }
+            }
+        }
+        .postDetail {
+            margin-bottom: 15px;
+            .postCaption {
+                margin-left: 20px;
+                max-width: 80%;
+            }
+        }
+        .postImageContainer {
+            max-height: 600px;
+            overflow: hidden;
+            .postImage {
+                width: 600px;
+                object-fit: cover;
+            }
+        }
+        .postBottom {
+            border-bottom: 1px solid $gray_bg;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            width: 100%;
+            @include flex(center,center,$vertical: true);
+            .amountContainer {
+                width: 100%;
+                @include flex(space-between,center);
+                padding-top: 10px;
+                padding-bottom: 10px;
+                margin-bottom: 10px;
+                border-bottom: 1px solid $gray;
+                .reactionContainer {
+                    @include flex(center,center);
+                    .reactionIcon {
+                        background-color: $light_blue;
+                        color: $white;
+                        padding: 5px;
+                        border-radius: 50%;
+                    }
+                    .reactionAmount {
+                        color: $dark_gray;
+                        margin-left: 5px;
+                    }
+                }
+                .commentAndShareContainer {
+                    @include flex(center,center);
+                    .commentAmount {
+                        $input_color: $dark_gray;
+                        margin-right: 20px;
+                        @include flex(center,center);
+                        color: $dark_gray;
+                    }
+                    .shareAmount {
+                        $input_color: $dark_gray;
+                        @include flex(center,center);
+                        color: $dark_gray;
+                    }
+                }
+            }
+            .likeShareCommentContainer {
+                width: 100%;
+                border-bottom: 1px solid $gray_bg;
+                background-color: $sea_blue;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                .likeShareCommentChild {
+                    width: 100%;
+                    @include flex(space-around,center);
+                    .lcsContainer {
+                        @include flex(center,center);
+                        cursor: pointer;
+                        .lcsIcon {
+                            font-size: 25px;
+                            margin-right: 5px;
+                            color: $white;
+                        }
+                        .lcsText {
+                            font-size: 18px;
+                            color: $white;
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+}

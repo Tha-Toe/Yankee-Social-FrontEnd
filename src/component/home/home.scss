@@ -1,0 +1,44 @@
+@import "../../variables.scss";
+
+.homeContainer {
+  width: 100%;
+  @include flex(center, center, $vertical: true);
+  .postUploadContainer {
+    background-color: $white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0px 12px 48px 0 rgba(0, 0, 0, 0.16);
+    @include flex(center, center);
+    .profileImageContainer {
+      margin-right: 20px;
+      .profileImage {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        border: 2px solid $sea_blue;
+        object-fit: cover;
+      }
+    }
+    .inputTagContainer {
+      width: 80%;
+      .inputTag {
+        padding: 10px 15px;
+        border-radius: 20px;
+        width: 100%;
+        background-color: $input_color;
+        outline: none;
+        border: none;
+        font-size: 20px;
+      }
+    }
+  }
+  .postContainer {
+    background-color: $white;
+    width: 100%;
+    box-shadow: 0px 24px 48px 0 rgba(0, 0, 0, 0.16);
+    border-radius: 15px;
+    margin-top: 20px;
+  }
+}

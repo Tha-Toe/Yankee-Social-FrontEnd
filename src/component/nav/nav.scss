@@ -1,0 +1,67 @@
+@import"../../variables.scss";
+
+.navContainer {
+    @include flex(center,center,$vertical:true);
+    background-color: $sea_blue;
+    border-bottom: 1px solid $black;
+    .navTop {
+        color: $white;
+        width: 80%;
+        max-width: 900px;
+        height: 50px;
+        @include flex(space-between,center);
+        .logoText {
+            font-size: 30px;
+            font-weight: 600;
+            margin-left: 30px;
+            margin-left: 10px;
+            letter-spacing: .1rem;
+        }
+        .button {
+            color: $white;
+            @include flex(flex-end,center);
+            .searchAndMsgIcon {
+                font-size: 25px;
+                cursor: pointer;
+            }
+            .searchIcon {
+                margin-right: 50px;
+            }
+            .msgIcon {
+                margin-right: 10px;
+            }
+            .searchIcon:hover {
+                color: $light_blue;
+            }
+            .msgIcon:hover {
+                color: $light_blue;
+            }
+            width: 30%;
+        }
+
+    }
+    .navBottom {
+        .navIconContainer {
+            position: relative;
+            .navIconChild {
+                @include flex(center,center);
+                .navIcon {
+                    font-size: 27px;
+                    color: $input_color;
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    width: 130px;
+                    cursor: pointer;
+                }
+                .iconActive {
+                    color: $light_blue;
+                }
+            }
+            .navBar {
+                background-color: $light_blue;
+                height: 5px;
+                transition: all .7s ease;
+            }
+        }
+    }
+}
