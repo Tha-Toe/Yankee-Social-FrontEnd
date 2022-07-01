@@ -82,18 +82,18 @@
           border: 4px solid $white;
         }
         .uploadProfileIconContainer {
-          border-radius: 50%;
-          background-color: rgba(0, 0, 0, 0.4);
-          padding: 8px;
-          border: 2px solid $white;
           position: relative;
           top: -44px;
           right: -40px;
           cursor: pointer;
 
           .uploadProfileIcon {
+            background-color: rgba(0, 0, 0, 0.4);
+            border: 2px solid $white;
             font-size: 18px;
             color: $white;
+            padding: 8px;
+            border-radius: 50%;
           }
         }
         .selectPf {
@@ -128,6 +128,7 @@
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 7;
     @include flex(center, center);
     .uploadProfileCard {
       background-color: $white;
@@ -223,6 +224,7 @@
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 7;
     @include flex(center, center);
     .uploadCoverPhotoCard {
       background-color: $white;
@@ -318,8 +320,9 @@
     position: fixed;
     left: 0;
     top: 0;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.7);
     @include flex(center, center, $vertical: true);
+    z-index: 7;
     .editCard {
       background-color: $white;
       box-shadow: 0px 24px 48px 0 rgba(0, 0, 0, 0.16);
@@ -391,6 +394,7 @@
       @include flex(center, center, $vertical: true);
       padding: 20px;
       border-radius: 20px;
+      cursor: pointer;
       .followerAmount {
         font-size: 22px;
         color: $black;
@@ -407,6 +411,7 @@
       @include flex(center, center, $vertical: true);
       padding: 20px;
       border-radius: 20px;
+      cursor: pointer;
       .followingAmount {
         font-size: 22px;
         font-weight: 700;
@@ -448,3 +453,939 @@
     margin-top: 30px;
   }
 }
+@include laptop-L {
+} //1440px
+@include laptop {
+  .profileContainer {
+    .uploadCoverPhotoContainer {
+      .uploadCoverPhotoCard {
+        .previewCoverPhoto {
+          width: 600px;
+        }
+      }
+    }
+  }
+} //1240px
+@include tablet-lg {
+  .profileContainer {
+    .profileTopContainer {
+      margin-top: 5px;
+      margin-bottom: -25px;
+      .backProfile {
+        .backIcon {
+          font-size: 20px;
+          padding: 10px;
+        }
+      }
+      .profileNote {
+        .noteIcon {
+          font-size: 20px;
+        }
+      }
+    }
+    .profilePhotoContainer {
+      width: 95%;
+      margin-bottom: -60px;
+      .changeCoverPhotoIconContainer {
+        .changeCoverPhotoIcon {
+          padding: 8px;
+          bottom: -40px;
+          margin-right: 10px;
+          font-size: 16px;
+        }
+      }
+      .coverPhoto {
+        height: 120px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+      .coverDefault {
+        height: 120px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+      .profileAndEditContainer {
+        top: -50px;
+        .profileAndActive {
+          margin-left: 30px;
+          .profilePhoto {
+            height: 90px;
+            width: 90px;
+            border: 2px solid $white;
+          }
+          .uploadProfileIconContainer {
+            top: -44px;
+            right: -40px;
+            .uploadProfileIcon {
+              border: 1px solid $white;
+              font-size: 15px;
+              padding: 5px;
+            }
+          }
+          .selectPf {
+            top: -44px;
+            right: -40px;
+          }
+        }
+      }
+      .editButton {
+        border-radius: 18px;
+        padding: 8px 13px;
+        margin-right: 15px;
+        margin-top: 20px;
+        font-size: 12px;
+      }
+      .editButton:hover {
+        padding: 10px 15px;
+      }
+    }
+    .uploadProfileImageContainer {
+      .uploadProfileCard {
+        min-height: 300px;
+        min-width: 400px;
+        .lableAndInputContainer {
+          margin-bottom: 20px;
+          .profile_pic {
+            padding: 12px 18px;
+            border-radius: 5px;
+            font-size: 15px;
+          }
+          .foo {
+            width: 300px;
+            height: 35px;
+          }
+          .foo:after {
+            font-size: 18px;
+          }
+          .opacityHide {
+            opacity: 0;
+          }
+        }
+        .previewProfile {
+          height: 250px;
+          width: 250px;
+          margin-bottom: 20px;
+        }
+        .uploadButtonContainer {
+          margin-bottom: 15px;
+          .cancleUploadButton {
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-size: 13px;
+          }
+          .uploadButton {
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-size: 13px;
+          }
+        }
+      }
+    }
+    .uploadCoverPhotoContainer {
+      .uploadCoverPhotoCard {
+        background-color: $white;
+        min-height: 300px;
+        max-width: 500px;
+        .lableAndInputContainer {
+          margin-bottom: 20px;
+          margin: 0 50px;
+          .cover_photo {
+            padding: 12px 18px;
+            font-size: 15px;
+          }
+          .cfoo {
+            width: 70%;
+            height: 40px;
+          }
+          .cfoo:after {
+            font-size: 18px;
+          }
+        }
+        .previewCoverPhoto {
+          width: 490px;
+          height: 140px;
+          margin-bottom: 20px;
+          margin-top: 17px;
+        }
+        .uploadButtonContainer {
+          margin-bottom: 20px;
+          .cancleUploadButton {
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+          }
+          .uploadButton {
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+          }
+        }
+      }
+    }
+    .editContainer {
+      .editCard {
+        width: 300px;
+        .changeProfilePicture {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          padding-left: 20px;
+          font-size: 14px;
+        }
+      }
+      .cancelEditButton {
+        width: 150px;
+        height: 30px;
+        font-size: 14px;
+        font-weight: 600;
+        margin-top: 20px;
+      }
+    }
+  }
+  .userNameContainer {
+    margin-bottom: 15px;
+    .userName {
+      font-size: 18px;
+    }
+    .userNameKey {
+      font-size: 16px;
+    }
+    .userCaption {
+      font-size: 14px;
+    }
+  }
+  .followerContainer {
+    .followerChild {
+      width: 60%;
+      margin-bottom: 10px;
+      .followerTag {
+        padding: 10px;
+        .followerAmount {
+          font-size: 18px;
+          margin-right: 5px;
+        }
+        .followerText {
+          font-size: 16px;
+        }
+      }
+      .followingTag {
+        @include flex(center, center, $vertical: true);
+        padding: 10px;
+        .followingAmount {
+          font-size: 18px;
+          margin-right: 5px;
+        }
+        .followingText {
+          font-size: 16px;
+        }
+      }
+      .likeTag {
+        padding: 10px;
+        border-radius: 20px;
+        .likeAmount {
+          font-size: 18px;
+          margin-right: 5px;
+        }
+        .likeText {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  .postContainer {
+    .postText {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+  }
+} //770px
+@include tablet-m {
+  .profileContainer {
+    .profileTopContainer {
+      margin-top: 0px;
+      margin-bottom: -35px;
+      .backProfile {
+        .backIcon {
+          font-size: 16px;
+          padding: 10px;
+        }
+      }
+      .profileNote {
+        .noteIcon {
+          font-size: 16px;
+        }
+      }
+    }
+    .profilePhotoContainer {
+      width: 95%;
+      margin-bottom: -60px;
+      .changeCoverPhotoIconContainer {
+        .changeCoverPhotoIcon {
+          padding: 7px;
+          bottom: -35px;
+          margin-right: 5px;
+          font-size: 14px;
+        }
+      }
+      .coverPhoto {
+        height: 100px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+      .coverDefault {
+        height: 100px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+      .profileAndEditContainer {
+        top: -35px;
+        .profileAndActive {
+          margin-left: 20px;
+          .profilePhoto {
+            height: 80px;
+            width: 80px;
+            border: 2px solid $white;
+          }
+          .uploadProfileIconContainer {
+            top: -36px;
+            right: -33px;
+            .uploadProfileIcon {
+              font-size: 14px;
+              padding: 5px;
+              border: 1px solid $white;
+            }
+          }
+          .selectPf {
+            top: -44px;
+            right: -40px;
+          }
+        }
+      }
+      .editButton {
+        border-radius: 18px;
+        padding: 5px 10px;
+        margin-right: 5px;
+        margin-top: 5px;
+        font-size: 11px;
+      }
+      .editButton:hover {
+        padding: 7px 13px;
+      }
+    }
+    .uploadProfileImageContainer {
+      .uploadProfileCard {
+        min-height: 300px;
+        min-width: 400px;
+        .lableAndInputContainer {
+          margin-bottom: 20px;
+          .profile_pic {
+            padding: 12px 18px;
+            border-radius: 5px;
+            font-size: 15px;
+          }
+          .foo {
+            width: 300px;
+            height: 35px;
+          }
+          .foo:after {
+            font-size: 18px;
+          }
+          .opacityHide {
+            opacity: 0;
+          }
+        }
+        .previewProfile {
+          height: 250px;
+          width: 250px;
+          margin-bottom: 20px;
+        }
+        .uploadButtonContainer {
+          margin-bottom: 15px;
+          .cancleUploadButton {
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-size: 13px;
+          }
+          .uploadButton {
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-size: 13px;
+          }
+        }
+      }
+    }
+    .uploadCoverPhotoContainer {
+      .uploadCoverPhotoCard {
+        min-height: 300px;
+        max-width: 380px;
+        .lableAndInputContainer {
+          margin-bottom: 15px;
+          margin: 0 50px;
+          .cover_photo {
+            padding: 12px 18px;
+            font-size: 14px;
+          }
+          .cfoo {
+            width: 70%;
+            height: 30px;
+          }
+          .cfoo:after {
+            font-size: 15px;
+          }
+        }
+        .previewCoverPhoto {
+          width: 380px;
+          height: 120px;
+          margin-bottom: 15px;
+          margin-top: 14px;
+        }
+        .uploadButtonContainer {
+          margin-bottom: 15px;
+          .cancleUploadButton {
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+          }
+          .uploadButton {
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+          }
+        }
+      }
+    }
+    .editContainer {
+      .editCard {
+        width: 300px;
+        .changeProfilePicture {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          padding-left: 20px;
+          font-size: 12px;
+          font-weight: 500;
+        }
+      }
+      .cancelEditButton {
+        width: 150px;
+        height: 30px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-top: 15px;
+        font-weight: 500;
+      }
+    }
+  }
+  .userNameContainer {
+    margin-bottom: 15px;
+    .userName {
+      font-size: 16px;
+    }
+    .userNameKey {
+      font-size: 14px;
+    }
+    .userCaption {
+      font-size: 12px;
+    }
+  }
+  .followerContainer {
+    .followerChild {
+      width: 60%;
+      margin-bottom: 5px;
+      .followerTag {
+        padding: 10px;
+        .followerAmount {
+          font-size: 16px;
+          margin-right: 5px;
+        }
+        .followerText {
+          font-size: 14px;
+        }
+      }
+      .followingTag {
+        @include flex(center, center, $vertical: true);
+        padding: 10px;
+        .followingAmount {
+          font-size: 16px;
+          margin-right: 5px;
+        }
+        .followingText {
+          font-size: 14px;
+        }
+      }
+      .likeTag {
+        padding: 10px;
+        border-radius: 20px;
+        .likeAmount {
+          font-size: 16px;
+          margin-right: 5px;
+        }
+        .likeText {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  .postContainer {
+    .postText {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+  }
+} //500px
+@include mobile-lg {
+} //400px
+@include mobile-m {
+  .profileContainer {
+    .profileTopContainer {
+      margin-top: 0px;
+      margin-bottom: -30px;
+      .backProfile {
+        .backIcon {
+          font-size: 16px;
+          padding: 10px;
+        }
+      }
+      .profileNote {
+        .noteIcon {
+          font-size: 16px;
+        }
+      }
+    }
+    .profilePhotoContainer {
+      width: 95%;
+      margin-bottom: -50px;
+      .changeCoverPhotoIconContainer {
+        .changeCoverPhotoIcon {
+          padding: 5px;
+          bottom: -27px;
+          margin-right: 5px;
+          font-size: 12px;
+        }
+      }
+      .coverPhoto {
+        height: 80px;
+      }
+      .coverDefault {
+        height: 80px;
+      }
+      .profileAndEditContainer {
+        top: -35px;
+        .profileAndActive {
+          margin-left: 20px;
+          .profilePhoto {
+            height: 70px;
+            width: 70px;
+          }
+          .uploadProfileIconContainer {
+            top: -30px;
+            right: -28px;
+            .uploadProfileIcon {
+              padding: 3px;
+              border: 1px solid $white;
+              font-size: 10px;
+            }
+          }
+          .selectPf {
+            top: -44px;
+            right: -40px;
+          }
+        }
+      }
+      .editButton {
+        border-radius: 18px;
+        padding: 5px 10px;
+        margin-right: 5px;
+        margin-top: 5px;
+        font-size: 11px;
+      }
+      .editButton:hover {
+        padding: 7px 13px;
+      }
+    }
+    .uploadProfileImageContainer {
+      .uploadProfileCard {
+        min-height: 220px;
+        min-width: 220px;
+        .lableAndInputContainer {
+          margin-bottom: 20px;
+          .profile_pic {
+            padding: 12px 18px;
+            border-radius: 5px;
+            font-size: 13px;
+          }
+          .foo {
+            width: 180px;
+            height: 25px;
+          }
+          .foo:after {
+            font-size: 15px;
+          }
+          .opacityHide {
+            opacity: 0;
+          }
+        }
+        .previewProfile {
+          height: 200px;
+          width: 200px;
+          margin-bottom: 20px;
+        }
+        .uploadButtonContainer {
+          margin-bottom: 15px;
+          .cancleUploadButton {
+            padding: 7px 10px;
+            border-radius: 15px;
+            font-size: 10px;
+          }
+          .uploadButton {
+            padding: 7px 10px;
+            border-radius: 15px;
+            font-size: 10px;
+          }
+        }
+      }
+    }
+    .uploadCoverPhotoContainer {
+      .uploadCoverPhotoCard {
+        min-height: 200px;
+        max-width: 320px;
+        .lableAndInputContainer {
+          margin-bottom: 15px;
+          margin: 0 50px;
+          .cover_photo {
+            padding: 12px 18px;
+            font-size: 12px;
+          }
+          .cfoo {
+            width: 70%;
+            height: 30px;
+          }
+          .cfoo:after {
+            font-size: 14px;
+          }
+        }
+        .previewCoverPhoto {
+          width: 300px;
+          height: 100px;
+          margin-bottom: 15px;
+          margin-top: 14px;
+        }
+        .uploadButtonContainer {
+          margin-bottom: 15px;
+          .cancleUploadButton {
+            padding: 7px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+          }
+          .uploadButton {
+            padding: 7px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+          }
+        }
+      }
+    }
+    .editContainer {
+      .editCard {
+        width: 250px;
+        .changeProfilePicture {
+          padding-top: 10px;
+          padding-bottom: 10px;
+          padding-left: 17px;
+          font-size: 12px;
+          font-weight: 500;
+        }
+      }
+      .cancelEditButton {
+        width: 100px;
+        height: 25px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-top: 15px;
+        font-weight: 500;
+      }
+    }
+  }
+  .userNameContainer {
+    margin-bottom: 15px;
+    .userName {
+      font-size: 14px;
+    }
+    .userNameKey {
+      font-size: 12px;
+    }
+    .userCaption {
+      font-size: 10px;
+    }
+  }
+  .followerContainer {
+    .followerChild {
+      width: 70%;
+      margin-bottom: 5px;
+      .followerTag {
+        padding: 10px;
+        .followerAmount {
+          font-size: 14px;
+          margin-right: 5px;
+        }
+        .followerText {
+          font-size: 12px;
+        }
+      }
+      .followingTag {
+        @include flex(center, center, $vertical: true);
+        padding: 10px;
+        .followingAmount {
+          font-size: 14px;
+          margin-right: 5px;
+        }
+        .followingText {
+          font-size: 12px;
+        }
+      }
+      .likeTag {
+        padding: 10px;
+        border-radius: 20px;
+        .likeAmount {
+          font-size: 14px;
+          margin-right: 5px;
+        }
+        .likeText {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+  .postContainer {
+    .postText {
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  }
+} //375px
+@include mobile-sm {
+  .profileContainer {
+    .profileTopContainer {
+      margin-top: 0px;
+      margin-bottom: -30px;
+      .backProfile {
+        .backIcon {
+          font-size: 16px;
+          padding: 10px;
+        }
+      }
+      .profileNote {
+        .noteIcon {
+          font-size: 16px;
+        }
+      }
+    }
+    .profilePhotoContainer {
+      width: 95%;
+      margin-bottom: -40px;
+      .changeCoverPhotoIconContainer {
+        .changeCoverPhotoIcon {
+          padding: 5px;
+          bottom: -27px;
+          margin-right: 5px;
+          font-size: 12px;
+        }
+      }
+      .coverPhoto {
+        height: 70px;
+      }
+      .coverDefault {
+        height: 70px;
+      }
+      .profileAndEditContainer {
+        top: -25px;
+        .profileAndActive {
+          margin-left: 10px;
+          .profilePhoto {
+            height: 60px;
+            width: 60px;
+          }
+          .uploadProfileIconContainer {
+            top: -30px;
+            right: -28px;
+            .uploadProfileIcon {
+              padding: 3px;
+              border: 1px solid $white;
+              font-size: 10px;
+            }
+          }
+          .selectPf {
+            top: -44px;
+            right: -40px;
+          }
+        }
+      }
+      .editButton {
+        border-radius: 18px;
+        padding: 5px 10px;
+        margin-right: 5px;
+        margin-top: 5px;
+        font-size: 11px;
+      }
+      .editButton:hover {
+        padding: 7px 13px;
+      }
+    }
+    .uploadProfileImageContainer {
+      .uploadProfileCard {
+        min-height: 220px;
+        min-width: 220px;
+        .lableAndInputContainer {
+          margin-bottom: 20px;
+          .profile_pic {
+            padding: 12px 18px;
+            border-radius: 5px;
+            font-size: 13px;
+          }
+          .foo {
+            width: 180px;
+            height: 25px;
+          }
+          .foo:after {
+            font-size: 15px;
+          }
+          .opacityHide {
+            opacity: 0;
+          }
+        }
+        .previewProfile {
+          height: 200px;
+          width: 200px;
+          margin-bottom: 20px;
+        }
+        .uploadButtonContainer {
+          margin-bottom: 15px;
+          .cancleUploadButton {
+            padding: 7px 10px;
+            border-radius: 15px;
+            font-size: 10px;
+          }
+          .uploadButton {
+            padding: 7px 10px;
+            border-radius: 15px;
+            font-size: 10px;
+          }
+        }
+      }
+    }
+    .uploadCoverPhotoContainer {
+      .uploadCoverPhotoCard {
+        min-height: 200px;
+        max-width: 250px;
+        .lableAndInputContainer {
+          margin-bottom: 15px;
+          margin: 0 50px;
+          .cover_photo {
+            padding: 12px 18px;
+            font-size: 12px;
+          }
+          .cfoo {
+            width: 70%;
+            height: 30px;
+          }
+          .cfoo:after {
+            font-size: 14px;
+          }
+        }
+        .previewCoverPhoto {
+          width: 240px;
+          height: 80px;
+          margin-bottom: 15px;
+          margin-top: 14px;
+        }
+        .uploadButtonContainer {
+          margin-bottom: 15px;
+          .cancleUploadButton {
+            padding: 7px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+          }
+          .uploadButton {
+            padding: 7px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+          }
+        }
+      }
+    }
+    .editContainer {
+      .editCard {
+        width: 250px;
+        .changeProfilePicture {
+          padding-top: 10px;
+          padding-bottom: 10px;
+          padding-left: 17px;
+          font-size: 12px;
+          font-weight: 500;
+        }
+      }
+      .cancelEditButton {
+        width: 100px;
+        height: 25px;
+        font-size: 12px;
+        font-weight: 600;
+        margin-top: 15px;
+        font-weight: 500;
+      }
+    }
+  }
+  .userNameContainer {
+    margin-bottom: 15px;
+    .userName {
+      font-size: 12px;
+    }
+    .userNameKey {
+      font-size: 10px;
+    }
+    .userCaption {
+      font-size: 10px;
+    }
+  }
+  .followerContainer {
+    .followerChild {
+      width: 70%;
+      margin-bottom: 5px;
+      .followerTag {
+        padding: 10px;
+        .followerAmount {
+          font-size: 12px;
+          margin-right: 5px;
+        }
+        .followerText {
+          font-size: 10px;
+        }
+      }
+      .followingTag {
+        @include flex(center, center, $vertical: true);
+        padding: 10px;
+        .followingAmount {
+          font-size: 12px;
+          margin-right: 5px;
+        }
+        .followingText {
+          font-size: 10px;
+        }
+      }
+      .likeTag {
+        padding: 10px;
+        border-radius: 20px;
+        .likeAmount {
+          font-size: 12px;
+          margin-right: 5px;
+        }
+        .likeText {
+          font-size: 10px;
+        }
+      }
+    }
+  }
+  .postContainer {
+    .postText {
+      font-size: 13px;
+      margin-top: 10px;
+    }
+  }
+} //320px

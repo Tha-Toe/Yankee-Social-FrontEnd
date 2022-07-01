@@ -10,7 +10,6 @@
   .searchBarPageChild {
     max-width: 900px;
     margin: 0 auto;
-    margin-top: 20px;
     min-height: 100vh;
     background-color: $sea_blue;
     box-shadow: 0px 12px 48px rgba(0, 0, 0, 0.16);
@@ -42,6 +41,7 @@
           color: $dark_gray;
         }
         .searchForm {
+          width: 100%;
           .sbpSearchBar {
             outline: none;
             border: none;
@@ -58,6 +58,7 @@
     .searchBarPageBodyContainer {
       width: 100%;
       height: 100%;
+      background-color: $sea_blue;
       .notResultFoundContainer {
         width: 100%;
         height: 100vh;
@@ -65,8 +66,9 @@
         .notResultFoundChild {
           @include flex(center, center, $vertical: true);
           .notFoundLensIcon {
-            font-size: 100px;
+            font-size: 70px;
             color: $white;
+            margin-bottom: 50px;
           }
           .notFoundText {
             font-size: 20px;
@@ -141,3 +143,339 @@
     }
   }
 }
+@include laptop-L {
+} //1440px
+@include laptop {
+} //1240px
+@include tablet-lg {
+  .searchBarPageContainer {
+    .searchBarPageChild {
+      .searchBarContainer {
+        height: 50px;
+        .backIcon {
+          margin-left: 15px;
+          font-size: 20px;
+        }
+        .searchContainer {
+          margin-left: 20px;
+          width: 80%;
+          .searchForm {
+            .sbpSearchBar {
+              font-size: 17px;
+              padding-left: 10px;
+              width: 100%;
+            }
+          }
+        }
+      }
+      .searchBarPageBodyContainer {
+        .notResultFoundContainer {
+          width: 100%;
+          height: 100vh;
+          .notResultFoundChild {
+            .notFoundLensIcon {
+              font-size: 50px;
+            }
+            .notFoundText {
+              font-size: 18px;
+              color: $white;
+              font-weight: 600;
+            }
+          }
+        }
+        .searchLoading {
+          font-size: 20px;
+          font-weight: 700;
+        }
+        .resultContainer {
+          .resultChild {
+            width: 90%;
+            margin-top: 0px;
+            padding: 10px 0px;
+            .nameAndPhotoResult {
+              .profileImg {
+                width: 50px;
+                height: 50px;
+                margin-right: 10px;
+              }
+              .nameTag {
+                font-size: 18px;
+                font-weight: 600;
+              }
+            }
+            .mbc {
+              font-size: 18px;
+              color: $gray_bg;
+              cursor: pointer;
+            }
+          }
+          .noMoreResult {
+            margin-top: 50px;
+            .noMoreIcon {
+              font-size: 30px;
+              margin-bottom: 10px;
+            }
+            .noMoreText {
+              font-size: 18px;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+  }
+} //770px
+@include tablet-m {
+  .searchBarPageContainer {
+    .searchBarPageChild {
+      .searchBarContainer {
+        height: 50px;
+        .backIcon {
+          margin-left: 10px;
+          font-size: 18px;
+        }
+        .searchContainer {
+          margin-left: 18px;
+          width: 80%;
+          .searchForm {
+            .sbpSearchBar {
+              font-size: 17px;
+              padding-left: 10px;
+              width: 100%;
+            }
+          }
+        }
+      }
+      .searchBarPageBodyContainer {
+        .notResultFoundContainer {
+          width: 100%;
+          height: 100vh;
+          .notResultFoundChild {
+            .notFoundLensIcon {
+              font-size: 50px;
+            }
+            .notFoundText {
+              font-size: 18px;
+              color: $white;
+              font-weight: 600;
+            }
+          }
+        }
+        .searchLoading {
+          font-size: 20px;
+          font-weight: 700;
+        }
+        .resultContainer {
+          .resultChild {
+            width: 90%;
+            margin-top: 0px;
+            padding: 10px 0px;
+            .nameAndPhotoResult {
+              .profileImg {
+                width: 40px;
+                height: 40px;
+                margin-right: 10px;
+              }
+              .nameTag {
+                font-size: 16px;
+                font-weight: 600;
+              }
+            }
+            .mbc {
+              font-size: 16px;
+              color: $gray_bg;
+              cursor: pointer;
+            }
+          }
+          .noMoreResult {
+            margin-top: 50px;
+            .noMoreIcon {
+              font-size: 25px;
+              margin-bottom: 10px;
+            }
+            .noMoreText {
+              font-size: 16px;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+  }
+} //500px
+@include mobile-lg {
+  .searchBarPageContainer {
+    .searchBarPageChild {
+      .searchBarPageBodyContainer {
+        .notResultFoundContainer {
+          .notResultFoundChild {
+            .notFoundLensIcon {
+              font-size: 40px;
+            }
+            .notFoundText {
+              font-size: 16px;
+              font-weight: 600;
+            }
+          }
+        }
+        .resultContainer {
+          .resultChild {
+            width: 90%;
+            margin-top: 0px;
+            padding: 6px 0px;
+          }
+        }
+      }
+    }
+  }
+} //400px
+@include mobile-m {
+  .searchBarPageContainer {
+    .searchBarPageChild {
+      .searchBarContainer {
+        height: 35px;
+        .backIcon {
+          margin-left: 10px;
+          font-size: 18px;
+        }
+        .searchContainer {
+          margin-left: 10px;
+          width: 80%;
+          .sbpIcon {
+            color: $dark_gray;
+            font-size: 14px;
+          }
+          .searchForm {
+            .sbpSearchBar {
+              font-size: 15px;
+              padding-left: 10px;
+              width: 100%;
+            }
+          }
+        }
+      }
+      .searchBarPageBodyContainer {
+        .notResultFoundContainer {
+          .notResultFoundChild {
+            .notFoundLensIcon {
+              font-size: 40px;
+              margin-bottom: 20px;
+            }
+            .notFoundText {
+              font-size: 14px;
+              font-weight: 600;
+            }
+          }
+        }
+        .searchLoading {
+          font-size: 20px;
+          font-weight: 700;
+        }
+        .resultContainer {
+          .resultChild {
+            width: 90%;
+            padding: 7px 0px;
+            .nameAndPhotoResult {
+              .profileImg {
+                width: 30px;
+                height: 30px;
+                margin-right: 10px;
+              }
+              .nameTag {
+                font-size: 14px;
+                font-weight: 600;
+              }
+            }
+            .mbc {
+              font-size: 14px;
+            }
+          }
+          .noMoreResult {
+            margin-top: 30px;
+            .noMoreIcon {
+              font-size: 22px;
+              margin-bottom: 10px;
+            }
+            .noMoreText {
+              font-size: 15px;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+  }
+} //375px
+@include mobile-sm {
+  .searchBarPageContainer {
+    .searchBarPageChild {
+      .searchBarContainer {
+        height: 30px;
+        .backIcon {
+          margin-left: 10px;
+          font-size: 16px;
+        }
+        .searchContainer {
+          margin-left: 10px;
+          width: 80%;
+          .searchForm {
+            .sbpSearchBar {
+              font-size: 14px;
+              padding-left: 4px;
+              width: 100%;
+            }
+          }
+        }
+      }
+      .searchBarPageBodyContainer {
+        .notResultFoundContainer {
+          .notResultFoundChild {
+            .notFoundLensIcon {
+              font-size: 40px;
+              margin-bottom: 20px;
+            }
+            .notFoundText {
+              font-size: 14px;
+              font-weight: 600;
+            }
+          }
+        }
+        .searchLoading {
+          font-size: 20px;
+          font-weight: 700;
+        }
+        .resultContainer {
+          .resultChild {
+            width: 90%;
+            padding: 7px 0px;
+            .nameAndPhotoResult {
+              .profileImg {
+                width: 30px;
+                height: 30px;
+                margin-right: 10px;
+              }
+              .nameTag {
+                font-size: 12px;
+                font-weight: 600;
+              }
+            }
+            .mbc {
+              font-size: 14px;
+            }
+          }
+          .noMoreResult {
+            margin-top: 30px;
+            .noMoreIcon {
+              font-size: 22px;
+              margin-bottom: 10px;
+            }
+            .noMoreText {
+              font-size: 15px;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+    }
+  }
+} //320px

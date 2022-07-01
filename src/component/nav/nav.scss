@@ -1,67 +1,170 @@
-@import"../../variables.scss";
+@import "../../variables.scss";
+// .navContainer {
+//   @include flex(center, center, $vertical: true);
+//   background-color: $sea_blue;
+//   .navTop {
+//     color: $white;
+//     height: 50px;
+//     width: 1000px;
+//     @include flex(space-between, center);
+//     .logoText {
+//       font-size: 30px;
+//       font-weight: 600;
+//       margin-left: 30px;
+//       margin-left: 10px;
+//       letter-spacing: 0.1rem;
+//     }
+//     .button {
+//       color: $white;
+//       @include flex(flex-end, center);
+//       .searchAndMsgIcon {
+//         font-size: 25px;
+//         cursor: pointer;
+//       }
+//       .searchIcon {
+//         margin-right: 50px;
+//       }
+//       .msgIcon {
+//         margin-right: 10px;
+//       }
+//       .searchIcon:hover {
+//         color: $light_blue;
+//       }
+//       .msgIcon:hover {
+//         color: $light_blue;
+//       }
+//       width: 30%;
+//     }
+//   }
+// }
 
-.navContainer {
-    @include flex(center,center,$vertical:true);
+@include laptop-L {
+  .navContainer {
+    @include flex(center, center, $vertical: true);
     background-color: $sea_blue;
-    border-bottom: 1px solid $black;
+    width: 100%;
     .navTop {
+      color: $white;
+      height: 50px;
+      width: 80%;
+      @include flex(space-between, center);
+      .logoText {
+        font-size: 30px;
+        font-weight: 600;
+        margin-left: 30px;
+        margin-left: 10px;
+        letter-spacing: 0.1rem;
+      }
+      .button {
         color: $white;
-        width: 80%;
-        max-width: 900px;
-        height: 50px;
-        @include flex(space-between,center);
-        .logoText {
-            font-size: 30px;
-            font-weight: 600;
-            margin-left: 30px;
-            margin-left: 10px;
-            letter-spacing: .1rem;
+        @include flex(flex-end, center);
+        .searchAndMsgIcon {
+          font-size: 25px;
+          cursor: pointer;
         }
-        .button {
-            color: $white;
-            @include flex(flex-end,center);
-            .searchAndMsgIcon {
-                font-size: 25px;
-                cursor: pointer;
-            }
-            .searchIcon {
-                margin-right: 50px;
-            }
-            .msgIcon {
-                margin-right: 10px;
-            }
-            .searchIcon:hover {
-                color: $light_blue;
-            }
-            .msgIcon:hover {
-                color: $light_blue;
-            }
-            width: 30%;
+        .searchIcon {
+          margin-right: 50px;
         }
-
+        .msgIcon {
+          margin-right: 10px;
+        }
+        .searchIcon:hover {
+          color: $light_blue;
+        }
+        .msgIcon:hover {
+          color: $light_blue;
+        }
+        width: 30%;
+      }
     }
-    .navBottom {
-        .navIconContainer {
-            position: relative;
-            .navIconChild {
-                @include flex(center,center);
-                .navIcon {
-                    font-size: 27px;
-                    color: $input_color;
-                    padding-top: 10px;
-                    padding-bottom: 10px;
-                    width: 130px;
-                    cursor: pointer;
-                }
-                .iconActive {
-                    color: $light_blue;
-                }
-            }
-            .navBar {
-                background-color: $light_blue;
-                height: 5px;
-                transition: all .7s ease;
-            }
+  }
+} //1440px
+@include laptop {
+} //1024px
+@include tablet-lg {
+  .navContainer {
+    .navTop {
+      max-width: 90%;
+      min-width: 90%;
+      .logoText {
+        font-size: 25px;
+        font-weight: 500;
+      }
+      .button {
+        .searchAndMsgIcon {
+          font-size: 20px;
         }
+        .searchIcon {
+          margin-right: 20px;
+        }
+      }
     }
+  }
+} //770px
+@media (max-width: 600px) {
 }
+@include tablet-m {
+  .navContainer {
+    .navTop {
+      max-width: 90%;
+      min-width: 90%;
+      .logoText {
+        font-size: 22px;
+        font-weight: 500;
+      }
+      .button {
+        .searchAndMsgIcon {
+          font-size: 18px;
+        }
+        .searchIcon {
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+} //500px
+@include mobile-lg {
+  .navContainer {
+    .navTop {
+      height: 40px;
+    }
+  }
+} //400px
+@include mobile-m {
+  .navContainer {
+    .navTop {
+      height: 30px;
+      .logoText {
+        font-size: 20px;
+        font-weight: 500;
+      }
+      .button {
+        .searchAndMsgIcon {
+          font-size: 18px;
+        }
+        .searchIcon {
+          margin-right: 16px;
+        }
+      }
+    }
+  }
+} //375px
+@include mobile-sm {
+  .navContainer {
+    .navTop {
+      height: 25px;
+      .logoText {
+        font-size: 18px;
+        font-weight: 500;
+      }
+      .button {
+        .searchAndMsgIcon {
+          font-size: 16px;
+        }
+        .searchIcon {
+          margin-right: 14px;
+        }
+      }
+    }
+  }
+} //320px

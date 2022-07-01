@@ -19,6 +19,10 @@ const SearchBarPage = ({
   setOtherProfileOpen,
   otherUserData,
   setOtherUserData,
+  openOtherProfileFromPostNameClick,
+  openOtherProfileFromFollowerAndFollowingClick,
+  setReloadPostRequest,
+  reloadPostRequest,
 }) => {
   const [searchValue, setSearchValue] = useState("");
   const [searchResult, setSearchResult] = useState([]);
@@ -56,8 +60,8 @@ const SearchBarPage = ({
         setSearchLoading(false);
       } else {
         setFoundData(true);
-        let testResult = res.searchResult;
-        await testResult.forEach(async (each) => {
+        let result = res.searchResult;
+        await result.forEach(async (each) => {
           if (each.profileImage) {
             each["profileImage"]["data"] = await arrayBufferToBase64(
               each.profileImage.data.data
@@ -66,7 +70,7 @@ const SearchBarPage = ({
             return;
           }
         });
-        setSearchResult(testResult);
+        setSearchResult(result);
         setSearchLoading(false);
       }
     } catch (error) {
@@ -80,8 +84,15 @@ const SearchBarPage = ({
     if (ownerEmail === e.email) {
       openOwnerProfile();
     } else {
-      await setOtherUserData(e);
-      setOtherProfileOpen(true);
+      try {
+        const url = "http://localhost:3001/api/getuserdata";
+        const { data: res } = await axios.post(url, { email: e.email });
+        const otherUserDataForOtherProfileOpen = await res.userData;
+        setOtherUserData(otherUserDataForOtherProfileOpen);
+        setOtherProfileOpen(true);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -98,7 +109,10 @@ const SearchBarPage = ({
           <FontAwesomeIcon
             icon={faArrowLeftLong}
             className="backIcon"
-            onClick={closeSearchBar}
+            onClick={() => {
+              closeSearchBar();
+              setOtherProfileOpen(false);
+            }}
           />
           <div className="searchContainer">
             <FontAwesomeIcon className="sbpIcon" icon={faMagnifyingGlass} />
@@ -123,6 +137,14 @@ const SearchBarPage = ({
               otherUserData={otherUserData}
               setChangeSomething={setChangeSomething}
               changeSomething={changeSomething}
+              openOtherProfileFromPostNameClick={
+                openOtherProfileFromPostNameClick
+              }
+              openOtherProfileFromFollowerAndFollowingClick={
+                openOtherProfileFromFollowerAndFollowingClick
+              }
+              setReloadPostRequest={setReloadPostRequest}
+              reloadPostRequest={reloadPostRequest}
             />
           ) : (
             <>

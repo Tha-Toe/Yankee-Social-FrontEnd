@@ -40,6 +40,7 @@ function App() {
           //profileImage
           let base64ProfileImageObject = {};
           if (recieveData.profileImage) {
+            //console.log(recieveData.profileImage.data.data);
             let base64ProfileImageString = await arrayBufferToBase64(
               recieveData.profileImage.data.data
             );
@@ -51,6 +52,7 @@ function App() {
           //coverPhoto
           let base64CoverPhotoObject = {};
           if (recieveData.coverPhoto) {
+            //console.log(recieveData.coverPhoto);
             let base64CoverPhotoString = await arrayBufferToBase64(
               recieveData.coverPhoto.data.data
             );

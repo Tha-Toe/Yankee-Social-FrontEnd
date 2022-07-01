@@ -9,6 +9,7 @@ import {
 import { useSelector } from "react-redux";
 import PostCard from "../home/PostCard";
 import axios from "axios";
+import LoadingPostCard from "../home/LoadingPostCard";
 
 function Profile({
   setHomeOpen,
@@ -19,6 +20,8 @@ function Profile({
   setNavWidth,
   setNavLeft,
   setChangeSomething,
+  openOtherProfileFromPostNameClick,
+  openFollowerFromProfile,
 }) {
   const [tempoState, setTempoState] = useState({
     caption:
@@ -154,9 +157,7 @@ function Profile({
       setUploadLoading(true);
       setCoverPhotoPreview("");
       const url = "http://localhost:3001/api/uploadcoverphoto";
-      const { data: res } = await axios.post(url, formData, {
-        email: userEmail,
-      });
+      const { data: res } = await axios.post(url, formData);
       setClickCoverCameraIcon(false);
       setUploadLoading(false);
       setChangeSomething(true);
@@ -169,6 +170,48 @@ function Profile({
 
   //edit profile
   const [clickEditProfile, setClickEditProfile] = useState(false);
+
+  //get post data
+  const [randomPostData, setRandomPostData] = useState([]);
+  const [loadingPost, setLoadingPost] = useState(true);
+  useEffect(() => {
+    async function getMyAllPostData() {
+      //console.log("start");
+      const url = "http://localhost:3001/api/getpostdata";
+      const { data: res } = await axios.post(url, {
+        getMyAllPostData: "getMyAllPostData",
+        myEmail: userEmail,
+      });
+      //console.log("end");
+      setRandomPostData(res.myAllPostData);
+
+      setLoadingPost(false);
+      //console.log(res.myAllPostData);
+      //console.log(userEmail);
+    }
+    getMyAllPostData();
+  }, [userEmail]);
+
+  const reloadPostRequest = (index) => {
+    let randomPostDataPop = [...randomPostData];
+    randomPostDataPop.splice(index, 1);
+    setRandomPostData(randomPostDataPop);
+  };
+
+  const addToLocalCurrentCommentData = async (e) => {
+    const objectToAddCurrentCommentData = await e.objectToAddCurrentCommentData;
+    const index = await e.index;
+    let randomPostDataRaw = randomPostData;
+    await randomPostDataRaw[index].comment.push(objectToAddCurrentCommentData);
+  };
+
+  const removeLocalCurrentComment = async (e) => {
+    let postIndex = e.postIndex;
+    let commentIndex = e.commentIndex;
+    let randomPostDataRawToDelete = randomPostData;
+    await randomPostDataRawToDelete[postIndex].comment.splice(commentIndex, 1);
+    setRandomPostData(randomPostDataRawToDelete);
+  };
 
   return (
     <div className="profileContainer">
@@ -365,11 +408,21 @@ function Profile({
       </div>
       <div className="followerContainer">
         <div className="followerChild">
-          <div className="followerTag">
+          <div
+            className="followerTag"
+            onClick={() => {
+              openFollowerFromProfile("openFollowerInFollower");
+            }}
+          >
             <div className="followerAmount">{userFollowerAmount}</div>
             <div className="followerText">followers</div>
           </div>
-          <div className="followingTag">
+          <div
+            className="followingTag"
+            onClick={() => {
+              openFollowerFromProfile("openFollowing");
+            }}
+          >
             <div className="followingAmount">{userFollowingAmount}</div>
             <div className="followingText">following</div>
           </div>
@@ -381,9 +434,32 @@ function Profile({
       </div>
       <div className="postContainer">
         <div className="postText">POST</div>
-        <PostCard tempoState={tempoState} />
-        <PostCard tempoState={tempoState} />
-        <PostCard tempoState={tempoState} />
+        {loadingPost ? (
+          <LoadingPostCard />
+        ) : (
+          <>
+            {randomPostData.length === 0 ? (
+              <div>You don't have post</div>
+            ) : (
+              <>
+                {randomPostData.map((postData, index) => (
+                  <PostCard
+                    key={index}
+                    index={index}
+                    postData={postData}
+                    randomPostData={randomPostData}
+                    openOtherProfileFromPostNameClick={
+                      openOtherProfileFromPostNameClick
+                    }
+                    reloadPostRequest={reloadPostRequest}
+                    addToLocalCurrentCommentData={addToLocalCurrentCommentData}
+                    removeLocalCurrentComment={removeLocalCurrentComment}
+                  />
+                ))}
+              </>
+            )}
+          </>
+        )}
       </div>
     </div>
   );

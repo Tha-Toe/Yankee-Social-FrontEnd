@@ -2,8 +2,17 @@ import React, { useEffect, useState } from "react";
 import "./home.scss";
 import PostCard from "./PostCard";
 import { useSelector } from "react-redux";
+import axios from "axios";
+import LoadingPostCard from "./LoadingPostCard";
 
-function Home() {
+function Home({
+  setOpenPostUploadPage,
+  openOtherProfileFromPostNameClick,
+  randomPostData,
+  reloadPostRequest,
+  addToLocalCurrentCommentData,
+  removeLocalCurrentComment,
+}) {
   const [tempoState, setTempoState] = useState({
     caption:
       "React is a free and open-source front-end JavaScript library for building user interfaces based on UI components. It is maintained by Meta and a community of individual developers and companies",
@@ -37,17 +46,37 @@ function Home() {
           )}
         </div>
         <div className="inputTagContainer">
-          <input
-            className="inputTag"
-            placeholder="What is on your mind?"
-            type="text"
-          />
+          <button
+            className="inputTagButton"
+            onClick={() => {
+              setOpenPostUploadPage(true);
+            }}
+          >
+            What is on your mind?
+          </button>
         </div>
       </div>
       <div className="postContainer">
-        <PostCard tempoState={tempoState} />
-        <PostCard tempoState={tempoState} />
-        <PostCard tempoState={tempoState} />
+        {randomPostData.length === 0 ? (
+          <LoadingPostCard />
+        ) : (
+          <>
+            {randomPostData.map((postData, index) => (
+              <PostCard
+                key={index}
+                postData={postData}
+                randomPostData={randomPostData}
+                openOtherProfileFromPostNameClick={
+                  openOtherProfileFromPostNameClick
+                }
+                index={index}
+                reloadPostRequest={reloadPostRequest}
+                addToLocalCurrentCommentData={addToLocalCurrentCommentData}
+                removeLocalCurrentComment={removeLocalCurrentComment}
+              />
+            ))}
+          </>
+        )}
       </div>
     </div>
   );

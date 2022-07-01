@@ -19,7 +19,7 @@ const FollowCard = ({
   };
   const [dataForOtherProfile, setDataForOtherProfile] = useState();
   const [userName, setUserName] = useState("");
-  const [userProfileImage, setUserProfileImage] = useState();
+  const [userProfileImage, setUserProfileImage] = useState({});
   const [otherUserEmail, setOtherUserEmail] = useState();
 
   useEffect(() => {
@@ -34,11 +34,18 @@ const FollowCard = ({
         followerPeopleData.firstName + " " + followerPeopleData.lastName
       );
       setOtherUserEmail(followerPeopleData.email);
+      let base64ProfileImageData;
+      let contentTypeFromSuggestPeopleData;
       if (followerPeopleData.profileImage) {
-        followerPeopleData.profileImage.data = await arrayBufferToBase64(
+        base64ProfileImageData = await arrayBufferToBase64(
           followerPeopleData.profileImage.data.data
         );
-        setUserProfileImage(followerPeopleData.profileImage);
+        contentTypeFromSuggestPeopleData =
+          followerPeopleData.profileImage.contentType;
+        setUserProfileImage({
+          data: base64ProfileImageData,
+          contentType: contentTypeFromSuggestPeopleData,
+        });
       }
       setLoadedData(false);
       //console.log(followerPeopleData);
@@ -55,7 +62,7 @@ const FollowCard = ({
         <>
           <div className="fcContainer">
             <div className="fcImgAndNameContainer">
-              {userProfileImage ? (
+              {userProfileImage.data ? (
                 <img
                   src={`data:${userProfileImage.contentType};base64, ${userProfileImage.data}`}
                   alt=""

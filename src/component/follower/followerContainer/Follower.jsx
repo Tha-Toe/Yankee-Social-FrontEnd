@@ -10,12 +10,15 @@ function Follower({
   setChangeSomething,
   openOtherProfileFromFollowerAndFollowingClick,
   setOtherProfileOpen,
+  followerOpenInFollower,
+  setFollowerOpenInFollower,
+  followingOpen,
+  setFollowingOpen,
+  suggestOpen,
+  setSuggestOpen,
 }) {
   let myEmail = useSelector((state) => state.data.userData.email);
   const [tempoState] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
-  const [followerOpen, setFollowerOpen] = useState(true);
-  const [followingOpen, setFollowingOpen] = useState(false);
-  const [suggestOpen, setSuggestOpen] = useState(false);
 
   //following unfollowFunction
   const [followingEmailList, setfollowingEmailList] = useState([]);
@@ -131,15 +134,15 @@ function Follower({
 
   const navChange = (e) => {
     if (e === "follower") {
-      setFollowerOpen(true);
+      setFollowerOpenInFollower(true);
       setFollowingOpen(false);
       setSuggestOpen(false);
     } else if (e === "following") {
-      setFollowerOpen(false);
+      setFollowerOpenInFollower(false);
       setFollowingOpen(true);
       setSuggestOpen(false);
     } else {
-      setFollowerOpen(false);
+      setFollowerOpenInFollower(false);
       setFollowingOpen(false);
       setSuggestOpen(true);
     }
@@ -151,7 +154,7 @@ function Follower({
           <div className="followerNavBar">
             <div
               className={`${
-                followerOpen ? "followerActive" : "followerUnActive"
+                followerOpenInFollower ? "followerActive" : "followerUnActive"
               } ${"followerNavChild"}`}
               onClick={() => navChange("follower")}
             >
@@ -175,7 +178,7 @@ function Follower({
             </div>
           </div>
           <div className="followCard">
-            {followerOpen && (
+            {followerOpenInFollower && (
               <>
                 {followerEmailListRaw.length === 0 ? (
                   <>
@@ -196,9 +199,6 @@ function Follower({
                         key={index}
                         followerEmail={followerEmail}
                         unfollowFunction={unfollowFunction}
-                        openOtherProfileFromFollowerAndFollowingClick={
-                          openOtherProfileFromFollowerAndFollowingClick
-                        }
                         openOtherProfileFromFollowerAndFollowingClick={
                           openOtherProfileFromFollowerAndFollowingClick
                         }

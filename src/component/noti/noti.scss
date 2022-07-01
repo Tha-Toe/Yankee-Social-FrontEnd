@@ -1,13 +1,47 @@
 @import "../../variables.scss";
 
 .notiContainer {
-    max-width: 900px;
-    background-color: $white;
-    box-shadow: 0px 24px 48px 0 rgba(0,0,0,0.16);
-    @include flex(center,center,$vertical: true);
-    .notiChild {
-        color: $dark_gray;
-        font-size: 25px;
-        padding: 100px 0px;
-    }
+  max-width: 900px;
+  background-color: $white;
+  box-shadow: 0px 24px 48px 0 rgba(0, 0, 0, 0.16);
+  @include flex(center, center, $vertical: true);
+  .notiChild {
+    color: $dark_gray;
+    font-size: 25px;
+    padding: 100px 0px;
+  }
 }
+@include laptop-L {
+} //1440px
+@include laptop {
+} //1240px
+@include tablet-lg {
+  .notiContainer {
+    .notiChild {
+      font-size: 20px;
+    }
+  }
+} //770px
+@include tablet-m {
+} //500px
+@include mobile-lg {
+  .notiContainer {
+    .notiChild {
+      font-size: 18px;
+    }
+  }
+} //400px
+@include mobile-m {
+  .notiContainer {
+    .notiChild {
+      font-size: 16px;
+    }
+  }
+} //375px
+@include mobile-sm {
+  .notiContainer {
+    .notiChild {
+      font-size: 14px;
+    }
+  }
+} //320px

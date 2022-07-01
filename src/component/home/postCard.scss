@@ -1,128 +1,938 @@
 @import "../../variables.scss";
 
 .postCardContainer {
-    width: 100%;
-    border-bottom: 10px solid $gray_bg;
-    @include flex(center,center);
-    .postCardChild {
-        @include flex(center,center,$vertical: true);
-        width: 95%;
-        margin-top: 20px;
-        .postHeader {
-            width: 100%;
-            margin-bottom: 15px;
-            @include flex(space-between,center);
-            .nameContainer {
-                @include flex(center,flex-start,$vertical: false);
-                .postProfileImageContainer {
-                    .pfImage {
-                        height: 50px;
-                        width: 50px;
-                        border-radius: 50%;
-                        border: 2px solid $sea_blue;
-                    }
-                }
-                .postProfileName {
-                    @include flex(center,flex-start,$vertical: true);
-                    margin-left: 10px;
-                    .postName {
-                        font-weight: 700;
-                        font-size: 17px;
-                    }
-                    .postHour {
-                        color: $dark_gray;
-                        font-size: 15px;
-                    }
-                }
-            }
-            .postEditContainer {
-                .postEditIcon {
-                    cursor: pointer;
-                    font-size: 22px;
-                }
-            }
+  width: 100%;
+  border-bottom: 10px solid $gray_bg;
+  @include flex(center, center);
+  .postCardChild {
+    @include flex(center, center, $vertical: true);
+    width: 95%;
+    margin-top: 20px;
+    position: relative;
+    .editPostContainer {
+      width: 100%;
+      height: 100%;
+      @include flex(center, center, $vertical: true);
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgba($color: #000000, $alpha: 0.7);
+      background-color: $sea_blue;
+      z-index: 2;
+      .cancelEditButton {
+        font-size: 25px;
+        color: $white;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        cursor: pointer;
+      }
+      .editPostChild {
+        width: 70%;
+        margin: 0 auto;
+        .editPostTag {
+          width: 100%;
+          height: 60px;
+          font-size: 18px;
+          color: $black;
+          font-weight: 400;
+          cursor: pointer;
+          @include flex(flex-start, center);
+          border-bottom: 1px solid $dark_gray;
+          background-color: $gray_bg;
+          .iconFromEdit {
+            margin-left: 20px;
+            margin-right: 10px;
+            font-size: 25px;
+          }
         }
-        .postDetail {
-            margin-bottom: 15px;
-            .postCaption {
-                margin-left: 20px;
-                max-width: 80%;
-            }
+        .editPostTag:hover {
+          background-color: $dark_gray;
+          color: $white;
         }
-        .postImageContainer {
-            max-height: 600px;
-            overflow: hidden;
-            .postImage {
-                width: 600px;
-                object-fit: cover;
-            }
-        }
-        .postBottom {
-            border-bottom: 1px solid $gray_bg;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            width: 100%;
-            @include flex(center,center,$vertical: true);
-            .amountContainer {
-                width: 100%;
-                @include flex(space-between,center);
-                padding-top: 10px;
-                padding-bottom: 10px;
-                margin-bottom: 10px;
-                border-bottom: 1px solid $gray;
-                .reactionContainer {
-                    @include flex(center,center);
-                    .reactionIcon {
-                        background-color: $light_blue;
-                        color: $white;
-                        padding: 5px;
-                        border-radius: 50%;
-                    }
-                    .reactionAmount {
-                        color: $dark_gray;
-                        margin-left: 5px;
-                    }
-                }
-                .commentAndShareContainer {
-                    @include flex(center,center);
-                    .commentAmount {
-                        $input_color: $dark_gray;
-                        margin-right: 20px;
-                        @include flex(center,center);
-                        color: $dark_gray;
-                    }
-                    .shareAmount {
-                        $input_color: $dark_gray;
-                        @include flex(center,center);
-                        color: $dark_gray;
-                    }
-                }
-            }
-            .likeShareCommentContainer {
-                width: 100%;
-                border-bottom: 1px solid $gray_bg;
-                background-color: $sea_blue;
-                padding-top: 10px;
-                padding-bottom: 10px;
-                .likeShareCommentChild {
-                    width: 100%;
-                    @include flex(space-around,center);
-                    .lcsContainer {
-                        @include flex(center,center);
-                        cursor: pointer;
-                        .lcsIcon {
-                            font-size: 25px;
-                            margin-right: 5px;
-                            color: $white;
-                        }
-                        .lcsText {
-                            font-size: 18px;
-                            color: $white;
-                        }
-                    }
-                }
-
-            }
-        }
+      }
     }
+    .postHeader {
+      width: 100%;
+      margin-bottom: 15px;
+      @include flex(space-between, flex-start);
+      .nameContainer {
+        @include flex(center, flex-start, $vertical: false);
+        .postProfileImageContainer {
+          .pfImage {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            border: 2px solid $sea_blue;
+          }
+        }
+        .postProfileName {
+          @include flex(center, flex-start, $vertical: true);
+          margin-left: 10px;
+          .postName {
+            font-weight: 700;
+            font-size: 17px;
+            cursor: pointer;
+          }
+          .postHour {
+            color: $dark_gray;
+            font-size: 15px;
+          }
+        }
+      }
+      .postEditContainer {
+        .postEditIcon {
+          cursor: pointer;
+          font-size: 22px;
+        }
+      }
+    }
+    .postDetail {
+      margin-bottom: 15px;
+      width: 100%;
+      .postCaption {
+        margin-left: 20px;
+        max-width: 80%;
+      }
+    }
+    .postImageContainer {
+      max-height: 600px;
+      overflow: hidden;
+      .postImage {
+        width: 600px;
+        object-fit: cover;
+      }
+    }
+    .postBottom {
+      border-bottom: 1px solid $gray_bg;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      width: 100%;
+      @include flex(center, center, $vertical: true);
+      .amountContainer {
+        width: 100%;
+        @include flex(space-between, center);
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid $gray;
+        .reactionContainer {
+          @include flex(center, center);
+          .reactionIcon {
+            background-color: $light_blue;
+            color: $white;
+            padding: 5px;
+            border-radius: 50%;
+            cursor: pointer;
+          }
+          .reactionAmount {
+            color: $dark_gray;
+            margin-left: 5px;
+            cursor: pointer;
+          }
+        }
+        .commentAndShareContainer {
+          @include flex(center, center);
+          .commentAmount {
+            $input_color: $dark_gray;
+            margin-right: 20px;
+            @include flex(center, center);
+            color: $dark_gray;
+          }
+          .shareAmount {
+            $input_color: $dark_gray;
+            @include flex(center, center);
+            color: $dark_gray;
+          }
+        }
+      }
+      .likeShareCommentContainer {
+        width: 100%;
+        border-bottom: 1px solid $gray_bg;
+        background-color: rgba($color: $sea_blue, $alpha: 0.8);
+        padding-top: 10px;
+        padding-bottom: 10px;
+        .likeShareCommentChild {
+          width: 100%;
+          @include flex(space-around, center);
+          .lcsContainer {
+            @include flex(center, center);
+            cursor: pointer;
+            color: $white;
+            font-size: 25px;
+            .lcsIcon {
+              margin-right: 5px;
+            }
+            .lcsText {
+              font-size: 18px;
+            }
+          }
+          .lcsLiked {
+            color: $blue;
+          }
+        }
+      }
+    }
+    .wlmpContainer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100%;
+      background-color: rgba($color: #000000, $alpha: 0.7);
+      z-index: 3;
+      .whoLikeMyPostContainer {
+        height: 100%;
+        @include flex(flex-start, flex-start, $vertical: true);
+        max-width: 900px;
+        margin: 0 auto;
+        background-color: $white;
+        position: relative;
+        .wlmpHeader {
+          width: 100%;
+          @include flex(space-between, center);
+          border-bottom: 1px solid $dark_gray;
+          padding: 10px;
+          .cancelOpenLikeIcon {
+            font-size: 25px;
+            color: $dark_gray;
+            cursor: pointer;
+            margin-left: 20px;
+          }
+          .totalLikeContainer {
+            @include flex(flex-start, center);
+            margin-right: 20px;
+            .totalLikeTag {
+              font-size: 18px;
+              font-weight: 500;
+              margin-left: 30px;
+            }
+            .totalLikeAmount {
+              color: red;
+              font-size: 20px;
+              font-weight: 600;
+              margin-left: 5px;
+            }
+          }
+        }
+        .noLikeTag {
+          width: 100%;
+          height: 100%;
+          @include flex(center, center);
+          .noLikeText {
+            font-size: 22px;
+            font-weight: 700;
+            color: $sea_blue;
+          }
+        }
+        .likerListContainer {
+          width: 100%;
+          max-height: 100%;
+          overflow: scroll;
+        }
+        .likerListContainer::-webkit-scrollbar {
+          display: none;
+        }
+      }
+    }
+    .commentContainer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100%;
+      background-color: rgba($color: #000000, $alpha: 0.7);
+      z-index: 3;
+      .commentChildContainer {
+        max-width: 900px;
+        margin: 0 auto;
+        background-color: $white;
+        height: 100%;
+        position: relative;
+        @include flex(flex-start, space-between, $vertical: true);
+        .backAndLikeAmountContainer {
+          width: 100%;
+          @include flex(space-between, center);
+          border-bottom: 1px solid $dark_gray;
+          .commentBackIcon {
+            font-size: 25px;
+            color: $dark_gray;
+            cursor: pointer;
+            margin: 10px;
+          }
+          .commentBackIcon:hover {
+            color: blue;
+          }
+          .likeAmountAndLikeIcon {
+            margin: 10px;
+            @include flex(center, center);
+            cursor: pointer;
+            .likeIconInComment {
+              font-size: 20px;
+              padding: 7px;
+              color: $white;
+              background-color: blue;
+              border-radius: 50%;
+              margin-right: 10px;
+            }
+            .likeAmountInComment {
+              font-size: 22px;
+              font-weight: 600;
+              color: $dark_gray;
+              margin-right: 10px;
+            }
+          }
+        }
+        .commentListContainer {
+          width: 100%;
+          max-height: 100%;
+          overflow: scroll;
+          .commentListChildContainer {
+            width: 100%;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            @include flex(center, flex-start, $vertical: true);
+            .noCommentContainer {
+              height: 100%;
+              @include flex(center, center, $vertical: true);
+              width: 100%;
+              .noCommentIcon {
+                font-size: 100px;
+                color: $dark_gray;
+              }
+              .noCommentText {
+                font-size: 20px;
+                color: $dark_gray;
+              }
+            }
+          }
+        }
+        .commentListContainer::-webkit-scrollbar {
+          display: none;
+        }
+        .commentInputTagContainer {
+          background-color: $white;
+          width: 100%;
+          height: 60px;
+          position: absolute;
+          @include flex(center, center);
+          bottom: 0px;
+          left: 0;
+          border-top: 1px solid $dark_gray;
+          .commentInputTag {
+            width: 90%;
+            background-color: transparent;
+            outline: none;
+            border: none;
+            font-size: 18px;
+            margin-top: 10px;
+          }
+          .commentInputTag::-webkit-scrollbar {
+            display: none;
+          }
+          .commentSendButton {
+            font-size: 25px;
+            color: $sea_blue;
+            cursor: pointer;
+          }
+          .commentSendButton:hover {
+            font-size: 30px;
+          }
+        }
+      }
+    }
+  }
 }
+@include laptop-L {
+} //1440px
+@include laptop {
+} //1240px
+@include tablet-lg {
+  .postCardContainer {
+    .postCardChild {
+      .editPostContainer {
+        .cancelEditButton {
+        }
+        .editPostChild {
+          .editPostTag {
+            font-size: 14px;
+            height: 40px;
+            .iconFromEdit {
+              font-size: 18px;
+            }
+          }
+        }
+      }
+      .postHeader {
+        @include flex(space-between, flex-start);
+        .nameContainer {
+          .postProfileImageContainer {
+            .pfImage {
+              height: 40px;
+              width: 40px;
+            }
+          }
+          .postProfileName {
+            .postName {
+              font-size: 15px;
+            }
+            .postHour {
+              font-size: 14px;
+            }
+          }
+        }
+        .postEditContainer {
+          .postEditIcon {
+            font-size: 18px;
+          }
+        }
+      }
+      .postDetail {
+        margin-bottom: 10px;
+        width: 100%;
+        .postCaption {
+          margin-left: 20px;
+          max-width: 90%;
+          font-size: 14px;
+        }
+      }
+      .postImageContainer {
+        max-height: 400px;
+        .postImage {
+          width: 100%;
+        }
+      }
+      .postBottom {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        .amountContainer {
+          padding-top: 8px;
+          padding-bottom: 8px;
+          margin-bottom: 5px;
+          .reactionContainer {
+            .reactionIcon {
+              padding: 4px;
+              font-size: 12px;
+            }
+            .reactionAmount {
+              margin-left: 2px;
+              font-size: 14px;
+            }
+          }
+          .commentAndShareContainer {
+            font-size: 14px;
+            .commentAmount {
+              margin-right: 5px;
+            }
+            .shareAmount {
+            }
+          }
+        }
+        .likeShareCommentContainer {
+          padding-top: 7px;
+          padding-bottom: 7px;
+          .likeShareCommentChild {
+            .lcsContainer {
+              font-size: 17px;
+              .lcsIcon {
+                margin-right: 3px;
+              }
+              .lcsText {
+                font-size: 15px;
+              }
+            }
+            .lcsLiked {
+            }
+          }
+        }
+      }
+      .wlmpContainer {
+        .whoLikeMyPostContainer {
+          .wlmpHeader {
+            .cancelOpenLikeIcon {
+              font-size: 17px;
+              margin-left: 10px;
+            }
+            .totalLikeContainer {
+              margin-right: 20px;
+              .totalLikeTag {
+                font-size: 16px;
+              }
+              .totalLikeAmount {
+                font-size: 16px;
+              }
+            }
+          }
+          .noLikeTag {
+            width: 100%;
+            height: 100%;
+            @include flex(center, center);
+            .noLikeText {
+              font-size: 22px;
+              font-weight: 700;
+              color: $sea_blue;
+            }
+          }
+          .likerListContainer {
+            width: 100%;
+            max-height: 100%;
+            overflow: scroll;
+          }
+          .likerListContainer::-webkit-scrollbar {
+            display: none;
+          }
+        }
+      }
+      .commentContainer {
+        .commentChildContainer {
+          .backAndLikeAmountContainer {
+            .commentBackIcon {
+              font-size: 17px;
+            }
+            .commentBackIcon:hover {
+            }
+            .commentHeader {
+              font-size: 14px;
+            }
+            .likeAmountAndLikeIcon {
+              margin: 5px;
+              .likeIconInComment {
+                font-size: 14px;
+                padding: 5px;
+                margin-right: 3px;
+              }
+              .likeAmountInComment {
+                font-size: 15px;
+              }
+            }
+          }
+          .commentListContainer {
+            .commentListChildContainer {
+              margin-top: 10px;
+              .noCommentContainer {
+                .noCommentIcon {
+                  font-size: 80px;
+                }
+                .noCommentText {
+                  font-size: 18px;
+                }
+              }
+            }
+          }
+          .commentListContainer::-webkit-scrollbar {
+            display: none;
+          }
+          .commentInputTagContainer {
+            height: 50px;
+            bottom: 0px;
+            .commentInputTag {
+              width: 90%;
+              font-size: 14px;
+            }
+            .commentInputTag::-webkit-scrollbar {
+            }
+            .commentSendButton {
+              font-size: 20px;
+            }
+            .commentSendButton:hover {
+              font-size: 25px;
+            }
+          }
+        }
+      }
+    }
+  }
+} //770px
+@include tablet-m {
+} //500px
+@include mobile-lg {
+} //400px
+@include mobile-m {
+  .postCardContainer {
+    .postCardChild {
+      .editPostContainer {
+        .cancelEditButton {
+        }
+        .editPostChild {
+          .editPostTag {
+            height: 30px;
+            font-size: 12px;
+            .iconFromEdit {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+      .postHeader {
+        @include flex(space-between, flex-start);
+        .nameContainer {
+          .postProfileImageContainer {
+            .pfImage {
+              height: 30px;
+              width: 30px;
+            }
+          }
+          .postProfileName {
+            .postName {
+              font-size: 14px;
+            }
+            .postHour {
+              font-size: 12px;
+            }
+          }
+        }
+        .postEditContainer {
+          .postEditIcon {
+            font-size: 16px;
+          }
+        }
+      }
+      .postDetail {
+        margin-bottom: 10px;
+        width: 100%;
+        .postCaption {
+          margin-left: 15px;
+          max-width: 90%;
+          font-size: 14px;
+        }
+      }
+      .postImageContainer {
+        max-height: 300px;
+        .postImage {
+          width: 100%;
+        }
+      }
+      .postBottom {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        .amountContainer {
+          padding-top: 8px;
+          padding-bottom: 8px;
+          margin-bottom: 5px;
+          .reactionContainer {
+            .reactionIcon {
+              padding: 4px;
+              font-size: 12px;
+            }
+            .reactionAmount {
+              margin-left: 2px;
+              font-size: 14px;
+            }
+          }
+          .commentAndShareContainer {
+            font-size: 12px;
+            .commentAmount {
+              margin-right: 5px;
+            }
+            .shareAmount {
+            }
+          }
+        }
+        .likeShareCommentContainer {
+          padding-top: 7px;
+          padding-bottom: 7px;
+          .likeShareCommentChild {
+            .lcsContainer {
+              font-size: 17px;
+              .lcsIcon {
+                margin-right: 3px;
+              }
+              .lcsText {
+                font-size: 15px;
+              }
+            }
+            .lcsLiked {
+            }
+          }
+        }
+      }
+      .wlmpContainer {
+        .whoLikeMyPostContainer {
+          .wlmpHeader {
+            .cancelOpenLikeIcon {
+              font-size: 17px;
+              margin-left: 0px;
+            }
+            .totalLikeContainer {
+              margin-right: 15px;
+              .totalLikeTag {
+                font-size: 14px;
+              }
+              .totalLikeAmount {
+                font-size: 16px;
+              }
+            }
+          }
+          .noLikeTag {
+            width: 100%;
+            height: 100%;
+            @include flex(center, center);
+            .noLikeText {
+              font-size: 22px;
+              font-weight: 700;
+              color: $sea_blue;
+            }
+          }
+          .likerListContainer {
+            width: 100%;
+            max-height: 100%;
+            overflow: scroll;
+          }
+          .likerListContainer::-webkit-scrollbar {
+            display: none;
+          }
+        }
+      }
+      .commentContainer {
+        .commentChildContainer {
+          .backAndLikeAmountContainer {
+            .commentBackIcon {
+              font-size: 14px;
+            }
+            .commentBackIcon:hover {
+            }
+            .commentHeader {
+              font-size: 12px;
+            }
+            .likeAmountAndLikeIcon {
+              margin: 3px;
+              .likeIconInComment {
+                font-size: 12px;
+                padding: 4px;
+                margin-right: 3px;
+              }
+              .likeAmountInComment {
+                font-size: 15px;
+              }
+            }
+          }
+          .commentListContainer {
+            .commentListChildContainer {
+              margin-top: 10px;
+              .noCommentContainer {
+                .noCommentIcon {
+                  font-size: 80px;
+                }
+                .noCommentText {
+                  font-size: 18px;
+                }
+              }
+            }
+          }
+          .commentListContainer::-webkit-scrollbar {
+            display: none;
+          }
+          .commentInputTagContainer {
+            height: 40px;
+            bottom: 0px;
+            .commentInputTag {
+              width: 90%;
+              font-size: 13px;
+            }
+            .commentInputTag::-webkit-scrollbar {
+            }
+            .commentSendButton {
+              font-size: 16px;
+            }
+            .commentSendButton:hover {
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+} //375px
+@include mobile-sm {
+  .postCardContainer {
+    .postCardChild {
+      .editPostContainer {
+        .cancelEditButton {
+        }
+        .editPostChild {
+          .editPostTag {
+            .iconFromEdit {
+            }
+          }
+        }
+      }
+      .postHeader {
+        @include flex(space-between, flex-start);
+        .nameContainer {
+          .postProfileImageContainer {
+            .pfImage {
+              height: 30px;
+              width: 30px;
+            }
+          }
+          .postProfileName {
+            .postName {
+              font-size: 12px;
+            }
+            .postHour {
+              font-size: 11px;
+            }
+          }
+        }
+        .postEditContainer {
+          .postEditIcon {
+            font-size: 14px;
+          }
+        }
+      }
+      .postDetail {
+        margin-bottom: 10px;
+        width: 100%;
+        .postCaption {
+          margin-left: 10px;
+          max-width: 90%;
+          font-size: 12px;
+        }
+      }
+      .postImageContainer {
+        max-height: 300px;
+        .postImage {
+          width: 100%;
+        }
+      }
+      .postBottom {
+        padding-top: 2px;
+        padding-bottom: 2px;
+        .amountContainer {
+          padding-top: 5px;
+          padding-bottom: 5px;
+          margin-bottom: 5px;
+          .reactionContainer {
+            .reactionIcon {
+              padding: 4px;
+              font-size: 10px;
+            }
+            .reactionAmount {
+              margin-left: 2px;
+              font-size: 10px;
+            }
+          }
+          .commentAndShareContainer {
+            font-size: 10px;
+            .commentAmount {
+              margin-right: 5px;
+            }
+            .shareAmount {
+            }
+          }
+        }
+        .likeShareCommentContainer {
+          padding-top: 4px;
+          padding-bottom: 4px;
+          .likeShareCommentChild {
+            .lcsContainer {
+              font-size: 12px;
+              .lcsIcon {
+                margin-right: 3px;
+              }
+              .lcsText {
+                font-size: 12px;
+              }
+            }
+            .lcsLiked {
+            }
+          }
+        }
+      }
+      .wlmpContainer {
+        .whoLikeMyPostContainer {
+          .wlmpHeader {
+            .cancelOpenLikeIcon {
+              font-size: 17px;
+              margin-left: 0px;
+            }
+            .totalLikeContainer {
+              margin-right: 15px;
+              .totalLikeTag {
+                font-size: 14px;
+              }
+              .totalLikeAmount {
+                font-size: 16px;
+              }
+            }
+          }
+          .noLikeTag {
+            width: 100%;
+            height: 100%;
+            @include flex(center, center);
+            .noLikeText {
+              font-size: 22px;
+              font-weight: 700;
+              color: $sea_blue;
+            }
+          }
+          .likerListContainer {
+            width: 100%;
+            max-height: 100%;
+            overflow: scroll;
+          }
+          .likerListContainer::-webkit-scrollbar {
+            display: none;
+          }
+        }
+      }
+      .commentContainer {
+        .commentChildContainer {
+          .backAndLikeAmountContainer {
+            .commentBackIcon {
+              font-size: 14px;
+            }
+            .commentBackIcon:hover {
+            }
+            .commentHeader {
+              font-size: 12px;
+            }
+            .likeAmountAndLikeIcon {
+              margin: 3px;
+              .likeIconInComment {
+                font-size: 12px;
+                padding: 4px;
+                margin-right: 3px;
+              }
+              .likeAmountInComment {
+                font-size: 15px;
+              }
+            }
+          }
+          .commentListContainer {
+            .commentListChildContainer {
+              margin-top: 10px;
+              .noCommentContainer {
+                .noCommentIcon {
+                  font-size: 80px;
+                }
+                .noCommentText {
+                  font-size: 18px;
+                }
+              }
+            }
+          }
+          .commentListContainer::-webkit-scrollbar {
+            display: none;
+          }
+          .commentInputTagContainer {
+            height: 40px;
+            bottom: 0px;
+            .commentInputTag {
+              width: 90%;
+              font-size: 13px;
+            }
+            .commentInputTag::-webkit-scrollbar {
+            }
+            .commentSendButton {
+              font-size: 16px;
+            }
+            .commentSendButton:hover {
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+} //320px

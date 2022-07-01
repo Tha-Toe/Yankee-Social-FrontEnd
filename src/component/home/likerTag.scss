@@ -1,0 +1,85 @@
+@import "../../variables.scss";
+
+.likerTag {
+  @include flex(flex-start, center);
+  width: 100%;
+  height: 50px;
+  margin-top: 10px;
+  cursor: pointer;
+  .likerReactIcon {
+    font-size: 20px;
+    color: $white;
+    background-color: $blue;
+    padding: 7px;
+    border-radius: 50%;
+    margin-left: 20px;
+  }
+  .likerImg {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    margin-left: 10px;
+    border-radius: 50%;
+  }
+  .likerName {
+    font-size: 20px;
+    font-weight: 600;
+    color: $black;
+    margin-left: 20px;
+  }
+}
+.likerTag:hover {
+  background-color: $gray_bg;
+}
+@include laptop-L {
+} //1440px
+@include laptop {
+} //1240px
+@include tablet-lg {
+  .likerTag {
+    height: 40px;
+    margin-top: 10px;
+    cursor: pointer;
+    .likerReactIcon {
+      font-size: 15px;
+      padding: 5px;
+      margin-left: 16px;
+    }
+    .likerImg {
+      height: 40px;
+      width: 40px;
+      margin-left: 10px;
+    }
+    .likerName {
+      font-size: 18px;
+      margin-left: 10px;
+    }
+  }
+} //770px
+@include tablet-m {
+  .likerTag {
+    height: 35px;
+    margin-top: 7px;
+    cursor: pointer;
+    .likerReactIcon {
+      font-size: 13px;
+      padding: 5px;
+      margin-left: 10px;
+    }
+    .likerImg {
+      height: 30px;
+      width: 30px;
+      margin-left: 7px;
+    }
+    .likerName {
+      font-size: 14px;
+      margin-left: 10px;
+    }
+  }
+} //500px
+@include mobile-lg {
+} //400px
+@include mobile-m {
+} //375px
+@include mobile-sm {
+} //320px

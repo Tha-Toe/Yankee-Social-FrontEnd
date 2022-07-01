@@ -1,88 +1,226 @@
 @import "../../variables.scss";
 
 .barContainer {
-    max-width: 900px;
-    min-height: 100vh;
-    background-color: $white;
-    box-shadow: 0px 24px 48px 0 rgba(0,0,0,0.16);
+  max-width: 900px;
+  min-height: 100vh;
+  background-color: $white;
+  box-shadow: 0px 24px 48px 0 rgba(0, 0, 0, 0.16);
+  .barChild {
+    width: 100%;
+    @include flex(center, center, $vertical: true);
+    .barListContainer {
+      width: 100%;
+      @include flex(flex-start, center);
+      height: 50px;
+      cursor: pointer;
+      .barIcon {
+        font-size: 20px;
+        margin-left: 20px;
+      }
+      .barText {
+        font-size: 18px;
+        margin-left: 20px;
+        color: $dark_gray;
+        font-weight: 600;
+      }
+    }
+    .barListContainer:hover {
+      background-color: $sea_blue;
+      .barText {
+        color: $white;
+      }
+    }
+  }
+  .logOutAlertContainer {
+    height: 100vh;
+    width: 100vw;
+    @include flex(center, center);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 7;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+    .logOutAlertChild {
+      height: 300px;
+      width: 350px;
+      @include flex(space-around, center, $vertical: true);
+      background-color: $white;
+      border-radius: 5px;
+      margin: 0 auto;
+      .logOutAlertText {
+        font-size: 20px;
+        font-weight: 500;
+        color: $dark_gray;
+      }
+      .logOutYankeeText {
+        font-size: 35px;
+        font-weight: 700;
+        color: $sea_blue;
+      }
+      .logOutButtonContainer {
+        width: 80%;
+        @include flex(space-between, center);
+        .logOutCancleButton {
+          background-color: $dark_gray;
+          border: none;
+          outline: none;
+          color: $white;
+          padding: 10px 20px;
+          cursor: pointer;
+          border-radius: 10px;
+        }
+        .logOutYesButton {
+          background-color: $sea_blue;
+          border: none;
+          outline: none;
+          color: $white;
+          padding: 10px 20px;
+          cursor: pointer;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+  .dBlock {
+    display: block;
+    @include flex(center, center);
+  }
+}
+@include laptop-L {
+} //1440px
+@include laptop {
+} //1240px
+@include tablet-lg {
+  .barContainer {
     .barChild {
-        width: 100%;
-        @include flex(center,center,$vertical: true);
-        .barListContainer{
-            width: 100%;
-            @include flex(flex-start,center);
-            height: 50px;
-            cursor: pointer;
-            .barIcon {
-                font-size: 20px;
-                margin-left: 20px;
-            }
-            .barText {
-                font-size: 18px;
-                margin-left: 20px;
-                color: $dark_gray;
-                font-weight: 600;
-            }
+      .barListContainer {
+        height: 40px;
+        .barIcon {
+          font-size: 18px;
+          margin-left: 20px;
         }
-        .barListContainer:hover {
-            background-color: $sea_blue;
-            .barText {
-                color: $white;
-            }
+        .barText {
+          font-size: 16px;
+          margin-left: 16px;
         }
+      }
     }
     .logOutAlertContainer {
-        height: 100vh;
-        width: 100vw;
-        @include flex(center,center);
-        position: absolute;
-        left: 0;
-        top: 0;
-        background-color: rgba(0,0,0,0.6);
-        display: none;
-        .logOutAlertChild {
-            height: 300px;
-            width: 350px;
-            @include flex(space-around,center,$vertical: true);
-            background-color: $white;
-            border-radius: 5px;
-            margin: 0 auto;
-            .logOutAlertText {
-                font-size: 20px;
-                font-weight: 500;
-                color: $dark_gray;
-            }
-            .logOutYankeeText {
-                font-size: 35px;
-                font-weight: 700;
-                color: $sea_blue;
-            }
-            .logOutButtonContainer {
-                width: 80%;
-                @include flex(space-between,center);
-                .logOutCancleButton {
-                    background-color: $dark_gray;
-                    border: none;
-                    outline: none;
-                    color: $white;
-                    padding: 10px 20px;
-                    cursor: pointer;
-                    border-radius: 10px;
-                }
-                .logOutYesButton {
-                    background-color: $sea_blue;
-                    border: none;
-                    outline: none;
-                    color: $white;
-                    padding: 10px 20px;
-                    cursor: pointer;
-                    border-radius: 10px;
-                }
-            }
+      .logOutAlertChild {
+        height: 300px;
+        width: 350px;
+        .logOutAlertText {
+          font-size: 18px;
         }
+        .logOutYankeeText {
+          font-size: 30px;
+        }
+        .logOutButtonContainer {
+          .logOutCancleButton {
+            font-size: 13px;
+            padding: 10px 20px;
+          }
+          .logOutYesButton {
+            font-size: 13px;
+            padding: 10px 20px;
+          }
+        }
+      }
     }
     .dBlock {
-        display: block;
-        @include flex(center,center);
+      display: block;
+      @include flex(center, center);
     }
-}
+  }
+} //770px
+@include tablet-m {
+} //500px
+@include mobile-lg {
+} //400px
+@include mobile-m {
+  .barContainer {
+    .barChild {
+      .barListContainer {
+        height: 35px;
+        .barIcon {
+          font-size: 16px;
+          margin-left: 18px;
+        }
+        .barText {
+          font-size: 14px;
+          margin-left: 14px;
+        }
+      }
+    }
+    .logOutAlertContainer {
+      .logOutAlertChild {
+        height: 250px;
+        width: 280px;
+        .logOutAlertText {
+          font-size: 16px;
+        }
+        .logOutYankeeText {
+          font-size: 20px;
+        }
+        .logOutButtonContainer {
+          .logOutCancleButton {
+            font-size: 12px;
+            padding: 7px 13px;
+          }
+          .logOutYesButton {
+            font-size: 12px;
+            padding: 7px 13px;
+          }
+        }
+      }
+    }
+    .dBlock {
+      display: block;
+      @include flex(center, center);
+    }
+  }
+} //375px
+@include mobile-sm {
+  .barContainer {
+    .barChild {
+      .barListContainer {
+        height: 35px;
+        .barIcon {
+          font-size: 16px;
+          margin-left: 18px;
+        }
+        .barText {
+          font-size: 14px;
+          margin-left: 14px;
+        }
+      }
+    }
+    .logOutAlertContainer {
+      .logOutAlertChild {
+        height: 180px;
+        width: 200px;
+        .logOutAlertText {
+          font-size: 14px;
+        }
+        .logOutYankeeText {
+          font-size: 16px;
+        }
+        .logOutButtonContainer {
+          .logOutCancleButton {
+            font-size: 10px;
+            padding: 7px 13px;
+          }
+          .logOutYesButton {
+            font-size: 10px;
+            padding: 7px 13px;
+          }
+        }
+      }
+    }
+    .dBlock {
+      display: block;
+      @include flex(center, center);
+    }
+  }
+} //320px

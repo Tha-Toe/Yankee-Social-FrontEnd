@@ -30,26 +30,34 @@ const SuggestCard = ({
   useEffect(() => {
     setDataForOtherProfile();
     setUserName("");
-    setUserProfileImage();
+    setUserProfileImage({});
     setOtherUserEmail();
     setLoadedData(true);
     async function followerDataFetchFunction() {
-      const url = "http://localhost:3001/api/search";
+      const url = "http://localhost:3001/api/getuserdata";
       const { data: res } = await axios.post(url, {
-        suggestEmail: suggestEmail.email,
+        email: suggestEmail.email,
       });
       //console.log("start");
-      let suggestPeopleData = await res.suggestPeopleData;
+      let suggestPeopleData = await res.userData;
       setDataForOtherProfile(suggestPeopleData);
+      //console.log(suggestPeopleData);
       setUserName(
         suggestPeopleData.firstName + " " + suggestPeopleData.lastName
       );
       setOtherUserEmail(suggestPeopleData.email);
+      let base64ProfileImageData;
+      let contentTypeFromSuggestPeopleData;
       if (suggestPeopleData.profileImage) {
-        suggestPeopleData.profileImage.data = await arrayBufferToBase64(
+        base64ProfileImageData = await arrayBufferToBase64(
           suggestPeopleData.profileImage.data.data
         );
-        setUserProfileImage(suggestPeopleData.profileImage);
+        contentTypeFromSuggestPeopleData =
+          suggestPeopleData.profileImage.contentType;
+        setUserProfileImage({
+          data: base64ProfileImageData,
+          contentType: contentTypeFromSuggestPeopleData,
+        });
       }
       setLoadedData(false);
       //console.log(followerPeopleData);
@@ -66,7 +74,7 @@ const SuggestCard = ({
         <>
           <div className="scContainer">
             <div className="scImgAndNameContainer">
-              {userProfileImage ? (
+              {userProfileImage.data ? (
                 <img
                   src={`data:${userProfileImage.contentType};base64, ${userProfileImage.data}`}
                   alt=""

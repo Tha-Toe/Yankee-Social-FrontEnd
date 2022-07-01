@@ -53,3 +53,97 @@
 .scContainer:hover {
   background-color: $gray_bg;
 }
+@include laptop-L {
+} //1440px
+@include laptop {
+} //1240px
+@include tablet-lg {
+  .scContainer {
+    height: 60px;
+    border-bottom: 2px solid $sea_blue;
+    .scImgAndNameContainer {
+      margin-left: 15px;
+      .scImg {
+        height: 40px;
+        width: 40px;
+        margin-right: 7px;
+      }
+      .scName {
+        font-size: 18px;
+      }
+      .scName:hover {
+      }
+    }
+    .buttonContainer {
+      .scButton {
+        padding: 7px 13px;
+      }
+      .scDeleteButton {
+        padding: 7px 13px;
+        margin-right: 10px;
+      }
+    }
+  }
+} //770px
+@include tablet-m {
+} //500px
+@include mobile-lg {
+  .scContainer {
+    height: 50px;
+    .scImgAndNameContainer {
+      margin-left: 10px;
+      .scImg {
+        height: 30px;
+        width: 30px;
+        margin-right: 5px;
+      }
+      .scName {
+        font-size: 16px;
+      }
+      .scName:hover {
+      }
+    }
+    .buttonContainer {
+      .scButton {
+        padding: 5px 10px;
+        font-size: 12px;
+      }
+      .scDeleteButton {
+        padding: 5px 10px;
+        margin-right: 7px;
+        font-size: 12px;
+      }
+    }
+  }
+} //400px
+@include mobile-m {
+  .scContainer {
+    height: 40px;
+    .scImgAndNameContainer {
+      margin-left: 10px;
+      .scImg {
+        height: 25px;
+        width: 25px;
+        margin-right: 5px;
+      }
+      .scName {
+        font-size: 14px;
+      }
+      .scName:hover {
+      }
+    }
+    .buttonContainer {
+      .scButton {
+        padding: 5px 10px;
+        font-size: 10px;
+      }
+      .scDeleteButton {
+        padding: 5px 10px;
+        margin-right: 7px;
+        font-size: 10px;
+      }
+    }
+  }
+} //375px
+@include mobile-sm {
+} //320px

@@ -1,0 +1,156 @@
+@import "../../variables.scss";
+
+.postUploadPageContainer {
+  width: 100vw;
+  background-color: rgba($color: #000000, $alpha: 0.4);
+  z-index: 5;
+  .postUploadLoading {
+    max-width: 900px;
+    min-height: 100vh;
+    margin: 0 auto;
+    background-color: $white;
+    text-align: center;
+    @include flex(center, center);
+    font-size: 22px;
+    font-weight: 600;
+    color: $sea_blue;
+  }
+  .postUploadPageChild {
+    max-width: 900px;
+    min-height: 100vh;
+    margin: 0 auto;
+    background-color: $white;
+    @include flex(space-between, center, $vertical: true);
+    .postUploadtopContainer {
+      @include flex(flex-start, center, $vertical: true);
+      width: 90%;
+      margin-top: 20px;
+      .headerPostUploadPage {
+        width: 100%;
+        @include flex(space-between, center);
+        border-bottom: 1px solid $dark_gray;
+        .leftHeader {
+          @include flex(center, center);
+          margin-bottom: 20px;
+          .backPostUploadPage {
+            color: $dark_gray;
+            margin-right: 20px;
+            font-size: 25px;
+            cursor: pointer;
+          }
+          .backPostUploadPage:hover {
+            color: $sea_blue;
+          }
+          .headerText {
+            font-size: 20px;
+            color: $dark_gray;
+            font-weight: 600;
+          }
+        }
+        .rightHeader {
+          margin-bottom: 20px;
+          .postUploadButton {
+            color: $dark_gray;
+            background-color: transparent;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            font-weight: 600;
+          }
+        }
+      }
+      .npPostUploadContainer {
+        @include flex(flex-start, center);
+        width: 90%;
+        margin-top: 10px;
+        .myProfileImage {
+          height: 50px;
+          width: 50px;
+          border-radius: 50%;
+          border: 2px solid $sea_blue;
+          object-fit: cover;
+        }
+        .myName {
+          font-size: 20px;
+          font-weight: 600;
+          margin-left: 10px;
+        }
+      }
+      .captionInputTag {
+        margin-top: 20px;
+        width: 90%;
+        font-size: 18px;
+        outline: none;
+        border: none;
+        color: $black;
+      }
+      .previewPhoto {
+        width: 90%;
+      }
+    }
+    .bottomPhotoSelectBar {
+      width: 90%;
+      @include flex(center, center);
+      .bottonPhotoIcon {
+        margin-right: 10px;
+        font-size: 25px;
+        color: $white;
+        position: relative;
+        left: 150px;
+        z-index: 1;
+      }
+      .bottomText {
+        font-size: 18px;
+        font-weight: 500;
+      }
+      .foo {
+        display: block;
+        position: relative;
+        width: 80%;
+        cursor: pointer;
+        border: 0;
+        height: 40px;
+        border-radius: 5px;
+        outline: 0;
+        margin: 0 auto;
+      }
+      .foo:hover:after {
+        background: #5978f8;
+      }
+      .foo:after {
+        transition: 200ms all ease;
+        border-bottom: 3px solid rgba(0, 0, 0, 0.2);
+        background: #3c5ff4;
+        text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
+        color: #fff;
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        content: "Select Photo";
+        @include flex(center, center, $vertical: true);
+        border-radius: 5px;
+      }
+      margin-bottom: 20px;
+    }
+  }
+}
+@include laptop-L {
+} //1440px
+@include laptop {
+} //1240px
+@include tablet-lg {
+} //770px
+@include tablet-m {
+} //500px
+@include mobile-lg {
+} //400px
+@include mobile-m {
+} //375px
+@include mobile-sm {
+} //320px

@@ -71,3 +71,155 @@
     }
   }
 }
+@include laptop-L {
+} //1440px
+@include laptop {
+} //1240px
+@include tablet-lg {
+  .ffsContainer {
+    .ffsChild {
+      width: 95%;
+      .pwfu {
+        .followerNavBar {
+          margin-top: 15px;
+          .followerNavChild {
+            font-size: 16px;
+            padding: 10px 20px;
+          }
+        }
+        .followCard {
+          .noFollowerText {
+            font-size: 18px;
+            font-weight: 700;
+          }
+          .titleAndAmountTag {
+            @include flex(flex-start, center);
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            .titleTag {
+              font-size: 18px;
+              margin-right: 5px;
+            }
+            .amountTag {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+      .pumn {
+      }
+    }
+  }
+} //770px
+@include tablet-m {
+} //500px
+@include mobile-lg {
+  .ffsContainer {
+    .ffsChild {
+      width: 95%;
+      .pwfu {
+        .followerNavBar {
+          margin-top: 10px;
+          .followerNavChild {
+            font-size: 14px;
+            padding: 10px 20px;
+          }
+        }
+        .followCard {
+          .noFollowerText {
+            font-size: 18px;
+            font-weight: 700;
+          }
+          .titleAndAmountTag {
+            @include flex(flex-start, center);
+            width: 100%;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            .titleTag {
+              font-size: 15px;
+              margin-right: 2px;
+            }
+            .amountTag {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+      .pumn {
+      }
+    }
+  }
+} //400px
+@include mobile-m {
+  .ffsContainer {
+    .ffsChild {
+      width: 95%;
+      .pwfu {
+        .followerNavBar {
+          margin-top: 5px;
+          .followerNavChild {
+            font-size: 13px;
+            padding: 7px 12px;
+          }
+        }
+        .followCard {
+          .noFollowerText {
+            font-size: 17px;
+          }
+          .titleAndAmountTag {
+            @include flex(flex-start, center);
+            width: 100%;
+            margin-top: 3px;
+            margin-bottom: 3px;
+            .titleTag {
+              font-size: 14px;
+              margin-right: 2px;
+            }
+            .amountTag {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+      .pumn {
+      }
+    }
+  }
+} //375px
+@include mobile-sm {
+  .ffsContainer {
+    .ffsChild {
+      width: 95%;
+      .pwfu {
+        .followerNavBar {
+          margin-top: 5px;
+          .followerNavChild {
+            font-size: 12px;
+            padding: 7px 10px;
+          }
+        }
+        .followCard {
+          .noFollowerText {
+            font-size: 17px;
+          }
+          .titleAndAmountTag {
+            @include flex(flex-start, center);
+            width: 100%;
+            margin-top: 3px;
+            margin-bottom: 3px;
+            .titleTag {
+              font-size: 14px;
+              margin-right: 2px;
+            }
+            .amountTag {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+      .pumn {
+      }
+    }
+  }
+} //320px

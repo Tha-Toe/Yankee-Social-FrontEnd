@@ -26,10 +26,9 @@ const FollowingCard = ({
   const [otherUserEmail, setOtherUserEmail] = useState();
 
   useEffect(() => {
-    console.log("It's run" + followingEmail);
     setDataForOtherProfile();
     setUserName("");
-    setUserProfileImage("");
+    setUserProfileImage({});
     setOtherUserEmail("");
     setLoadedData(true);
     async function fetchFunction() {
@@ -43,11 +42,18 @@ const FollowingCard = ({
         followingPeopleData.firstName + " " + followingPeopleData.lastName
       );
       setOtherUserEmail(followingPeopleData.email);
+      let base64ProfileImageData;
+      let contentTypeFromSuggestPeopleData;
       if (followingPeopleData.profileImage) {
-        followingPeopleData.profileImage.data = await arrayBufferToBase64(
+        base64ProfileImageData = await arrayBufferToBase64(
           followingPeopleData.profileImage.data.data
         );
-        setUserProfileImage(followingPeopleData.profileImage);
+        contentTypeFromSuggestPeopleData =
+          followingPeopleData.profileImage.contentType;
+        setUserProfileImage({
+          data: base64ProfileImageData,
+          contentType: contentTypeFromSuggestPeopleData,
+        });
       }
       setLoadedData(false);
       //console.log(followingPeopleData);
@@ -67,7 +73,7 @@ const FollowingCard = ({
           {!hiddenButton && (
             <div className="fingcContainer">
               <div className="fingcImgAndNameContainer">
-                {userProfileImage ? (
+                {userProfileImage.data ? (
                   <img
                     src={`data:${userProfileImage.contentType};base64, ${userProfileImage.data}`}
                     alt=""

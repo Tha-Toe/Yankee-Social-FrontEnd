@@ -1,0 +1,87 @@
+@import "../../variables.scss";
+
+.lfingcContainer {
+  @include flex(space-between, center);
+  width: 100%;
+  height: 70px;
+  background-color: $white;
+  /*border: 1px solid $gray_bg;*/
+  border-bottom: 4px solid $sea_blue;
+  .lfingcImgAndNameContainer {
+    @include flex(center, center);
+    margin-left: 20px;
+    .lfingcImg {
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    .lfingcName {
+      font-size: 20px;
+      font-weight: 500;
+    }
+    .lfingcName:hover {
+      color: $light_blue;
+      cursor: pointer;
+    }
+  }
+}
+.lfingcContainer:hover {
+  background-color: $gray_bg;
+}
+.lloadFollowingContainer {
+  width: 100%;
+  height: 70px;
+  text-align: center;
+  @include flex(center, center);
+  background-color: $white;
+  border-bottom: 4px solid $sea_blue;
+}
+@include laptop-L {
+} //1440px
+@include laptop {
+} //1240px
+@include tablet-lg {
+  .lfingcContainer {
+    height: 50px;
+    border-bottom: 2px solid $sea_blue;
+    .lfingcImgAndNameContainer {
+      margin-left: 20px;
+      .lfingcImg {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      .lfingcName {
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+  }
+} //770px
+@include tablet-m {
+} //500px
+@include mobile-lg {
+} //400px
+@include mobile-m {
+  .lfingcContainer {
+    height: 40px;
+    border-bottom: 2px solid $sea_blue;
+    .lfingcImgAndNameContainer {
+      margin-left: 15px;
+      .lfingcImg {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        margin-right: 5px;
+      }
+      .lfingcName {
+        font-size: 14px;
+        font-weight: 500;
+      }
+    }
+  }
+} //375px
+@include mobile-sm {
+} //320px

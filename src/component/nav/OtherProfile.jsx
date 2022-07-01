@@ -9,8 +9,18 @@ import {
 import { useSelector } from "react-redux";
 import PostCard from "../home/PostCard";
 import axios from "axios";
+import LoadingPostCard from "../home/LoadingPostCard";
+import OtherUserFollowerList from "./OtherUserFollowerList";
 
-function OtherProfile({ otherUserData, changeSomething, setChangeSomething }) {
+function OtherProfile({
+  otherUserData,
+  changeSomething,
+  setChangeSomething,
+  openOtherProfileFromPostNameClick,
+  openOtherProfileFromFollowerAndFollowingClick,
+  setReloadPostRequest,
+  reloadPostRequest,
+}) {
   const [tempoState, setTempoState] = useState({
     caption:
       "React is a free and open-source front-end JavaScript library for building user interfaces based on UI components. It is maintained by Meta and a community of individual developers and companies",
@@ -22,9 +32,9 @@ function OtherProfile({ otherUserData, changeSomething, setChangeSomething }) {
   const [userName, setUserName] = useState("");
   const [userNameKey, setUserNameKey] = useState("");
   const [userCaption, setUserCaption] = useState("");
-  const [userFollower, setUserFollower] = useState("");
+  const [userFollower, setUserFollower] = useState([]);
   const [userFollowerAmount, setUserFollowerAmount] = useState();
-  const [userFollowing, setUserFollowing] = useState("");
+  const [userFollowing, setUserFollowing] = useState([]);
   const [userFollowingAmount, setUserFollowingAmount] = useState();
   const [userLikes, setUserLikes] = useState("");
   const [profileImage, setProfileImage] = useState({});
@@ -40,6 +50,7 @@ function OtherProfile({ otherUserData, changeSomething, setChangeSomething }) {
   useEffect(() => {
     async function addData() {
       if (otherUserData) {
+        //console.log(otherUserData.profileImage);
         let name = otherUserData.firstName + " " + otherUserData.lastName;
         setOtherUserEmail(otherUserData.email);
         setUserName(name);
@@ -63,8 +74,15 @@ function OtherProfile({ otherUserData, changeSomething, setChangeSomething }) {
       }
 
       if (otherUserData.profileImage) {
-        setProfileImage(otherUserData.profileImage);
+        let base64ProfilePhotoString = await arrayBufferToBase64(
+          otherUserData.profileImage.data.data
+        );
+        setProfileImage({
+          contentType: otherUserData.profileImage.contentType,
+          data: base64ProfilePhotoString,
+        });
       }
+
       if (otherUserData.coverPhoto) {
         let base64CoverPhotoString = await arrayBufferToBase64(
           otherUserData.coverPhoto.data.data
@@ -79,17 +97,8 @@ function OtherProfile({ otherUserData, changeSomething, setChangeSomething }) {
   }, [otherUserData]);
 
   //myData
-  //const [myData, setmyData] = useState();
   const myData = useSelector((state) => state.data.userData);
-  /*
-  useEffect(() => {
-    function functionTest() {
-      let myRawData = useSelector((state) => state.data.userData);
-      setmyData(myRawData);
-    }
-    functionTest();
-  });
-  */
+
   const [myEmail, setMyEmail] = useState("");
   useEffect(() => {
     setMyEmail(myData.email);
@@ -164,120 +173,231 @@ function OtherProfile({ otherUserData, changeSomething, setChangeSomething }) {
   const [followButtonDelay, setfollowButtonDelay] = useState(0);
   const activeDelay = () => {
     setfollowButtonDelay(1);
-    /*
-    setTimeout(() => {
-      setfollowButtonDelay(0);
-    }, 5000);
-    */
   };
 
+  //get post data
+  const [randomPostData, setRandomPostData] = useState([]);
+  const [loadingPost, setLoadingPost] = useState(true);
+  useEffect(() => {
+    async function getMyAllPostData() {
+      //console.log("start");
+      const url = "http://localhost:3001/api/getpostdata";
+      const { data: res } = await axios.post(url, {
+        getMyAllPostData: "getMyAllPostData",
+        myEmail: otherUserEmail,
+      });
+      //console.log("end");
+      setRandomPostData(res.myAllPostData);
+      setLoadingPost(false);
+      //console.log(res.myAllPostData);
+      //console.log(userEmail);
+    }
+    getMyAllPostData();
+  }, [otherUserEmail]);
+
+  //other user follower;
+  const [openOtherUserFollower, setOpenOtherUserFollower] = useState(false);
+
+  const addToLocalCurrentCommentData = async (e) => {
+    const objectToAddCurrentCommentData = await e.objectToAddCurrentCommentData;
+    const index = await e.index;
+    let randomPostDataRaw = randomPostData;
+    await randomPostDataRaw[index].comment.push(objectToAddCurrentCommentData);
+  };
+  const removeLocalCurrentComment = async (e) => {
+    let postIndex = e.postIndex;
+    let commentIndex = e.commentIndex;
+    let randomPostDataRawToDelete = randomPostData;
+    await randomPostDataRawToDelete[postIndex].comment.splice(commentIndex, 1);
+    setRandomPostData(randomPostDataRawToDelete);
+  };
   return (
-    <div className="oprofileContainer">
-      <div className="oprofileTopContainer">
-        <div className="obackProfile"></div>
-        <div className="oprofileNote">
-          <FontAwesomeIcon icon={faEllipsisVertical} className="onoteIcon" />
+    <>
+      {openOtherUserFollower ? (
+        <div className="otherUserFollowerContainer">
+          <div
+            className="backIconOtherUserFollowerContainer"
+            onClick={() => {
+              setOpenOtherUserFollower(false);
+            }}
+          >
+            <FontAwesomeIcon
+              icon={faArrowLeftLong}
+              className="backIconOtherUserFollower"
+            />
+            <div className="backIconText">Back to {userName}'s profile</div>
+          </div>
+          <div className="otherUserFollowerAmountContainer">
+            <div className="otherUserFollowerAmountText">follower -</div>
+            <div className="otherUserFollowerAmount">{userFollowerAmount}</div>
+          </div>
+          <div className="otherUserFollowerListContainer">
+            {userFollowerAmount === 0 ? (
+              <div className="noFollowerTag">No follower</div>
+            ) : (
+              <>
+                {userFollower.followerPeople.map((otherUserFollower, index) => (
+                  <OtherUserFollowerList
+                    key={index}
+                    otherUserFollower={otherUserFollower}
+                    userFollower={userFollower.followerPeople}
+                    openOtherProfileFromFollowerAndFollowingClick={
+                      openOtherProfileFromFollowerAndFollowingClick
+                    }
+                    setOpenOtherUserFollower={setOpenOtherUserFollower}
+                  />
+                ))}
+              </>
+            )}
+          </div>
         </div>
-      </div>
-      <div className="oprofilePhotoContainer">
-        {coverPhoto.data ? (
-          <img
-            src={`data:${coverPhoto.contentType};base64, ${coverPhoto.data}`}
-            className="ocoverPhoto"
-          />
-        ) : (
-          <div className="oDefaultCoverPhoto"></div>
-        )}
-        <div className="oprofileAndEditContainer">
-          <div className="oprofileAndActive">
-            {profileImage.data ? (
+      ) : (
+        <div className="oprofileContainer">
+          <div className="oprofileTopContainer">
+            <div className="obackProfile"></div>
+            <div className="oprofileNote">
+              <FontAwesomeIcon
+                icon={faEllipsisVertical}
+                className="onoteIcon"
+              />
+            </div>
+          </div>
+          <div className="oprofilePhotoContainer">
+            {coverPhoto.data ? (
               <img
-                src={`data:${profileImage.contentType};base64, ${profileImage.data}`}
-                className="oprofilePhoto"
+                src={`data:${coverPhoto.contentType};base64, ${coverPhoto.data}`}
+                className="ocoverPhoto"
               />
             ) : (
-              <img src="/defaultProfileImage.png" className="oprofilePhoto" />
+              <div className="oDefaultCoverPhoto"></div>
             )}
-            <div className="oactiveIcon"></div>
+            <div className="oprofileAndEditContainer">
+              <div className="oprofileAndActive">
+                {profileImage.data ? (
+                  <img
+                    src={`data:${profileImage.contentType};base64, ${profileImage.data}`}
+                    className="oprofilePhoto"
+                  />
+                ) : (
+                  <img
+                    src="/defaultProfileImage.png"
+                    className="oprofilePhoto"
+                  />
+                )}
+                <div className="oactiveIcon"></div>
+              </div>
+              <div className="followButtonContainer">
+                {iAlreadyFollow ? (
+                  <button className="followButton" onClick={unFollowOpenDelay}>
+                    <FontAwesomeIcon
+                      icon={faUserCheck}
+                      className="followedCheckMark"
+                    />
+                    Followed
+                  </button>
+                ) : (
+                  <button
+                    className="followButton"
+                    onClick={() => {
+                      handelfollow("plus");
+                      setUnfollowOpen(false);
+                    }}
+                  >
+                    Follow
+                  </button>
+                )}
+              </div>
+            </div>
           </div>
-          <div className="followButtonContainer">
-            {iAlreadyFollow ? (
-              <button className="followButton" onClick={unFollowOpenDelay}>
-                <FontAwesomeIcon
-                  icon={faUserCheck}
-                  className="followedCheckMark"
-                />
-                Followed
-              </button>
+          <div className="ouserNameContainer">
+            <div className="ouserName">{userName}</div>
+            <div className="ouserNameKey">{userNameKey}</div>
+            <div className="ouserCaption">{userCaption}</div>
+          </div>
+          <div className="ofollowerContainer">
+            <div className="ofollowerChild">
+              <div
+                className="ofollowerTag"
+                onClick={() => {
+                  setOpenOtherUserFollower(true);
+                }}
+              >
+                <div className="ofollowerAmount">{userFollowerAmount}</div>
+                <div className="ofollowerText">followers</div>
+              </div>
+              <div className="ofollowingTag">
+                <div className="ofollowingAmount">{userFollowingAmount}</div>
+                <div className="ofollowingText">following</div>
+              </div>
+              <div className="olikeTag">
+                <div className="olikeAmount">{userLikes}</div>
+                <div className="olikeText">Likes</div>
+              </div>
+            </div>
+          </div>
+          <div className="opostContainer">
+            <div className="opostText">POST</div>
+
+            {loadingPost ? (
+              <LoadingPostCard />
             ) : (
-              <button
-                className="followButton"
-                onClick={() => {
-                  handelfollow("plus");
-                  setUnfollowOpen(false);
-                }}
-              >
-                Follow
-              </button>
+              <>
+                {randomPostData.length === 0 ? (
+                  <div>{userName} don't have post</div>
+                ) : (
+                  <>
+                    {randomPostData.map((postData, index) => (
+                      <PostCard
+                        key={index}
+                        index={index}
+                        postData={postData}
+                        randomPostData={randomPostData}
+                        openOtherProfileFromPostNameClick={
+                          openOtherProfileFromPostNameClick
+                        }
+                        setReloadPostRequest={setReloadPostRequest}
+                        reloadPostRequest={reloadPostRequest}
+                        addToLocalCurrentCommentData={
+                          addToLocalCurrentCommentData
+                        }
+                        removeLocalCurrentComment={removeLocalCurrentComment}
+                      />
+                    ))}
+                  </>
+                )}
+              </>
             )}
           </div>
-        </div>
-      </div>
-      <div className="ouserNameContainer">
-        <div className="ouserName">{userName}</div>
-        <div className="ouserNameKey">{userNameKey}</div>
-        <div className="ouserCaption">{userCaption}</div>
-      </div>
-      <div className="ofollowerContainer">
-        <div className="ofollowerChild">
-          <div className="ofollowerTag">
-            <div className="ofollowerAmount">{userFollowerAmount}</div>
-            <div className="ofollowerText">followers</div>
-          </div>
-          <div className="ofollowingTag">
-            <div className="ofollowingAmount">{userFollowingAmount}</div>
-            <div className="ofollowingText">following</div>
-          </div>
-          <div className="olikeTag">
-            <div className="olikeAmount">{userLikes}</div>
-            <div className="olikeText">Likes</div>
-          </div>
-        </div>
-      </div>
-      <div className="opostContainer">
-        <div className="opostText">POST</div>
-        <PostCard tempoState={tempoState} />
-        <PostCard tempoState={tempoState} />
-        <PostCard tempoState={tempoState} />
-      </div>
-      {unfollowOpen && (
-        <div className="unFollowPageContainer">
-          <div className="unFollowBoxContainer">
-            <div className="unFollowAskText">
-              Do you want to unfollow
-              <span className="unFollowUserName">{userName}?</span>
+          {unfollowOpen && (
+            <div className="unFollowPageContainer">
+              <div className="unFollowBoxContainer">
+                <div className="unFollowAskText">
+                  Do you want to unfollow
+                  <span className="unFollowUserName">{userName}?</span>
+                </div>
+                <div className="unFollowButtonContainer">
+                  <button
+                    className="unFollowCancleButton"
+                    onClick={() => setUnfollowOpen(false)}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    className="unFollowButton"
+                    onClick={() => {
+                      handelfollow("minus");
+                      setUnfollowOpen(false);
+                    }}
+                  >
+                    Unfollow
+                  </button>
+                </div>
+              </div>
             </div>
-            <div className="unFollowButtonContainer">
-              <button
-                className="unFollowCancleButton"
-                onClick={() => setUnfollowOpen(false)}
-              >
-                Cancel
-              </button>
-              <button
-                className="unFollowButton"
-                onClick={() => {
-                  handelfollow("minus");
-                  setUnfollowOpen(false);
-                }}
-              >
-                Unfollow
-              </button>
-            </div>
-          </div>
+          )}
         </div>
       )}
-    </div>
+    </>
   );
 }
 export default OtherProfile;

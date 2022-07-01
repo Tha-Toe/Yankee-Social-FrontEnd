@@ -23,14 +23,22 @@
     }
     .inputTagContainer {
       width: 80%;
-      .inputTag {
-        padding: 10px 15px;
+      .inputTagButton {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 15px;
         border-radius: 20px;
         width: 100%;
         background-color: $input_color;
         outline: none;
         border: none;
         font-size: 20px;
+        text-align: left;
+        color: $dark_gray;
+        cursor: pointer;
+      }
+      .inputTagButton:hover {
+        border: 1px solid $sea_blue;
       }
     }
   }
@@ -42,3 +50,97 @@
     margin-top: 20px;
   }
 }
+@include laptop-L {
+} //1440px
+@include laptop {
+} //1240px
+@include tablet-lg {
+  .homeContainer {
+    .postUploadContainer {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-radius: 0px;
+      .profileImageContainer {
+        .profileImage {
+          height: 40px;
+          width: 40px;
+        }
+      }
+      .inputTagContainer {
+        .inputTagButton {
+          font-size: 17px;
+          padding-top: 6px;
+          padding-bottom: 6px;
+        }
+        .inputTagButton:hover {
+        }
+      }
+    }
+    .postContainer {
+      background-color: $white;
+      width: 100%;
+      box-shadow: 0px 24px 48px 0 rgba(0, 0, 0, 0.16);
+      border-radius: 0px;
+      margin-top: 10px;
+    }
+  }
+} //770px
+@include tablet-m {
+} //500px
+@include mobile-lg {
+  .homeContainer {
+    .postUploadContainer {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      .profileImageContainer {
+        margin-right: 10px;
+        .profileImage {
+          height: 30px;
+          width: 30px;
+        }
+      }
+      .inputTagContainer {
+        .inputTagButton {
+          font-size: 15px;
+          padding-left: 10px;
+        }
+        .inputTagButton:hover {
+        }
+      }
+    }
+    .postContainer {
+      background-color: $white;
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+} //400px
+@include mobile-m {
+} //375px
+@include mobile-sm {
+  .homeContainer {
+    .postUploadContainer {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      .profileImageContainer {
+        margin-right: 10px;
+        .profileImage {
+          height: 30px;
+          width: 30px;
+        }
+      }
+      .inputTagContainer {
+        .inputTagButton {
+          font-size: 13px;
+          padding-left: 7px;
+        }
+        .inputTagButton:hover {
+        }
+      }
+    }
+    .postContainer {
+      width: 100%;
+      margin-top: 5px;
+    }
+  }
+} //320px

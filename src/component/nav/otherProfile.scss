@@ -1,4 +1,59 @@
 @import "../../variables.scss";
+.otherUserFollowerContainer {
+  width: 100%;
+  @include flex(flex-start, flex-start, $vertical: true);
+  background-color: $white;
+  box-shadow: 0px 24px 48px 0 rgba(0, 0, 0, 0.16);
+  min-height: 100vh;
+  .backIconOtherUserFollowerContainer {
+    color: $dark_gray;
+    cursor: pointer;
+    margin-top: 10px;
+    @include flex(space-between, center);
+    .backIconOtherUserFollower {
+      margin-left: 30px;
+      font-size: 20px;
+    }
+    .backIconText {
+      font-size: 15px;
+      margin-left: 10px;
+    }
+  }
+  .backIconOtherUserFollowerContainer:hover {
+    color: $sea_blue;
+  }
+  .otherUserFollowerAmountContainer {
+    margin-top: 20px;
+    width: 100%;
+    border-bottom: 1px solid $dark_gray;
+    @include flex(flex-start, center);
+    padding-bottom: 10px;
+    .otherUserFollowerAmountText {
+      margin-left: 30px;
+      color: $dark_gray;
+      font-size: 25px;
+      font-weight: 700;
+    }
+    .otherUserFollowerAmount {
+      color: $red;
+      font-size: 20px;
+      font-weight: 600;
+      margin-left: 10px;
+    }
+  }
+  .otherUserFollowerListContainer {
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 20px;
+    .noFollowerTag {
+      font-size: 25px;
+      font-weight: 800;
+      margin-top: 100px;
+      color: $sea_blue;
+      @include flex(center, center);
+    }
+  }
+}
 .oprofileContainer {
   width: 100%;
   @include flex(center, center, $vertical: true);
@@ -112,7 +167,7 @@
   }
 
   .ouserNameContainer {
-    width: 90%;
+    width: 85%;
     @include flex(center, flex-start, $vertical: true);
     margin-bottom: 20px;
     .ouserName {
@@ -142,6 +197,7 @@
         @include flex(center, center, $vertical: true);
         padding: 20px;
         border-radius: 20px;
+        cursor: pointer;
         .ofollowerAmount {
           font-size: 22px;
           color: $black;
@@ -246,3 +302,717 @@
     }
   }
 }
+@include laptop-L {
+} //1440px
+@include laptop {
+} //1240px
+@include tablet-lg {
+  .otherUserFollowerContainer {
+    .backIconOtherUserFollowerContainer {
+      margin-top: 10px;
+      @include flex(space-between, center);
+      .backIconOtherUserFollower {
+        margin-left: 20px;
+        font-size: 18px;
+      }
+      .backIconText {
+        font-size: 14px;
+        margin-left: 10px;
+      }
+    }
+    .otherUserFollowerAmountContainer {
+      margin-top: 15px;
+      padding-bottom: 10px;
+      .otherUserFollowerAmountText {
+        margin-left: 30px;
+        font-size: 20px;
+      }
+      .otherUserFollowerAmount {
+        font-size: 20px;
+        margin-left: 5px;
+      }
+    }
+    .otherUserFollowerListContainer {
+      padding-top: 15px;
+      margin: 0 auto;
+      .noFollowerTag {
+        font-size: 20px;
+        margin-top: 100px;
+      }
+    }
+  }
+  .oprofileContainer {
+    .oprofileTopContainer {
+      margin-top: 15px;
+      .obackProfile {
+        .obackIcon {
+          font-size: 25px;
+          padding: 10px;
+          border-radius: 50%;
+        }
+      }
+      .oprofileNote {
+        .onoteIcon {
+          font-size: 20px;
+          padding: 10px;
+          border-radius: 50%;
+        }
+      }
+    }
+
+    .oprofilePhotoContainer {
+      width: 95%;
+      margin-bottom: -60px;
+      .ocoverPhoto {
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+      .oDefaultCoverPhoto {
+        width: 100%;
+        height: 120px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        background-color: $black;
+      }
+      .oprofileAndEditContainer {
+        top: -40px;
+        .oprofileAndActive {
+          margin-left: 30px;
+          .oprofilePhoto {
+            height: 90px;
+            width: 90px;
+            border: 2px solid $white;
+          }
+          .oactiveIcon {
+            width: 12px;
+            height: 12px;
+            top: -31px;
+            right: -36px;
+          }
+        }
+        .followButtonContainer {
+          margin-top: 20px;
+          .followButton {
+            font-size: 16px;
+            padding: 7px 16px;
+            border-radius: 20px;
+            .followedCheckMark {
+              margin-right: 10px;
+            }
+          }
+        }
+      }
+    }
+
+    .ouserNameContainer {
+      width: 85%;
+      margin-bottom: 15px;
+      margin-top: 10px;
+      .ouserName {
+        font-size: 18px;
+      }
+      .ouserNameKey {
+        font-size: 16px;
+      }
+      .ouserCaption {
+        font-size: 14px;
+      }
+    }
+    .ofollowerContainer {
+      width: 100%;
+      .ofollowerChild {
+        width: 60%;
+        margin-bottom: 15px;
+        .ofollowerTag {
+          padding: 20px;
+          border-radius: 20px;
+          .ofollowerAmount {
+            font-size: 18px;
+            margin-right: 5px;
+          }
+          .ofollowerText {
+            font-size: 16px;
+          }
+        }
+        .ofollowingTag {
+          padding: 20px;
+          border-radius: 20px;
+          .ofollowingAmount {
+            font-size: 18px;
+            margin-right: 5px;
+          }
+          .ofollowingText {
+            font-size: 16px;
+          }
+        }
+        .olikeTag {
+          padding: 20px;
+          border-radius: 20px;
+          .olikeAmount {
+            font-size: 18px;
+            margin-right: 5px;
+          }
+          .olikeText {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    .opostContainer {
+      .opostText {
+        font-size: 20px;
+        margin-top: 10px;
+      }
+    }
+    .unFollowPageContainer {
+      .unFollowBoxContainer {
+        height: 300px;
+        width: 400px;
+        .unFollowAskText {
+          font-size: 16px;
+          .unFollowUserName {
+            margin-left: 10px;
+            font-size: 18px;
+          }
+        }
+        .unFollowButtonContainer {
+          .unFollowCancleButton {
+            padding: 8px 16px;
+            border-radius: 15px;
+          }
+          .unFollowButton {
+            padding: 8px 16px;
+            color: $white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+} //770px
+@include tablet-m {
+  .otherUserFollowerContainer {
+    .backIconOtherUserFollowerContainer {
+      margin-top: 10px;
+      @include flex(space-between, center);
+      .backIconOtherUserFollower {
+        margin-left: 15px;
+        font-size: 18px;
+      }
+      .backIconText {
+        font-size: 14px;
+        margin-left: 5px;
+      }
+    }
+    .otherUserFollowerAmountContainer {
+      margin-top: 10px;
+      padding-bottom: 10px;
+      .otherUserFollowerAmountText {
+        margin-left: 25px;
+        font-size: 18px;
+      }
+      .otherUserFollowerAmount {
+        font-size: 20px;
+        margin-left: 5px;
+      }
+    }
+    .otherUserFollowerListContainer {
+      padding-top: 15px;
+      margin: 0 auto;
+      .noFollowerTag {
+        font-size: 20px;
+        margin-top: 100px;
+      }
+    }
+  }
+  .oprofileContainer {
+    .oprofileTopContainer {
+      margin-top: 10px;
+      .oprofileNote {
+        .onoteIcon {
+          font-size: 17px;
+          padding: 10px;
+          border-radius: 50%;
+        }
+      }
+    }
+    .oprofilePhotoContainer {
+      margin-bottom: -60px;
+      .ocoverPhoto {
+        width: 100%;
+        height: 100px;
+        object-fit: cover;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+      }
+      .oDefaultCoverPhoto {
+        width: 100%;
+        height: 100px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        background-color: $black;
+      }
+      .oprofileAndEditContainer {
+        top: -35px;
+        .oprofileAndActive {
+          margin-left: 30px;
+          .oprofilePhoto {
+            height: 80px;
+            width: 80px;
+            border: 2px solid $white;
+          }
+          .oactiveIcon {
+            width: 10px;
+            height: 10px;
+            top: -31px;
+            right: -36px;
+          }
+        }
+        .followButtonContainer {
+          margin-top: 20px;
+          .followButton {
+            font-size: 12px;
+            padding: 7px 10px;
+            border-radius: 20px;
+            .followedCheckMark {
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+    }
+
+    .ouserNameContainer {
+      width: 83%;
+      margin-bottom: 15px;
+      margin-top: 13px;
+      .ouserName {
+        font-size: 16px;
+      }
+      .ouserNameKey {
+        font-size: 14px;
+      }
+      .ouserCaption {
+        font-size: 12px;
+      }
+    }
+    .ofollowerContainer {
+      width: 100%;
+      .ofollowerChild {
+        width: 60%;
+        margin-bottom: 15px;
+        .ofollowerTag {
+          padding: 10px;
+          border-radius: 20px;
+          .ofollowerAmount {
+            font-size: 16px;
+            margin-right: 5px;
+          }
+          .ofollowerText {
+            font-size: 14px;
+          }
+        }
+        .ofollowingTag {
+          padding: 10px;
+          border-radius: 20px;
+          .ofollowingAmount {
+            font-size: 16px;
+            margin-right: 5px;
+          }
+          .ofollowingText {
+            font-size: 14px;
+          }
+        }
+        .olikeTag {
+          padding: 10px;
+          border-radius: 20px;
+          .olikeAmount {
+            font-size: 16px;
+            margin-right: 5px;
+          }
+          .olikeText {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+    .opostContainer {
+      .opostText {
+        font-size: 18px;
+        margin-top: 10px;
+      }
+    }
+    .unFollowPageContainer {
+      .unFollowBoxContainer {
+        height: 250px;
+        width: 300px;
+        .unFollowAskText {
+          font-size: 12px;
+          .unFollowUserName {
+            margin-left: 5px;
+            font-size: 15px;
+          }
+        }
+        .unFollowButtonContainer {
+          .unFollowCancleButton {
+            padding: 7px 14px;
+            font-size: 12px;
+          }
+          .unFollowButton {
+            padding: 7px 14px;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+} //500px
+@include mobile-lg {
+} //400px
+@include mobile-m {
+  .otherUserFollowerContainer {
+    .backIconOtherUserFollowerContainer {
+      margin-top: 10px;
+      @include flex(space-between, center);
+      .backIconOtherUserFollower {
+        margin-left: 10px;
+        font-size: 16px;
+      }
+      .backIconText {
+        font-size: 12px;
+        margin-left: 5px;
+      }
+    }
+    .otherUserFollowerAmountContainer {
+      margin-top: 7px;
+      padding-bottom: 7px;
+      .otherUserFollowerAmountText {
+        margin-left: 20px;
+        font-size: 16px;
+      }
+      .otherUserFollowerAmount {
+        font-size: 18px;
+        margin-left: 5px;
+      }
+    }
+    .otherUserFollowerListContainer {
+      padding-top: 15px;
+      margin: 0 auto;
+      .noFollowerTag {
+        font-size: 20px;
+        margin-top: 100px;
+      }
+    }
+  }
+  .oprofileContainer {
+    .oprofileTopContainer {
+      margin-top: 0px;
+      .oprofileNote {
+        .onoteIcon {
+          font-size: 15px;
+          padding: 10px;
+          border-radius: 50%;
+        }
+      }
+    }
+    .oprofilePhotoContainer {
+      margin-bottom: -60px;
+      .ocoverPhoto {
+        width: 100%;
+        height: 80px;
+      }
+      .oDefaultCoverPhoto {
+        width: 100%;
+        height: 80px;
+      }
+      .oprofileAndEditContainer {
+        top: -35px;
+        .oprofileAndActive {
+          margin-left: 20px;
+          .oprofilePhoto {
+            height: 70px;
+            width: 70px;
+            border: 2px solid $white;
+          }
+          .oactiveIcon {
+            width: 10px;
+            height: 10px;
+            top: -24px;
+            right: -28px;
+          }
+        }
+        .followButtonContainer {
+          margin-top: 23px;
+          .followButton {
+            font-size: 10px;
+            padding: 7px 10px;
+            border-radius: 20px;
+            .followedCheckMark {
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+    }
+
+    .ouserNameContainer {
+      width: 87%;
+      margin-bottom: 15px;
+      margin-top: 13px;
+      .ouserName {
+        font-size: 14px;
+      }
+      .ouserNameKey {
+        font-size: 12px;
+      }
+      .ouserCaption {
+        font-size: 10px;
+      }
+    }
+    .ofollowerContainer {
+      width: 100%;
+      .ofollowerChild {
+        width: 60%;
+        margin-bottom: 15px;
+        .ofollowerTag {
+          padding: 10px;
+          border-radius: 20px;
+          .ofollowerAmount {
+            font-size: 14px;
+            margin-right: 0px;
+          }
+          .ofollowerText {
+            font-size: 12px;
+          }
+        }
+        .ofollowingTag {
+          padding: 10px;
+          border-radius: 20px;
+          .ofollowingAmount {
+            font-size: 14px;
+            margin-right: 0px;
+          }
+          .ofollowingText {
+            font-size: 12px;
+          }
+        }
+        .olikeTag {
+          padding: 10px;
+          border-radius: 20px;
+          .olikeAmount {
+            font-size: 14px;
+            margin-right: 0px;
+          }
+          .olikeText {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+    .opostContainer {
+      .opostText {
+        font-size: 14px;
+        margin-top: 10px;
+      }
+    }
+    .unFollowPageContainer {
+      .unFollowBoxContainer {
+        height: 250px;
+        width: 300px;
+        .unFollowAskText {
+          font-size: 12px;
+          .unFollowUserName {
+            margin-left: 5px;
+            font-size: 15px;
+          }
+        }
+        .unFollowButtonContainer {
+          .unFollowCancleButton {
+            padding: 7px 14px;
+            font-size: 12px;
+          }
+          .unFollowButton {
+            padding: 7px 14px;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+} //375px
+@include mobile-sm {
+  .otherUserFollowerContainer {
+    .backIconOtherUserFollowerContainer {
+      margin-top: 10px;
+      @include flex(space-between, center);
+      .backIconOtherUserFollower {
+        margin-left: 10px;
+        font-size: 16px;
+      }
+      .backIconText {
+        font-size: 12px;
+        margin-left: 5px;
+      }
+    }
+    .otherUserFollowerAmountContainer {
+      margin-top: 7px;
+      padding-bottom: 7px;
+      .otherUserFollowerAmountText {
+        margin-left: 20px;
+        font-size: 16px;
+      }
+      .otherUserFollowerAmount {
+        font-size: 18px;
+        margin-left: 5px;
+      }
+    }
+    .otherUserFollowerListContainer {
+      padding-top: 15px;
+      margin: 0 auto;
+      .noFollowerTag {
+        font-size: 20px;
+        margin-top: 100px;
+      }
+    }
+  }
+  .oprofileContainer {
+    .oprofileTopContainer {
+      margin-top: 0px;
+      .oprofileNote {
+        .onoteIcon {
+          font-size: 15px;
+          padding: 10px;
+          border-radius: 50%;
+        }
+      }
+    }
+    .oprofilePhotoContainer {
+      margin-bottom: -60px;
+      .ocoverPhoto {
+        width: 100%;
+        height: 70px;
+      }
+      .oDefaultCoverPhoto {
+        width: 100%;
+        height: 70px;
+      }
+      .oprofileAndEditContainer {
+        top: -35px;
+        .oprofileAndActive {
+          margin-left: 10px;
+          .oprofilePhoto {
+            height: 60px;
+            width: 60px;
+            border: 2px solid $white;
+          }
+          .oactiveIcon {
+            width: 10px;
+            height: 10px;
+            top: -24px;
+            right: -28px;
+          }
+        }
+        .followButtonContainer {
+          margin-top: 23px;
+          .followButton {
+            font-size: 10px;
+            padding: 7px 10px;
+            border-radius: 20px;
+            .followedCheckMark {
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+    }
+
+    .ouserNameContainer {
+      width: 87%;
+      margin-bottom: 15px;
+      margin-top: 13px;
+      .ouserName {
+        font-size: 12px;
+      }
+      .ouserNameKey {
+        font-size: 10px;
+      }
+      .ouserCaption {
+        font-size: 10px;
+      }
+    }
+    .ofollowerContainer {
+      width: 100%;
+      .ofollowerChild {
+        width: 60%;
+        margin-bottom: 15px;
+        .ofollowerTag {
+          padding: 10px;
+          border-radius: 20px;
+          .ofollowerAmount {
+            font-size: 12px;
+            margin-right: 0px;
+          }
+          .ofollowerText {
+            font-size: 10px;
+          }
+        }
+        .ofollowingTag {
+          padding: 10px;
+          border-radius: 20px;
+          .ofollowingAmount {
+            font-size: 12px;
+            margin-right: 0px;
+          }
+          .ofollowingText {
+            font-size: 10px;
+          }
+        }
+        .olikeTag {
+          padding: 10px;
+          border-radius: 20px;
+          .olikeAmount {
+            font-size: 12px;
+            margin-right: 0px;
+          }
+          .olikeText {
+            font-size: 10px;
+          }
+        }
+      }
+    }
+    .opostContainer {
+      .opostText {
+        font-size: 14px;
+        margin-top: 10px;
+      }
+    }
+    .unFollowPageContainer {
+      .unFollowBoxContainer {
+        height: 200px;
+        width: 250px;
+        .unFollowAskText {
+          font-size: 10px;
+          .unFollowUserName {
+            margin-left: 5px;
+            font-size: 12px;
+          }
+        }
+        .unFollowButtonContainer {
+          .unFollowCancleButton {
+            padding: 7px 14px;
+            font-size: 10px;
+          }
+          .unFollowButton {
+            padding: 7px 14px;
+            font-size: 10;
+          }
+        }
+      }
+    }
+  }
+} //320px

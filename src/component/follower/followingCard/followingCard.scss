@@ -46,3 +46,87 @@
   background-color: $white;
   border-bottom: 4px solid $sea_blue;
 }
+@include laptop-L {
+} //1440px
+@include laptop {
+} //1240px
+@include tablet-lg {
+  .fingcContainer {
+    height: 60px;
+    border-bottom: 2px solid $sea_blue;
+    .fingcImgAndNameContainer {
+      margin-left: 15px;
+      .fingcImg {
+        height: 40px;
+        width: 40px;
+        margin-right: 7px;
+      }
+      .fingcName {
+        font-size: 18px;
+      }
+    }
+    .fingcButton {
+      padding: 7px 13px;
+      margin-right: 7px;
+    }
+  }
+  .loadFollowingContainer {
+    height: 60px;
+    border-bottom: 2px solid $sea_blue;
+  }
+} //770px
+@include tablet-m {
+} //500px
+@include mobile-lg {
+  .fingcContainer {
+    height: 50px;
+    .fingcImgAndNameContainer {
+      margin-left: 10px;
+      .fingcImg {
+        height: 30px;
+        width: 30px;
+        margin-right: 5px;
+      }
+      .fingcName {
+        font-size: 16px;
+      }
+    }
+    .fingcButton {
+      font-size: 12px;
+      padding: 5px 10px;
+      margin-right: 10px;
+    }
+  }
+  .loadFollowingContainer {
+    height: 50px;
+    border-bottom: 2px solid $sea_blue;
+  }
+} //400px
+@include mobile-m {
+  .fingcContainer {
+    height: 40px;
+    .fingcImgAndNameContainer {
+      margin-left: 10px;
+      .fingcImg {
+        height: 25px;
+        width: 25px;
+        margin-right: 5px;
+      }
+      .fingcName {
+        font-size: 14px;
+      }
+    }
+    .fingcButton {
+      font-size: 10px;
+      padding: 5px 10px;
+      margin-right: 10px;
+    }
+  }
+  .loadFollowingContainer {
+    height: 40px;
+    border-bottom: 2px solid $sea_blue;
+    font-size: 14px;
+  }
+} //375px
+@include mobile-sm {
+} //320px

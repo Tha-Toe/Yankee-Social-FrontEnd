@@ -5,6 +5,9 @@ import Nav from "../../component/nav/Nav";
 import "./main.scss";
 import { useSelector, useDispatch } from "react-redux";
 import SearchBarPage from "../../component/nav/SearchBarPage";
+import PostUploadContainer from "../../component/container/PostUploadContainer";
+import axios from "axios";
+import NavIcon from "../../component/nav/NavIcon";
 
 function Main({ changeSomething, setChangeSomething }) {
   const [navWidth, setNavWidth] = useState("0px");
@@ -67,68 +70,163 @@ function Main({ changeSomething, setChangeSomething }) {
   //otherProfileOpen
   const [otherProfileOpen, setOtherProfileOpen] = useState(false);
   const [otherUserData, setOtherUserData] = useState();
+
   //openOtherProfileFromFollowerAndFollowingClick
   const openOtherProfileFromFollowerAndFollowingClick = async (e) => {
-    await setOtherUserData(e);
-    console.log(e);
-    await setProfileOpen(true);
-    console.log(profileOpen);
-    setSearchBarOpen(true);
+    if (e.email === userData.email) {
+      openOwnerProfile();
+    } else {
+      setOtherUserData(e);
+      setOtherProfileOpen(true);
+      setSearchBarOpen(true);
+    }
+  };
+
+  const openOtherProfileFromPostNameClick = async (e) => {
+    if (e.email === userData.email) {
+      openOwnerProfile();
+    } else {
+      setOtherUserData(e);
+      setSearchBarOpen(true);
+      setOtherProfileOpen(true);
+    }
+  };
+
+  //open post upload page
+  const [openPostUploadPage, setOpenPostUploadPage] = useState(false);
+
+  //randomPostData
+  const [randomPostData, setRandomPostData] = useState([]);
+  useEffect(() => {
+    const getRandomPostData = async () => {
+      //console.log("run");
+      setRandomPostData([]);
+      const url = "http://localhost:3001/api/getpostdata";
+      const { data: res } = await axios.post(url, {
+        getRandomPostData: "getRandomPostData",
+      });
+      //console.log(res.randomPostData);
+      //console.log("post data reached");
+      setRandomPostData(res.randomPostData);
+      //console.log(res.randomPostData);
+    };
+    getRandomPostData();
+  }, []);
+  const reloadPostRequest = (index) => {
+    let randomPostDataPop = [...randomPostData];
+    randomPostDataPop.splice(index, 1);
+    setRandomPostData(randomPostDataPop);
+  };
+
+  //addToLocalCurrentCommentData
+  const addToLocalCurrentCommentData = async (e) => {
+    const objectToAddCurrentCommentData = await e.objectToAddCurrentCommentData;
+    const index = await e.index;
+    let randomPostDataRaw = randomPostData;
+    await randomPostDataRaw[index].comment.push(objectToAddCurrentCommentData);
+  };
+  const removeLocalCurrentComment = async (e) => {
+    let postIndex = e.postIndex;
+    let commentIndex = e.commentIndex;
+    let randomPostDataRawToDelete = randomPostData;
+    await randomPostDataRawToDelete[postIndex].comment.splice(commentIndex, 1);
+    setRandomPostData(randomPostDataRawToDelete);
   };
   return (
     <>
-      {searchBarOpen ? (
-        <SearchBarPage
-          closeSearchBar={closeSearchBar}
-          openOwnerProfile={openOwnerProfile}
-          setChangeSomething={setChangeSomething}
-          changeSomething={changeSomething}
-          otherProfileOpen={otherProfileOpen}
-          setOtherProfileOpen={setOtherProfileOpen}
-          setOtherUserData={setOtherUserData}
-          otherUserData={otherUserData}
-        />
+      {openPostUploadPage ? (
+        <PostUploadContainer setOpenPostUploadPage={setOpenPostUploadPage} />
       ) : (
         <>
-          <Nav
-            homeOpen={homeOpen}
-            setHomeOpen={setHomeOpen}
-            followerOpen={followerOpen}
-            setFollowerOpen={setFollowerOpen}
-            profileOpen={profileOpen}
-            setProfileOpen={setProfileOpen}
-            notiOpen={notiOpen}
-            setNotiOpen={setNotiOpen}
-            barOpen={barOpen}
-            setBarOpen={setBarOpen}
-            setNavWidth={setNavWidth}
-            setNavLeft={setNavLeft}
-            navLeft={navLeft}
-            navWidth={navWidth}
-            openSearchBar={openSearchBar}
-            handleNav={handleNav}
-            getProfileRef={getProfileRef}
-            navBarChange={navBarChange}
-          />
-          <Container
-            homeOpen={homeOpen}
-            setHomeOpen={setHomeOpen}
-            followerOpen={followerOpen}
-            setFollowerOpen={setFollowerOpen}
-            profileOpen={profileOpen}
-            setProfileOpen={setProfileOpen}
-            notiOpen={notiOpen}
-            setNotiOpen={setNotiOpen}
-            barOpen={barOpen}
-            setBarOpen={setBarOpen}
-            setNavWidth={setNavWidth}
-            setNavLeft={setNavLeft}
-            setChangeSomething={setChangeSomething}
-            openOtherProfileFromFollowerAndFollowingClick={
-              openOtherProfileFromFollowerAndFollowingClick
-            }
-            setOtherProfileOpen={setOtherProfileOpen}
-          />
+          {searchBarOpen ? (
+            <SearchBarPage
+              closeSearchBar={closeSearchBar}
+              openOwnerProfile={openOwnerProfile}
+              setChangeSomething={setChangeSomething}
+              changeSomething={changeSomething}
+              otherProfileOpen={otherProfileOpen}
+              setOtherProfileOpen={setOtherProfileOpen}
+              setOtherUserData={setOtherUserData}
+              otherUserData={otherUserData}
+              openOtherProfileFromPostNameClick={
+                openOtherProfileFromPostNameClick
+              }
+              openOtherProfileFromFollowerAndFollowingClick={
+                openOtherProfileFromFollowerAndFollowingClick
+              }
+              reloadPostRequest={reloadPostRequest}
+            />
+          ) : (
+            <>
+              <Nav
+                homeOpen={homeOpen}
+                setHomeOpen={setHomeOpen}
+                followerOpen={followerOpen}
+                setFollowerOpen={setFollowerOpen}
+                profileOpen={profileOpen}
+                setProfileOpen={setProfileOpen}
+                notiOpen={notiOpen}
+                setNotiOpen={setNotiOpen}
+                barOpen={barOpen}
+                setBarOpen={setBarOpen}
+                setNavWidth={setNavWidth}
+                setNavLeft={setNavLeft}
+                navLeft={navLeft}
+                navWidth={navWidth}
+                openSearchBar={openSearchBar}
+                handleNav={handleNav}
+                getProfileRef={getProfileRef}
+                navBarChange={navBarChange}
+              />
+              <NavIcon
+                homeOpen={homeOpen}
+                setHomeOpen={setHomeOpen}
+                followerOpen={followerOpen}
+                setFollowerOpen={setFollowerOpen}
+                profileOpen={profileOpen}
+                setProfileOpen={setProfileOpen}
+                notiOpen={notiOpen}
+                setNotiOpen={setNotiOpen}
+                barOpen={barOpen}
+                setBarOpen={setBarOpen}
+                setNavWidth={setNavWidth}
+                setNavLeft={setNavLeft}
+                navLeft={navLeft}
+                navWidth={navWidth}
+                openSearchBar={openSearchBar}
+                handleNav={handleNav}
+                getProfileRef={getProfileRef}
+                navBarChange={navBarChange}
+              />
+              <Container
+                homeOpen={homeOpen}
+                setHomeOpen={setHomeOpen}
+                followerOpen={followerOpen}
+                setFollowerOpen={setFollowerOpen}
+                profileOpen={profileOpen}
+                setProfileOpen={setProfileOpen}
+                notiOpen={notiOpen}
+                setNotiOpen={setNotiOpen}
+                barOpen={barOpen}
+                setBarOpen={setBarOpen}
+                setNavWidth={setNavWidth}
+                setNavLeft={setNavLeft}
+                setChangeSomething={setChangeSomething}
+                openOtherProfileFromFollowerAndFollowingClick={
+                  openOtherProfileFromFollowerAndFollowingClick
+                }
+                setOtherProfileOpen={setOtherProfileOpen}
+                setOpenPostUploadPage={setOpenPostUploadPage}
+                openOtherProfileFromPostNameClick={
+                  openOtherProfileFromPostNameClick
+                }
+                randomPostData={randomPostData}
+                reloadPostRequest={reloadPostRequest}
+                addToLocalCurrentCommentData={addToLocalCurrentCommentData}
+                removeLocalCurrentComment={removeLocalCurrentComment}
+              />
+            </>
+          )}
         </>
       )}
     </>
