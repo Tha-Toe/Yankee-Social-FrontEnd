@@ -91,6 +91,7 @@
     .bottomPhotoSelectBar {
       width: 90%;
       @include flex(center, center);
+      margin-top: -40px;
       .bottonPhotoIcon {
         margin-right: 10px;
         font-size: 25px;
