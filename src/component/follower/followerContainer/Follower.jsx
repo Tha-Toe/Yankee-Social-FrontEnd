@@ -31,7 +31,7 @@ function Follower({
   }, [followingEmailListRaw]);
   const unfollowFunction = async (e) => {
     let otherEmail = e;
-    const url = "http://localhost:3001/api/follow";
+    const url = "https://yankee-server.herokuapp.com/api/follow";
     const { data: res } = await axios.post(url, {
       otherEmail: otherEmail,
       myEmail: myEmail,
@@ -99,7 +99,7 @@ function Follower({
       try {
         setSuggestEmailList([]);
         //console.log("it's start");
-        const url = "http://localhost:3001/api/search";
+        const url = "https://yankee-server.herokuapp.com/api/search";
         const { data: res } = await axios.post(url, {
           getRandomSuggestEmail: "getRandomSuggestEmail",
         });
@@ -121,14 +121,12 @@ function Follower({
     getSuggestEmailList();
   }, []);
   const temporaryPopSuggestEmail = async (e) => {
-    console.log("start pop" + e);
     let popEmail = e;
     setRefreshMap(false);
     let suggestEmailListPop = await suggestEmailList.filter((eachEmail) => {
       return eachEmail.email !== popEmail;
     });
     setSuggestEmailList(suggestEmailListPop);
-    console.log(suggestEmailListPop);
     setRefreshMap(true);
   };
 

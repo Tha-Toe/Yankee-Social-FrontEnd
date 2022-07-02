@@ -34,7 +34,7 @@ const SuggestCard = ({
     setOtherUserEmail();
     setLoadedData(true);
     async function followerDataFetchFunction() {
-      const url = "http://localhost:3001/api/getuserdata";
+      const url = "https://yankee-server.herokuapp.com/api/getuserdata";
       const { data: res } = await axios.post(url, {
         email: suggestEmail.email,
       });

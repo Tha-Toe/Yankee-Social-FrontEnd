@@ -51,7 +51,7 @@ const SearchBarPage = ({
     setSearchLoading(true);
     if (!searchValue) return;
     try {
-      const url = "http://localhost:3001/api/search";
+      const url = "https://yankee-server.herokuapp.com/api/search";
       const { data: res } = await axios.post(url, { searchValue: searchValue });
       const result = await res.searchResult;
       setSearched(true);
@@ -85,7 +85,7 @@ const SearchBarPage = ({
       openOwnerProfile();
     } else {
       try {
-        const url = "http://localhost:3001/api/getuserdata";
+        const url = "https://yankee-server.herokuapp.com/api/getuserdata";
         const { data: res } = await axios.post(url, { email: e.email });
         const otherUserDataForOtherProfileOpen = await res.userData;
         setOtherUserData(otherUserDataForOtherProfileOpen);

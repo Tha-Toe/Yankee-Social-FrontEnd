@@ -126,7 +126,7 @@ function OtherProfile({
           console.log(changeFollower);
         }
       }
-      const url = "http://localhost:3001/api/follow";
+      const url = "https://yankee-server.herokuapp.com/api/follow";
       const { data: res } = await axios.post(url, {
         otherEmail: otherUserEmail,
         myEmail: myEmail,
@@ -181,16 +181,15 @@ function OtherProfile({
   useEffect(() => {
     async function getMyAllPostData() {
       //console.log("start");
-      const url = "http://localhost:3001/api/getpostdata";
-      const { data: res } = await axios.post(url, {
-        getMyAllPostData: "getMyAllPostData",
-        myEmail: otherUserEmail,
-      });
-      //console.log("end");
-      setRandomPostData(res.myAllPostData);
-      setLoadingPost(false);
-      //console.log(res.myAllPostData);
-      //console.log(userEmail);
+      if (otherUserEmail) {
+        const url = "https://yankee-server.herokuapp.com/api/getpostdata";
+        const { data: res } = await axios.post(url, {
+          getMyAllPostData: "getMyAllPostData",
+          myEmail: otherUserEmail,
+        });
+        setRandomPostData(res.myAllPostData);
+        setLoadingPost(false);
+      }
     }
     getMyAllPostData();
   }, [otherUserEmail]);

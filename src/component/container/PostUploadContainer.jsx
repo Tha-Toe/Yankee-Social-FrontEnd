@@ -30,7 +30,6 @@ const PostUploadContainer = ({ setOpenPostUploadPage }) => {
   const [photoFileName, setPhotoFileName] = useState();
 
   const handelSelectPhoto = (e) => {
-    console.log("here");
     //setFormData("");
     if (e.target.files[0] === undefined) {
       return;
@@ -63,7 +62,7 @@ const PostUploadContainer = ({ setOpenPostUploadPage }) => {
         setPhotoPreview("");
         setUploadLoading(true);
 
-        const url = "http://localhost:3001/api/uploadpost";
+        const url = "https://yankee-server.herokuapp.com/api/uploadpost";
         const { data: res } = await axios.post(url, data);
         setUploadLoading(false);
         setOpenPostUploadPage(false);

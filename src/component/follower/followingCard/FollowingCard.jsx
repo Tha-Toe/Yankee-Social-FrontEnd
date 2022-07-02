@@ -32,7 +32,7 @@ const FollowingCard = ({
     setOtherUserEmail("");
     setLoadedData(true);
     async function fetchFunction() {
-      const url = "http://localhost:3001/api/search";
+      const url = "https://yankee-server.herokuapp.com/api/search";
       const { data: res } = await axios.post(url, {
         followingEmail: followingEmail,
       });

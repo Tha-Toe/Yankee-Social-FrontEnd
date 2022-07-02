@@ -1,84 +1,296 @@
-@import '../../variables';
+@import "../../variables";
 
 .containerL {
+  height: 100vh;
+  width: 100vw;
+  @include flex(center, center, $vertical: true);
+  .yankeeLogoMobileContainer {
+    display: none;
+  }
+  .cardContainerL {
+    background-color: $white;
+    box-shadow: 0px 24px 48px 0 rgba(0, 0, 0, 0.16);
+    height: 400px;
+    width: 800px;
+    @include flex(center, center);
+    border-radius: 10px;
+    .leftContainerL {
+      width: 70%;
+      height: 100%;
+      @include flex(center, center, $vertical: true);
+      .loginHeaderL {
+        font-size: 20px;
+        font-weight: 700;
+        color: #000;
+        margin-bottom: 25px;
+      }
+      .logInFormL {
+        @include flex(center, center, $vertical: true);
+        .errorTextL {
+          color: red;
+        }
+
+        .inputTagL {
+          background-color: $input_color;
+          outline: none;
+          border: none;
+          border-radius: 5px;
+          padding: 10px 10px;
+          width: 250px;
+          margin-bottom: 20px;
+        }
+        .signInButtonL {
+          background-color: $sea_blue;
+          color: $white;
+          border-radius: 20px;
+          border: none;
+          padding: 10px 20px;
+          font-weight: 600;
+          cursor: pointer;
+          box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+          outline: none;
+        }
+      }
+    }
+    .rightContainerL {
+      background-color: $sea_blue;
+      width: 30%;
+      height: 100%;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      @include flex(center, center, $vertical: true);
+      .headerL {
+        color: $white;
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 15px;
+      }
+      .signUpButtonL {
+        background-color: $white;
+        color: $black;
+        border-radius: 20px;
+        border: none;
+        padding: 10px 20px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 1px 1px -6px rgba(0, 0, 0, 0.8);
+        outline: none;
+      }
+    }
+  }
+}
+@include laptop-L {
+} //1440px
+@include laptop {
+  .containerL {
+    .cardContainerL {
+      width: 700px;
+    }
+  }
+} //1024px
+@include tablet-lg {
+  .containerL {
     height: 100vh;
     width: 100vw;
-    @include flex(center,center, $vertical: true);
-    .cardContainerL {
-        background-color: $white;
-        box-shadow: 0px 24px 48px 0 rgba(0,0,0,0.16);
-        height: 400px;
-        width: 800px;
-        @include flex(center,center);
-        border-radius: 10px;
-        .leftContainerL {
-            width: 70%;
-            height: 100%;
-            @include flex(center,center,$vertical: true);
-            .loginHeaderL {
-                font-size: 20px;
-                font-weight: 700;
-                color: #000;
-                margin-bottom: 25px;
-            }
-            .logInFormL {
-                @include flex(center,center,$vertical:true);
-                .errorTextL {
-                    color: red;
-                }
-                
-                .inputTagL {
-                    background-color: $input_color;
-                    outline: none;
-                    border:none;
-                    border-radius: 5px;
-                    padding: 10px 10px;
-                    width: 250px;
-                    margin-bottom: 20px;
-                }
-                .signInButtonL {
-                    background-color: $sea_blue;
-                    color: $white;
-                    border-radius: 20px;
-                    border: none;
-                    padding: 10px 20px;
-                    font-weight: 600;
-                    cursor: pointer;
-                    box-shadow: 1px 1px 3px rgba(0,0,0,0.8);
-                    outline: none;
-                }
-            }
-        }
-        .rightContainerL {
-            background-color: $sea_blue;
-            width: 30%;
-            height: 100%;
-            border-top-right-radius: 5px;
-            border-bottom-right-radius: 5px;
-            @include flex(center,center,$vertical: true);
-            .headerL {
-                color: $white;
-                font-size: 18px;
-                font-weight: 700;
-                margin-bottom: 15px;
-            }
-            .signUpButtonL {
-                background-color: $white;
-                color: $black;
-                border-radius: 20px;
-                border: none;
-                padding: 10px 20px;
-                font-weight: 600;
-                cursor: pointer;
-                box-shadow: 1px 1px -6px rgba(0,0,0,0.8);
-                outline: none;
-            }
-        }
+    @include flex(center, center, $vertical: true);
+    overflow: hidden;
+    .yankeeLogoMobileContainer {
+      display: block;
+      margin-top: 20px;
+      font-size: 22px;
+      font-weight: 700;
+      color: $sea_blue;
+      text-shadow: 1px 1px rgba($color: #000000, $alpha: 0.2);
     }
-}
+    .cardContainerL {
+      height: 100%;
+      width: 100%;
+      @include flex(center, center, $vertical: true);
+      .leftContainerL {
+        width: 100%;
+        height: 80%;
+        @include flex(center, center, $vertical: true);
+        .loginHeaderL {
+          font-size: 18px;
+          font-weight: 700;
+          color: #000;
+          margin-bottom: 25px;
+        }
+        .logInFormL {
+          @include flex(center, center, $vertical: true);
+          .errorTextL {
+            color: red;
+          }
 
-
-
-
-
-
+          .inputTagL {
+            background-color: $input_color;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 10px;
+            width: 250px;
+            margin-bottom: 20px;
+          }
+          .signInButtonL {
+            background-color: $sea_blue;
+            color: $white;
+            border-radius: 20px;
+            border: none;
+            padding: 10px 20px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            outline: none;
+          }
+        }
+      }
+      .rightContainerL {
+        background-color: $sea_blue;
+        width: 100%;
+        height: 20%;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 0px;
+        border-top-left-radius: 20px;
+        @include flex(center, center, $vertical: true);
+        animation: signupcart 0.7s ease-in;
+        .headerL {
+          color: $white;
+          font-size: 18px;
+          font-weight: 700;
+          margin-bottom: 15px;
+        }
+        .signUpButtonL {
+          background-color: $white;
+          color: $black;
+          border-radius: 20px;
+          border: none;
+          padding: 10px 20px;
+          font-weight: 600;
+          cursor: pointer;
+          box-shadow: 1px 1px -6px rgba(0, 0, 0, 0.8);
+          outline: none;
+        }
+      }
+      @keyframes signupcart {
+        from {
+          transform: translateY(100px);
+        }
+        to {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+} //770px
+@include tablet-m {
+  .containerL {
+    .cardContainerL {
+      .leftContainerL {
+        .loginHeaderL {
+          font-size: 18px;
+          margin-bottom: 25px;
+        }
+        .logInFormL {
+          .inputTagL {
+            border-radius: 5px;
+            padding: 10px 10px;
+            width: 250px;
+            margin-bottom: 20px;
+          }
+          .signInButtonL {
+            border-radius: 20px;
+            padding: 10px 20px;
+          }
+        }
+      }
+      .rightContainerL {
+        .headerL {
+          font-size: 16px;
+          margin-bottom: 10px;
+        }
+        .signUpButtonL {
+          border-radius: 10px;
+          padding: 7px 14px;
+        }
+      }
+    }
+  }
+} //500px
+@include mobile-lg {
+} //400px
+@include mobile-m {
+  .containerL {
+    .cardContainerL {
+      .yankeeLogoMobileContainer {
+        font-size: 20px;
+      }
+      .leftContainerL {
+        .loginHeaderL {
+          font-size: 16px;
+          margin-bottom: 30px;
+        }
+        .logInFormL {
+          .inputTagL {
+            border-radius: 5px;
+            padding: 10px 10px;
+            width: 250px;
+            margin-bottom: 17px;
+          }
+          .signInButtonL {
+            margin-top: 10px;
+            border-radius: 20px;
+            padding: 7px 14px;
+          }
+        }
+      }
+      .rightContainerL {
+        .headerL {
+          font-size: 16px;
+          margin-bottom: 10px;
+        }
+        .signUpButtonL {
+          border-radius: 10px;
+          padding: 7px 14px;
+        }
+      }
+    }
+  }
+} //375px
+@include mobile-sm {
+  .containerL {
+    .cardContainerL {
+      .leftContainerL {
+        .loginHeaderL {
+          font-size: 15px;
+          margin-bottom: 30px;
+        }
+        .logInFormL {
+          .inputTagL {
+            border-radius: 5px;
+            padding: 8px 8px;
+            font-size: 12px;
+            width: 220px;
+            margin-bottom: 17px;
+          }
+          .signInButtonL {
+            margin-top: 10px;
+            border-radius: 20px;
+            padding: 6px 12px;
+            font-size: 12px;
+          }
+        }
+      }
+      .rightContainerL {
+        .headerL {
+          font-size: 14px;
+          margin-bottom: 10px;
+        }
+        .signUpButtonL {
+          border-radius: 10px;
+          padding: 7px 14px;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+} //320px

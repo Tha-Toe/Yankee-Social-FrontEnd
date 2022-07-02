@@ -116,7 +116,7 @@ function Profile({
     try {
       setProfilePreview("");
       setUploadLoading(true);
-      const url = "http://localhost:3001/api/uploadprofileimage";
+      const url = "https://yankee-server.herokuapp.com/api/uploadprofileimage";
       const { data: res } = await axios.post(url, formData, {
         email: userEmail,
       });
@@ -156,7 +156,7 @@ function Profile({
     try {
       setUploadLoading(true);
       setCoverPhotoPreview("");
-      const url = "http://localhost:3001/api/uploadcoverphoto";
+      const url = "https://yankee-server.herokuapp.com/api/uploadcoverphoto";
       const { data: res } = await axios.post(url, formData);
       setClickCoverCameraIcon(false);
       setUploadLoading(false);
@@ -176,18 +176,15 @@ function Profile({
   const [loadingPost, setLoadingPost] = useState(true);
   useEffect(() => {
     async function getMyAllPostData() {
-      //console.log("start");
-      const url = "http://localhost:3001/api/getpostdata";
-      const { data: res } = await axios.post(url, {
-        getMyAllPostData: "getMyAllPostData",
-        myEmail: userEmail,
-      });
-      //console.log("end");
-      setRandomPostData(res.myAllPostData);
-
-      setLoadingPost(false);
-      //console.log(res.myAllPostData);
-      //console.log(userEmail);
+      if (userEmail) {
+        const url = "https://yankee-server.herokuapp.com/api/getpostdata";
+        const { data: res } = await axios.post(url, {
+          getMyAllPostData: "getMyAllPostData",
+          myEmail: userEmail,
+        });
+        setRandomPostData(res.myAllPostData);
+        setLoadingPost(false);
+      }
     }
     getMyAllPostData();
   }, [userEmail]);

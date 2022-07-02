@@ -127,7 +127,7 @@ function PostCard({
 
   useEffect(() => {
     async function getUserData() {
-      const url = "http://localhost:3001/api/getUserData";
+      const url = "https://yankee-server.herokuapp.com/api/getUserData";
       const { data: res } = await axios.post(url, {
         email: postData.ownerEmail,
       });
@@ -163,7 +163,7 @@ function PostCard({
   const [openEditPost, setOpenEditPost] = useState(false);
   const handelDeletePost = async () => {
     let _id = postData._id;
-    const url = "http://localhost:3001/api/deletepost";
+    const url = "https://yankee-server.herokuapp.com/api/deletepost";
     const { data: res } = await axios.post(url, { _id: _id });
     reloadPostRequest(index);
     setOpenEditPost(false);
@@ -204,7 +204,7 @@ function PostCard({
     }
     //server post adjust
     try {
-      const url = "http://localhost:3001/api/likepost";
+      const url = "https://yankee-server.herokuapp.com/api/likepost";
       const { data: res } = await axios.post(url, {
         _id: _id,
         like: "like",
@@ -227,7 +227,7 @@ function PostCard({
     }
     //server post adjust
     try {
-      const url = "http://localhost:3001/api/likepost";
+      const url = "https://yankee-server.herokuapp.com/api/likepost";
       const { data: res } = await axios.post(url, {
         _id: _id,
         unLike: "unlike",
@@ -269,7 +269,7 @@ function PostCard({
     } else {
       setDelayCommentUploadButton(true);
       try {
-        const url = "http://localhost:3001/api/uploadcomment";
+        const url = "https://yankee-server.herokuapp.com/api/uploadcomment";
         const { data: res } = await axios.post(url, {
           commentText: currentComment,
           commentOwner: myEmail,

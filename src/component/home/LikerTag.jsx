@@ -21,7 +21,7 @@ const LikerTag = ({ eachLikerEmail, openOtherProfileFromPostNameClick }) => {
   useEffect(() => {
     async function fetchLikerData() {
       try {
-        const url = "http://localhost:3001/api/getuserdata";
+        const url = "https://yankee-server.herokuapp.com/api/getuserdata";
         const { data: res } = await axios.post(url, { email: eachLikerEmail });
         let likerData = res.userData;
         setUserData(likerData);

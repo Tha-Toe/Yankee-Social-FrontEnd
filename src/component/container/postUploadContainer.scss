@@ -145,12 +145,261 @@
 @include laptop {
 } //1240px
 @include tablet-lg {
+  .postUploadPageContainer {
+    .postUploadLoading {
+      font-size: 20px;
+    }
+    .postUploadPageChild {
+      .postUploadtopContainer {
+        margin-top: 20px;
+        .headerPostUploadPage {
+          .leftHeader {
+            margin-bottom: 15px;
+            .backPostUploadPage {
+              margin-right: 20px;
+              font-size: 20px;
+            }
+            .headerText {
+              font-size: 18px;
+            }
+          }
+          .rightHeader {
+            margin-bottom: 15px;
+            .postUploadButton {
+              font-size: 18px;
+            }
+          }
+        }
+        .npPostUploadContainer {
+          width: 100%;
+          margin-top: 10px;
+          .myProfileImage {
+            height: 40px;
+            width: 40px;
+          }
+          .myName {
+            font-size: 18px;
+            margin-left: 10px;
+          }
+        }
+        .captionInputTag {
+          margin-top: 18px;
+          font-size: 16px;
+        }
+        .previewPhoto {
+          width: 90%;
+        }
+      }
+      .bottomPhotoSelectBar {
+        width: 90%;
+        @include flex(center, center);
+        .bottonPhotoIcon {
+          font-size: 18px;
+          left: 150px;
+        }
+        .foo {
+          width: 80%;
+          height: 30px;
+        }
+        .foo:after {
+          font-size: 16px;
+        }
+        margin-bottom: 20px;
+      }
+    }
+  }
 } //770px
 @include tablet-m {
+  .postUploadPageContainer {
+    .postUploadLoading {
+      font-size: 18px;
+    }
+    .postUploadPageChild {
+      .postUploadtopContainer {
+        margin-top: 10px;
+        .headerPostUploadPage {
+          .leftHeader {
+            margin-bottom: 13px;
+            .backPostUploadPage {
+              margin-right: 10px;
+              font-size: 18px;
+            }
+            .headerText {
+              font-size: 16px;
+            }
+          }
+          .rightHeader {
+            margin-bottom: 13px;
+            .postUploadButton {
+              font-size: 17px;
+            }
+          }
+        }
+        .npPostUploadContainer {
+          margin-top: 10px;
+          .myProfileImage {
+            height: 30px;
+            width: 30px;
+          }
+          .myName {
+            font-size: 16px;
+            margin-left: 5px;
+          }
+        }
+        .captionInputTag {
+          margin-top: 15px;
+          font-size: 14px;
+        }
+        .previewPhoto {
+          width: 100%;
+        }
+      }
+      .bottomPhotoSelectBar {
+        width: 100%;
+        @include flex(center, center);
+        .bottonPhotoIcon {
+          font-size: 16px;
+          left: 140px;
+        }
+        .foo {
+          width: 70%;
+          height: 30px;
+        }
+        .foo:after {
+          font-size: 14px;
+        }
+        margin-bottom: 10px;
+      }
+    }
+  }
 } //500px
 @include mobile-lg {
 } //400px
 @include mobile-m {
+  .postUploadPageContainer {
+    .postUploadLoading {
+      font-size: 18px;
+    }
+    .postUploadPageChild {
+      .postUploadtopContainer {
+        margin-top: 10px;
+        .headerPostUploadPage {
+          .leftHeader {
+            margin-bottom: 10px;
+            .backPostUploadPage {
+              margin-right: 7px;
+              font-size: 16px;
+            }
+            .headerText {
+              font-size: 15px;
+            }
+          }
+          .rightHeader {
+            margin-bottom: 10px;
+            .postUploadButton {
+              font-size: 15px;
+            }
+          }
+        }
+        .npPostUploadContainer {
+          margin-top: 10px;
+          .myProfileImage {
+            height: 30px;
+            width: 30px;
+          }
+          .myName {
+            font-size: 14px;
+            margin-left: 5px;
+          }
+        }
+        .captionInputTag {
+          margin-top: 15px;
+          font-size: 13px;
+        }
+        .previewPhoto {
+          width: 100%;
+        }
+      }
+      .bottomPhotoSelectBar {
+        width: 100%;
+        @include flex(center, center);
+        .bottonPhotoIcon {
+          font-size: 14px;
+          left: 110px;
+        }
+        .foo {
+          width: 70%;
+          height: 25px;
+        }
+        .foo:after {
+          font-size: 12px;
+        }
+        margin-bottom: 10px;
+      }
+    }
+  }
 } //375px
 @include mobile-sm {
+  .postUploadPageContainer {
+    .postUploadLoading {
+      font-size: 16px;
+    }
+    .postUploadPageChild {
+      .postUploadtopContainer {
+        margin-top: 10px;
+        .headerPostUploadPage {
+          .leftHeader {
+            margin-bottom: 10px;
+            .backPostUploadPage {
+              margin-right: 7px;
+              font-size: 14px;
+            }
+            .headerText {
+              font-size: 14px;
+            }
+          }
+          .rightHeader {
+            margin-bottom: 10px;
+            .postUploadButton {
+              font-size: 14px;
+            }
+          }
+        }
+        .npPostUploadContainer {
+          margin-top: 10px;
+          .myProfileImage {
+            height: 25px;
+            width: 25px;
+          }
+          .myName {
+            font-size: 13px;
+            margin-left: 5px;
+          }
+        }
+        .captionInputTag {
+          margin-top: 13px;
+          font-size: 12px;
+        }
+        .previewPhoto {
+          width: 100%;
+        }
+      }
+      .bottomPhotoSelectBar {
+        width: 100%;
+        @include flex(center, center);
+        .bottonPhotoIcon {
+          font-size: 13px;
+          left: 90px;
+        }
+        .foo {
+          width: 70%;
+          height: 25px;
+        }
+        .foo:after {
+          font-size: 12px;
+        }
+        margin-bottom: 5px;
+      }
+    }
+  }
 } //320px

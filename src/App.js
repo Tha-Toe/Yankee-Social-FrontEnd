@@ -22,7 +22,7 @@ function App() {
     if (token) {
       async function tokenPresent() {
         try {
-          const url = "http://localhost:3001/api/checktoken";
+          const url = "https://yankee-server.herokuapp.com/api/checktoken";
           const { data: res } = await axios.post(url, { token: token });
           await setTokenTrue(true);
           setMyEmail(res.userData.email);
@@ -100,7 +100,7 @@ function App() {
     if (changeSomething) {
       async function getData() {
         try {
-          const url = "http://localhost:3001/api/getuserdata";
+          const url = "https://yankee-server.herokuapp.com/api/getuserdata";
           const { data: res } = await axios.post(url, { email: myEmail });
           setMyEmail(res.userData.email);
           let recieveData = res.userData;

@@ -44,7 +44,7 @@ const Comment = ({
       }
       if (eachComment.commentOwner) {
         try {
-          const url = "http://localhost:3001/api/getuserdata";
+          const url = "https://yankee-server.herokuapp.com/api/getuserdata";
           const { data: res } = await axios.post(url, {
             email: eachComment.commentOwner,
           });
@@ -159,7 +159,7 @@ const Comment = ({
       setDeleyDeleteButton(true);
 
       console.log("function start");
-      const url = "http://localhost:3001/api/deletecomment";
+      const url = "https://yankee-server.herokuapp.com/api/deletecomment";
       const { data: res } = await axios.post(url, {
         commentDataForDelete: commentDataForDelete,
         _id: _idPost,

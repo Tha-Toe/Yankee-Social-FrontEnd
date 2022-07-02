@@ -101,7 +101,7 @@ function Main({ changeSomething, setChangeSomething }) {
     const getRandomPostData = async () => {
       //console.log("run");
       setRandomPostData([]);
-      const url = "http://localhost:3001/api/getpostdata";
+      const url = "https://yankee-server.herokuapp.com/api/getpostdata";
       const { data: res } = await axios.post(url, {
         getRandomPostData: "getRandomPostData",
       });
