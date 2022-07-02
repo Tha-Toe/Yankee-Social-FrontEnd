@@ -117,13 +117,11 @@ function OtherProfile({
         let changeFollower = userFollowerAmount;
         changeFollower++;
         await setUserFollowerAmount(changeFollower);
-        console.log(changeFollower);
       } else {
         let changeFollower = userFollowingAmount;
         if (changeFollower > 0) {
           changeFollower--;
           await setUserFollowerAmount(changeFollower);
-          console.log(changeFollower);
         }
       }
       const url = "https://yankee-server.herokuapp.com/api/follow";
