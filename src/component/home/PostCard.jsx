@@ -158,7 +158,7 @@ function PostCard({
       }
     }
     getUserData();
-  }, [randomPostData]);
+  }, [randomPostData, postData]);
 
   //delete post function
   const [openEditPost, setOpenEditPost] = useState(false);
@@ -309,6 +309,9 @@ function PostCard({
     console.log(commentListRaw);
   };
 
+  if (!userData) {
+    return <></>;
+  }
   return (
     <div className="postCardContainer">
       <div className="postCardChild">

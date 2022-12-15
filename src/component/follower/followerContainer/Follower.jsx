@@ -100,7 +100,7 @@ function Follower({
       try {
         setSuggestEmailList([]);
         //console.log("it's start");
-        const url = ApiUrls.apiUrl + ApiUrls.followUrl;
+        const url = ApiUrls.apiUrl + ApiUrls.searchUrl;
         const { data: res } = await axios.post(url, {
           getRandomSuggestEmail: "getRandomSuggestEmail",
         });
