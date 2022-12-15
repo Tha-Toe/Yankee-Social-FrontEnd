@@ -17,7 +17,7 @@ const deleteCommentUrl = "/api/deletecomment";
 const ApiUrls = {
   apiUrl,
   signUpUrl,
-  logInUrl,
+  loginUrl,
   checkTokenUrl,
   searchUrl,
   uploadProfileImageUrl,
