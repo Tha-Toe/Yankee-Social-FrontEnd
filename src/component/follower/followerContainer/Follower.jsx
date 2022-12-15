@@ -5,6 +5,7 @@ import SuggestCard from "../suggestCard/SuggestCard";
 import "./follower.scss";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { ApiUrls } from "../../../api/ApiUrls";
 
 function Follower({
   setChangeSomething,
@@ -31,7 +32,7 @@ function Follower({
   }, [followingEmailListRaw]);
   const unfollowFunction = async (e) => {
     let otherEmail = e;
-    const url = "https://yankee-server.herokuapp.com/api/follow";
+    const url = ApiUrls.apiUrl + ApiUrls.followUrl;
     const { data: res } = await axios.post(url, {
       otherEmail: otherEmail,
       myEmail: myEmail,
@@ -99,7 +100,7 @@ function Follower({
       try {
         setSuggestEmailList([]);
         //console.log("it's start");
-        const url = "https://yankee-server.herokuapp.com/api/search";
+        const url = ApiUrls.apiUrl + ApiUrls.followUrl;
         const { data: res } = await axios.post(url, {
           getRandomSuggestEmail: "getRandomSuggestEmail",
         });

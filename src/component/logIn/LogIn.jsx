@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./login.scss";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { ApiUrls } from "../../api/ApiUrls";
 
 function Login() {
   const [data, setData] = useState({
@@ -12,7 +13,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "https://yankee-server.herokuapp.com/api/login";
+      const url = ApiUrls.apiUrl + ApiUrls.loginUrl;
       const { data: res } = await axios.post(url, data);
       localStorage.setItem("authToken", res.data);
       window.location = "/";

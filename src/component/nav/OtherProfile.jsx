@@ -11,6 +11,7 @@ import PostCard from "../home/PostCard";
 import axios from "axios";
 import LoadingPostCard from "../home/LoadingPostCard";
 import OtherUserFollowerList from "./OtherUserFollowerList";
+import { ApiUrls } from "../../api/ApiUrls";
 
 function OtherProfile({
   otherUserData,
@@ -124,7 +125,7 @@ function OtherProfile({
           await setUserFollowerAmount(changeFollower);
         }
       }
-      const url = "https://yankee-server.herokuapp.com/api/follow";
+      const url = ApiUrls.apiUrl + ApiUrls.followUrl;
       const { data: res } = await axios.post(url, {
         otherEmail: otherUserEmail,
         myEmail: myEmail,
@@ -180,7 +181,7 @@ function OtherProfile({
     async function getMyAllPostData() {
       //console.log("start");
       if (otherUserEmail) {
-        const url = "https://yankee-server.herokuapp.com/api/getpostdata";
+        const url = ApiUrls.apiUrl + ApiUrls.getPostDataUrl;
         const { data: res } = await axios.post(url, {
           getMyAllPostData: "getMyAllPostData",
           myEmail: otherUserEmail,

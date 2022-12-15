@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./signUp.scss";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { ApiUrls } from "../../api/ApiUrls";
 
 function SignUp() {
   const [data, setData] = useState({
@@ -15,7 +16,7 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "https://yankee-server.herokuapp.com/api/signup";
+      const url = ApiUrls.apiUrl + ApiUrls.signUpUrl;
       const { data: res } = await axios.post(url, data);
       setError(res.message);
       navigate("/login");

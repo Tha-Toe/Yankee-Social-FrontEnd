@@ -7,6 +7,7 @@ import axios from "axios";
 import "./app.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { addUserData } from "./redux/dataSlice";
+import { ApiUrls } from "./api/ApiUrls";
 
 function App() {
   const userData = useSelector((state) => state.data.userData);
@@ -22,7 +23,7 @@ function App() {
     if (token) {
       async function tokenPresent() {
         try {
-          const url = "https://yankee-server.herokuapp.com/api/checktoken";
+          const url = ApiUrls.apiUrl + ApiUrls.checkTokenUrl;
           const { data: res } = await axios.post(url, { token: token });
           await setTokenTrue(true);
           setMyEmail(res.userData.email);
@@ -100,7 +101,7 @@ function App() {
     if (changeSomething) {
       async function getData() {
         try {
-          const url = "https://yankee-server.herokuapp.com/api/getuserdata";
+          const url = ApiUrls.apiUrl + ApiUrls.getUserDataUrl;
           const { data: res } = await axios.post(url, { email: myEmail });
           setMyEmail(res.userData.email);
           let recieveData = res.userData;

@@ -20,6 +20,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import LikerTag from "./LikerTag";
 import Comment from "./Comment";
+import { ApiUrls } from "../../api/ApiUrls";
 
 function PostCard({
   postData,
@@ -127,7 +128,7 @@ function PostCard({
 
   useEffect(() => {
     async function getUserData() {
-      const url = "https://yankee-server.herokuapp.com/api/getUserData";
+      const url = ApiUrls.apiUrl + ApiUrls.getUserDataUrl;
       const { data: res } = await axios.post(url, {
         email: postData.ownerEmail,
       });
@@ -163,7 +164,7 @@ function PostCard({
   const [openEditPost, setOpenEditPost] = useState(false);
   const handelDeletePost = async () => {
     let _id = postData._id;
-    const url = "https://yankee-server.herokuapp.com/api/deletepost";
+    const url = ApiUrls.apiUrl + ApiUrls.deletePostUrl;
     const { data: res } = await axios.post(url, { _id: _id });
     reloadPostRequest(index);
     setOpenEditPost(false);
@@ -204,7 +205,7 @@ function PostCard({
     }
     //server post adjust
     try {
-      const url = "https://yankee-server.herokuapp.com/api/likepost";
+      const url = ApiUrls.apiUrl + ApiUrls.likePostUrl;
       const { data: res } = await axios.post(url, {
         _id: _id,
         like: "like",
@@ -227,7 +228,7 @@ function PostCard({
     }
     //server post adjust
     try {
-      const url = "https://yankee-server.herokuapp.com/api/likepost";
+      const url = ApiUrls.apiUrl + ApiUrls.likePostUrl;
       const { data: res } = await axios.post(url, {
         _id: _id,
         unLike: "unlike",
@@ -269,7 +270,7 @@ function PostCard({
     } else {
       setDelayCommentUploadButton(true);
       try {
-        const url = "https://yankee-server.herokuapp.com/api/uploadcomment";
+        const url = ApiUrls.apiUrl + ApiUrls.uploadCommentUrl;
         const { data: res } = await axios.post(url, {
           commentText: currentComment,
           commentOwner: myEmail,

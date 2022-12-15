@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+import { ApiUrls } from "../../../api/ApiUrls";
 const SuggestCard = ({
   suggestEmail,
   suggestEmailList,
@@ -34,7 +34,7 @@ const SuggestCard = ({
     setOtherUserEmail();
     setLoadedData(true);
     async function followerDataFetchFunction() {
-      const url = "https://yankee-server.herokuapp.com/api/getuserdata";
+      const url = ApiUrls.apiUrl + ApiUrls.getUserDataUrl;
       const { data: res } = await axios.post(url, {
         email: suggestEmail.email,
       });

@@ -2,6 +2,7 @@ import React from "react";
 import "./followCard.scss";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { ApiUrls } from "../../../api/ApiUrls";
 
 const FollowCard = ({
   followerEmail,
@@ -24,7 +25,7 @@ const FollowCard = ({
 
   useEffect(() => {
     async function followerDataFetchFunction() {
-      const url = "https://yankee-server.herokuapp.com/api/search";
+      const url = ApiUrls.apiUrl + ApiUrls.searchUrl;
       const { data: res } = await axios.post(url, {
         followerEmail: followerEmail,
       });

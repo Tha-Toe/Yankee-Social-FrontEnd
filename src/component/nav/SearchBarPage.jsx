@@ -9,7 +9,7 @@ import {
 import axios from "axios";
 import OtherProfile from "./OtherProfile";
 import { useSelector } from "react-redux";
-
+import { ApiUrls } from "../../api/ApiUrls";
 const SearchBarPage = ({
   closeSearchBar,
   openOwnerProfile,
@@ -51,7 +51,7 @@ const SearchBarPage = ({
     setSearchLoading(true);
     if (!searchValue) return;
     try {
-      const url = "https://yankee-server.herokuapp.com/api/search";
+      const url = ApiUrls.apiUrl + ApiUrls.searchUrl;
       const { data: res } = await axios.post(url, { searchValue: searchValue });
       const result = await res.searchResult;
       setSearched(true);
@@ -85,7 +85,7 @@ const SearchBarPage = ({
       openOwnerProfile();
     } else {
       try {
-        const url = "https://yankee-server.herokuapp.com/api/getuserdata";
+        const url = ApiUrls.apiUrl + ApiUrls.getUserDataUrl;
         const { data: res } = await axios.post(url, { email: e.email });
         const otherUserDataForOtherProfileOpen = await res.userData;
         setOtherUserData(otherUserDataForOtherProfileOpen);

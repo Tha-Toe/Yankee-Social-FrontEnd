@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
+import { ApiUrls } from "../../api/ApiUrls";
 
 const PostUploadContainer = ({ setOpenPostUploadPage }) => {
   const userData = useSelector((state) => state.data.userData);
@@ -62,7 +63,7 @@ const PostUploadContainer = ({ setOpenPostUploadPage }) => {
         setPhotoPreview("");
         setUploadLoading(true);
 
-        const url = "https://yankee-server.herokuapp.com/api/uploadpost";
+        const url = ApiUrls.apiUrl + ApiUrls.uploadPostUrl;
         const { data: res } = await axios.post(url, data);
         setUploadLoading(false);
         setOpenPostUploadPage(false);

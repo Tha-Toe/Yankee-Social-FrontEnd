@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import PostCard from "../home/PostCard";
 import axios from "axios";
 import LoadingPostCard from "../home/LoadingPostCard";
+import { ApiUrls } from "../../api/ApiUrls";
 
 function Profile({
   setHomeOpen,
@@ -116,7 +117,7 @@ function Profile({
     try {
       setProfilePreview("");
       setUploadLoading(true);
-      const url = "https://yankee-server.herokuapp.com/api/uploadprofileimage";
+      const url = ApiUrls.apiUrl + ApiUrls.uploadProfileImageUrl;
       const { data: res } = await axios.post(url, formData, {
         email: userEmail,
       });
@@ -156,7 +157,7 @@ function Profile({
     try {
       setUploadLoading(true);
       setCoverPhotoPreview("");
-      const url = "https://yankee-server.herokuapp.com/api/uploadcoverphoto";
+      const url = ApiUrls.apiUrl + ApiUrls.uploadCoverPhotoUrl;
       const { data: res } = await axios.post(url, formData);
       setClickCoverCameraIcon(false);
       setUploadLoading(false);
@@ -177,7 +178,7 @@ function Profile({
   useEffect(() => {
     async function getMyAllPostData() {
       if (userEmail) {
-        const url = "https://yankee-server.herokuapp.com/api/getpostdata";
+        const url = ApiUrls.apiUrl + ApiUrls.getPostDataUrl;
         const { data: res } = await axios.post(url, {
           getMyAllPostData: "getMyAllPostData",
           myEmail: userEmail,

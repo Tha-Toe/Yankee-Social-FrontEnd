@@ -5,6 +5,8 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import "./comment.scss";
+import { ApiUrls } from "../../api/ApiUrls";
+
 const Comment = ({
   eachComment,
   postOwnerEmail,
@@ -44,7 +46,7 @@ const Comment = ({
       }
       if (eachComment.commentOwner) {
         try {
-          const url = "https://yankee-server.herokuapp.com/api/getuserdata";
+          const url = ApiUrls.apiUrl + ApiUrls.getUserDataUrl;
           const { data: res } = await axios.post(url, {
             email: eachComment.commentOwner,
           });
@@ -159,7 +161,7 @@ const Comment = ({
       setDeleyDeleteButton(true);
 
       console.log("function start");
-      const url = "https://yankee-server.herokuapp.com/api/deletecomment";
+      const url = ApiUrls.apiUrl + ApiUrls.deleteCommentUrl;
       const { data: res } = await axios.post(url, {
         commentDataForDelete: commentDataForDelete,
         _id: _idPost,

@@ -5,6 +5,7 @@ import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
+import { ApiUrls } from "../../api/ApiUrls";
 
 const LikerTag = ({ eachLikerEmail, openOtherProfileFromPostNameClick }) => {
   const bufferToBase64String = async (buffer) => {
@@ -21,7 +22,7 @@ const LikerTag = ({ eachLikerEmail, openOtherProfileFromPostNameClick }) => {
   useEffect(() => {
     async function fetchLikerData() {
       try {
-        const url = "https://yankee-server.herokuapp.com/api/getuserdata";
+        const url = ApiUrls.apiUrl + ApiUrls.getUserDataUrl;
         const { data: res } = await axios.post(url, { email: eachLikerEmail });
         let likerData = res.userData;
         setUserData(likerData);

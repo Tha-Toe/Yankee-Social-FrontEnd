@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./followingCard.scss";
+import { ApiUrls } from "../../../api/ApiUrls";
 
 const FollowingCard = ({
   followingEmail,
@@ -32,7 +33,7 @@ const FollowingCard = ({
     setOtherUserEmail("");
     setLoadedData(true);
     async function fetchFunction() {
-      const url = "https://yankee-server.herokuapp.com/api/search";
+      const url = ApiUrls.apiUrl + ApiUrls.searchUrl;
       const { data: res } = await axios.post(url, {
         followingEmail: followingEmail,
       });

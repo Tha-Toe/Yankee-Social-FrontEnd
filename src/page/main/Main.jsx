@@ -8,6 +8,7 @@ import SearchBarPage from "../../component/nav/SearchBarPage";
 import PostUploadContainer from "../../component/container/PostUploadContainer";
 import axios from "axios";
 import NavIcon from "../../component/nav/NavIcon";
+import { ApiUrls } from "../../api/ApiUrls";
 
 function Main({ changeSomething, setChangeSomething }) {
   const [navWidth, setNavWidth] = useState("0px");
@@ -101,7 +102,7 @@ function Main({ changeSomething, setChangeSomething }) {
     const getRandomPostData = async () => {
       //console.log("run");
       setRandomPostData([]);
-      const url = "https://yankee-server.herokuapp.com/api/getpostdata";
+      const url = ApiUrls.apiUrl + ApiUrls.getPostDataUrl;
       const { data: res } = await axios.post(url, {
         getRandomPostData: "getRandomPostData",
       });
