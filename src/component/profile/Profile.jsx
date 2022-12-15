@@ -23,6 +23,7 @@ function Profile({
   setChangeSomething,
   openOtherProfileFromPostNameClick,
   openFollowerFromProfile,
+  profileOpen,
 }) {
   const [tempoState, setTempoState] = useState({
     caption:
@@ -177,18 +178,18 @@ function Profile({
   const [loadingPost, setLoadingPost] = useState(true);
   useEffect(() => {
     async function getMyAllPostData() {
-      if (userEmail) {
+      if (userData.email && profileOpen) {
         const url = ApiUrls.apiUrl + ApiUrls.getPostDataUrl;
         const { data: res } = await axios.post(url, {
           getMyAllPostData: "getMyAllPostData",
-          myEmail: userEmail,
+          myEmail: userData.email,
         });
         setRandomPostData(res.myAllPostData);
         setLoadingPost(false);
       }
     }
     getMyAllPostData();
-  }, [userEmail]);
+  }, [profileOpen, userData]);
 
   const reloadPostRequest = (index) => {
     let randomPostDataPop = [...randomPostData];

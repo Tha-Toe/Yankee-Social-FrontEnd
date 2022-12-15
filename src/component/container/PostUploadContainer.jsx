@@ -66,6 +66,7 @@ const PostUploadContainer = ({ setOpenPostUploadPage }) => {
         const url = ApiUrls.apiUrl + ApiUrls.uploadPostUrl;
         const { data: res } = await axios.post(url, data);
         setUploadLoading(false);
+        window.alert("Post uploaded successfully");
         setOpenPostUploadPage(false);
         //setFormData("");
       } catch (error) {

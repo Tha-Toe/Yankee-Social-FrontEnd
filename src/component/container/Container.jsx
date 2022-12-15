@@ -93,6 +93,7 @@ function Container({
             setNavWidth={setNavWidth}
             setNavLeft={setNavLeft}
             setChangeSomething={setChangeSomething}
+            profileOpen={profileOpen}
             openOtherProfileFromPostNameClick={
               openOtherProfileFromPostNameClick
             }
