@@ -57,11 +57,11 @@ function Home({
         </div>
       </div>
       <div className="postContainer">
-        {randomPostData.length === 0 ? (
+        {randomPostData?.length === 0 ? (
           <LoadingPostCard />
         ) : (
           <>
-            {randomPostData.map((postData, index) => (
+            {randomPostData?.map((postData, index) => (
               <PostCard
                 key={index}
                 postData={postData}
