@@ -1,6 +1,6 @@
 const apiUrl = "https://yankee.cyclic.app";
 const signUpUrl = "/api/signup";
-const logInUrl = "/api/login";
+const loginUrl = "/api/login";
 const checkTokenUrl = "/api/checktoken";
 const searchUrl = "/api/search";
 const uploadProfileImageUrl = "/api/uploadprofileimage";
