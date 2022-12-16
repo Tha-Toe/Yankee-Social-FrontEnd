@@ -128,33 +128,35 @@ function PostCard({
 
   useEffect(() => {
     async function getUserData() {
-      const url = ApiUrls.apiUrl + ApiUrls.getUserDataUrl;
-      const { data: res } = await axios.post(url, {
-        email: postData.ownerEmail,
-      });
-      setUserData(res.userData);
-      let calculateUserName =
-        res.userData.firstName + " " + res.userData.lastName;
-      setUserName(calculateUserName);
+      if (postData?.ownerEmail) {
+        const url = ApiUrls.apiUrl + ApiUrls.getUserDataUrl;
+        const { data: res } = await axios.post(url, {
+          email: postData.ownerEmail,
+        });
+        setUserData(res.userData);
+        let calculateUserName =
+          res.userData.firstName + " " + res.userData.lastName;
+        setUserName(calculateUserName);
 
-      //myPost?condition
-      if (res.userData.email === myEmail) {
-        setItIsMyPost(true);
-      } else {
-        setItIsMyPost(false);
-      }
-      //profileImage?condition
-      if (res.userData.profileImage) {
-        let base64ProfileImageString = await arrayBufferToBase64(
-          res.userData.profileImage.data.data
-        );
-        let base64ProfileImageObject = {
-          contentType: res.userData.profileImage.contentType,
-          data: base64ProfileImageString,
-        };
-        setProfileImage(base64ProfileImageObject);
-      } else {
-        setProfileImage({});
+        //myPost?condition
+        if (res.userData.email === myEmail) {
+          setItIsMyPost(true);
+        } else {
+          setItIsMyPost(false);
+        }
+        //profileImage?condition
+        if (res.userData.profileImage) {
+          let base64ProfileImageString = await arrayBufferToBase64(
+            res.userData.profileImage.data.data
+          );
+          let base64ProfileImageObject = {
+            contentType: res.userData.profileImage.contentType,
+            data: base64ProfileImageString,
+          };
+          setProfileImage(base64ProfileImageObject);
+        } else {
+          setProfileImage({});
+        }
       }
     }
     getUserData();

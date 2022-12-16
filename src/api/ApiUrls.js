@@ -1,4 +1,6 @@
 const apiUrl = "https://yankee.cyclic.app";
+// const apiUrl = "http://localhost:3001";
+
 const signUpUrl = "/api/signup";
 const loginUrl = "/api/login";
 const checkTokenUrl = "/api/checktoken";
